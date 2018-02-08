@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Bienvenue - {{ parent()}}
+{% endblock %}
+
+{% block body %}
+<section id="index" class="row">
+	<div class="col-4" id="key">
+		<h1>Acceuil</h1>
+		<!--Ajouter photo, liens vers achat et location-->
+	</div>
+	<div class="col" id="contenu-index">
+		<div class="row align-items-center">
+		<div id="text-index" class="col-12">
+			<blockquote class="blockquote text-right">
+				<p>"Bienvenue chez vous"</p>
+			  <footer class="blockquote-footer">Un agent immobilier</footer>
+			</blockquote>
+			<p class="actions-index">Acheter</p>
+			<p class="actions-index">Louer</p>
+			<p class="actions-index">Déposer une annonce</p>
+		</div>
+	</div>
+	</div>
+</section>
+{% endblock %}

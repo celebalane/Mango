@@ -1,0 +1,49 @@
+mango_platform_homepage:
+    path:     /
+    defaults: { _controller: MangoPlatformBundle:Index:index }
+
+mango_platform_rent:
+  path:    /location/{page}
+  defaults: 
+    _controller: MangoPlatformBundle:Rent:indexRent
+  requirements:
+    page: \d*
+
+mango_platform_buy:
+  path:    /achat/{page}
+  defaults: 
+    _controller: MangoPlatformBundle:Buy:indexBuy
+  requirements:
+    page: \d*
+
+mango_platform_contact:
+    path:     /contact
+    defaults: { _controller: MangoPlatformBundle:Index:contact }
+
+mango_platform_view_rent:
+  path:    /location/{id}
+  defaults: { _controller: MangoPlatformBundle:Rent:view }
+  requirements:
+    id: \d+
+
+mango_platform_view_buy:
+  path:    /achat/{id}
+  defaults: { _controller: MangoPlatformBundle:Buy:view }
+  requirements:
+    id: \d+
+
+mango_platform_add:
+  path:    /add
+  defaults: { _controller: MangoPlatformBundle:Advert:add }
+
+mango_platform_edit:
+  path:    /edit/{id}
+  defaults: { _controller: MangoPlatformBundle:Advert:edit }
+  requirements:
+    id: \d+
+
+mango_platform_delete:
+  path:    /delete/{id}
+  defaults: { _controller: MangoPlatformBundle:Advert:delete }
+  requirements:
+    id: \d+
