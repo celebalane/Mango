@@ -31,6 +31,10 @@ header{
 	background-color: white;
 }
 
+.navbar-brand img {
+	width: 80px;
+}
+
 .nav-link{
 	color: black;
 }
