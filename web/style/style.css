@@ -2,6 +2,7 @@
 
 body{
 	font-family: 'Yantramanav', sans-serif;
+	overflow: hidden;
 }
 
 .container-fluid{
@@ -10,47 +11,74 @@ body{
 }
 
 section{
-	margin-bottom: 1%;
+	margin-bottom: 2%;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+/*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// HEADER ////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////*/
 
 header{
 	margin-bottom: 5%;
+	font-size: 1.1em;
+}
+
+#navbarNav{
+	justify-content: space-between;
 }
 
 .navbar-light{
 	background-color: white;
 }
+
 .nav-link{
 	color: black;
 }
-
+#header .active a{
+	color: #EF8A1B;
+}
 #header .nav-link:hover{
 	color: #EF8A1B;
 }
+#nav-right{
+	margin-right: 2%;
+}
 
-///////////////////////////////////////////////////////////////////////////////////////////
+#der{
+	border-left: 2px solid #EF8A1B;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// FOOTER ////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////*/
 
-footer .nav{
+#footer .nav{
 	padding-left: 20px;
 	background-color: #EF8A1B;
 }
 
-footer .nav-link:hover{
+#footer .nav-link{
+	padding-top: 20px;
+	padding-bottom: 0;
+}
+
+#footer .nav-link:hover{
 	color: white;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+#footer .navbar-text{
+	padding: 20px 0 0 20px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// INDEX /////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////*/
 
 #key{
-	background-color: blue;
+	background-image: url('../img/key.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center; 
 	height: 600px;
 	padding: 50px;
 }
@@ -62,23 +90,46 @@ footer .nav-link:hover{
 }
 
 #text-index{
-	padding: 5% 5% 0 5%;
-	color: white;
+	padding: 4% 5% 0 5%;
 	background-color: #EF8A1B;
 	height: 400px;
 }
 
-.actions-index{
-	line-height: 1em;
+#text-index .nav a{
+	color: white;
+	line-height: 1.2em;
 	font-size: 4em;
 	font-weight: 900;
+	position: relative;
+	display: inline-block;
+}
+
+#text-index .nav a:hover{
+	text-decoration: none;
+}
+
+.hover-effect a::before{
+	position: absolute;
+	display: inline-block;
+	max-width: 0;
+	overflow: hidden;
+	color: #ea4b02;
+	text-shadow: 0px 0px 1px  #ea4b02;
+	content: attr(data-hover);
+	-webkit-transition: max-width 0.5s;
+	-moz-transition: max-width 0.5s;
+	transition: max-width 0.5s;
+}
+.hover-effect a:hover::before{
+	max-width: 100%;
 }
 
 .blockquote{
+	color: #ea4b02;
 	font-size: 1.6em;
-	line-height: 1em;
+	line-height: 0.8em;
 }
 
 .blockquote-footer{
-	color: white;
+	color: #ea4b02;
 }
