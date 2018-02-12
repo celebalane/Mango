@@ -22,8 +22,102 @@ class User extends FOSUser
      */
     protected $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=20)
+     */
+    private $phone;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rent_id", type="integer")
+     */
+    private $rentId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="buy_id", type="integer")
+     */
+    private $buyId;
+
     public function __construct(){
     	parent::__construct();
     }
-}
 
+
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set rentId
+     *
+     * @param integer $rentId
+     *
+     * @return User
+     */
+    public function setRentId($rentId)
+    {
+        $this->rentId = $rentId;
+
+        return $this;
+    }
+
+    /**
+     * Get rentId
+     *
+     * @return integer
+     */
+    public function getRentId()
+    {
+        return $this->rentId;
+    }
+
+    /**
+     * Set buyId
+     *
+     * @param integer $buyId
+     *
+     * @return User
+     */
+    public function setBuyId($buyId)
+    {
+        $this->buyId = $buyId;
+
+        return $this;
+    }
+
+    /**
+     * Get buyId
+     *
+     * @return integer
+     */
+    public function getBuyId()
+    {
+        return $this->buyId;
+    }
+}
