@@ -28,6 +28,13 @@ class Departement
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dep_code", type="string", length=5)
+     */
+    private $dep_code;
+
 
     /**
      * Get id

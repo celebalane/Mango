@@ -6,7 +6,7 @@
 	<title>{% block title %}Mango Annonces immobilière{% endblock %}</title>
 	{% block stylesheets %}
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 	{% endblock %}
 </head>
 <body>
@@ -14,7 +14,7 @@
     <header id="header" class="row">
       <nav class="navbar fixed-top navbar-expand-md navbar-light">
         <a class="navbar-brand" href="{{ path('mango_platform_homepage')}}">
-          <img src="../../img/logo.svg" alt="logo de Mango annonces immobilières avec lien vers l'accueil" id="logo">
+          <img src={{ asset('img/logo.svg') }} alt="logo de Mango annonces immobilières avec lien vers l'accueil" id="logo">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">

@@ -3,6 +3,7 @@
 namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Rent
@@ -109,7 +110,6 @@ class Rent
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
     */
     private $image;
-
 
     /**
      * Get id

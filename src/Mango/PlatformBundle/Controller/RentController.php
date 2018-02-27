@@ -13,46 +13,30 @@ class RentController extends Controller
 {
     public function indexRentAction($page)  //Afffichage page des annonces de vente
     {
-        if ($page<1){
-            throw new NotFoundHTTPException("La page " .$page. " d'annonces n'existe pas");
-        }
-
-        /*$nbPerPage=3;
-        $listAdverts = $this->getDoctrine()  
+        $nbPerPage=3;
+        $listRents = $this->getDoctrine()  
                             ->getManager()
-                            ->getRepository('MangoPlatformBundle:Advert')
-                            ->getAdverts($page, $nbPerPage);  //Récupère toutes les annonces
+                            ->getRepository('MangoPlatformBundle:Rent')
+                            ->getRents($page, $nbPerPage);  //Récupère toutes les annonces
 
-        $nbPages = ceil(count($listAdverts)/$nbPerPage); //calcul du nb de page à afficher pour la pagination
+        $nbPages = ceil(count($listRents)/$nbPerPage); //calcul du nb de page à afficher pour la pagination
 
         if ($page>$nbPages){
             throw new NotFoundHTTPException("La page " .$page. " d'annonces n'existe pas");
-        }*/
-        return $this->render('MangoPlatformBundle:Rent:index.html.twig');
-    }
-
-    public function menuAction($limit)
-    {
-    	$em = $this->getDoctrine()->getManager();
-
-        $listAdverts = $em->getRepository('MangoPlatformBundle:Advert')->findBy(array(),array('date'=>'desc'),$limit,0);
-
-    	return $this->render('MangoPlatformBundle:Advert:menu.html.twig', array('listAdverts'=>$listAdverts));
+        }
+        return $this->render('MangoPlatformBundle:Rent:index.html.twig', array('listRents'=>$listRents));
     }
 
     public function viewAction($id)
     {
     	$em = $this->getDoctrine()->getManager(); //Enclenche les processus de Doctrine pour les entités (objets)
 
-        $advert = $em->getRepository('MangoPlatformBundle:Advert')->find($id); //Doctrine va chercher l'objet Advert en fonction de son id
+        $advert = $em->getRepository('MangoPlatformBundle:Rent')->find($id); //Doctrine va chercher l'objet Advert en fonction de son id
 
         if(null===$advert){
             throw new NotFoundHttpException("L'annonce ".$id." n'existe pas");
         }
-
-        $listApplications = $em->getRepository('MangoPlatformBundle:Application')->findBy(array('advert'=>$advert)); //Cherche toutes les candidatures (objet Application) liées à l'annonce précédement cherchée
-        $listAdvertSkills = $em->getRepository('MangoPlatformBundle:AdvertSkill')->findBy(array('advert'=>$advert));
-    	return $this->render('MangoPlatformBundle:Advert:view.html.twig', array('advert'=>$advert, 'listApplications'=>$listApplications, 'listAdvertSkills'=>$listAdvertSkills));
+    	return $this->render('MangoPlatformBundle:Rent:view.html.twig', array('advert'=>$advert));
     }
 
     public function addAction(Request $request)
