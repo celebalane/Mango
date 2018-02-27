@@ -71,27 +71,6 @@ class Buy
     private $date;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="region_id", type="integer")
-     */
-    private $regionId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="departement_id", type="integer")
-     */
-    private $departementId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="city_id", type="integer")
-     */
-    private $cityId;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="published", type="boolean")
@@ -102,6 +81,24 @@ class Buy
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
     */
     private $image;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Region", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $region;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Departement", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $departement;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\City", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $city;
 
 
     /**
@@ -400,5 +397,77 @@ class Buy
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Mango\PlatformBundle\Entity\Region $region
+     *
+     * @return Buy
+     */
+    public function setRegion(\Mango\PlatformBundle\Entity\Region $region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Mango\PlatformBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Mango\PlatformBundle\Entity\Departement $departement
+     *
+     * @return Buy
+     */
+    public function setDepartement(\Mango\PlatformBundle\Entity\Departement $departement)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Mango\PlatformBundle\Entity\Departement
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \Mango\PlatformBundle\Entity\City $city
+     *
+     * @return Buy
+     */
+    public function setCity(\Mango\PlatformBundle\Entity\City $city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \Mango\PlatformBundle\Entity\City
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

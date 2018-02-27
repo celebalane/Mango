@@ -3,7 +3,6 @@
 namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Rent
@@ -79,27 +78,6 @@ class Rent
     private $date;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="region_id", type="integer")
-     */
-    private $regionId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="departement_id", type="integer")
-     */
-    private $departementId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="city_id", type="integer")
-     */
-    private $cityId;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="published", type="boolean")
@@ -110,6 +88,24 @@ class Rent
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
     */
     private $image;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Region", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $region;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Departement", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $departement;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\City", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $city;
 
     /**
      * Get id
@@ -314,78 +310,6 @@ class Rent
     }
 
     /**
-     * Set regionId
-     *
-     * @param integer $regionId
-     *
-     * @return Rent
-     */
-    public function setRegionId($regionId)
-    {
-        $this->regionId = $regionId;
-
-        return $this;
-    }
-
-    /**
-     * Get regionId
-     *
-     * @return int
-     */
-    public function getRegionId()
-    {
-        return $this->regionId;
-    }
-
-    /**
-     * Set departementId
-     *
-     * @param integer $departementId
-     *
-     * @return Rent
-     */
-    public function setDepartementId($departementId)
-    {
-        $this->departementId = $departementId;
-
-        return $this;
-    }
-
-    /**
-     * Get departementId
-     *
-     * @return int
-     */
-    public function getDepartementId()
-    {
-        return $this->departementId;
-    }
-
-    /**
-     * Set cityId
-     *
-     * @param integer $cityId
-     *
-     * @return Rent
-     */
-    public function setCityId($cityId)
-    {
-        $this->cityId = $cityId;
-
-        return $this;
-    }
-
-    /**
-     * Get cityId
-     *
-     * @return int
-     */
-    public function getCityId()
-    {
-        return $this->cityId;
-    }
-
-    /**
      * Set published
      *
      * @param boolean $published
@@ -431,5 +355,77 @@ class Rent
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \OC\PlatformBundle\Entity\City $city
+     *
+     * @return Rent
+     */
+    public function setCity(\OC\PlatformBundle\Entity\City $city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \OC\PlatformBundle\Entity\City
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Mango\PlatformBundle\Entity\Region $region
+     *
+     * @return Rent
+     */
+    public function setRegion(\Mango\PlatformBundle\Entity\Region $region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Mango\PlatformBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Mango\PlatformBundle\Entity\Departement $departement
+     *
+     * @return Rent
+     */
+    public function setDepartement(\Mango\PlatformBundle\Entity\Departement $departement)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Mango\PlatformBundle\Entity\Departement
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 }

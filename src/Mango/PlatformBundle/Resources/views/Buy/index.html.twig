@@ -1,10 +1,30 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-  Achat - {{ parent()}}
+  Acheter - {{ parent()}}
 {% endblock %}
 
 {% block body %}
-	<h1>Achat</h1>
-	<!--afficher les annonces de vente-->
+	<section id="index-buy">
+		<h1>Location</h1>
+		<ul class="row">
+			{% for buy in listBuys %}
+		      <li class="buy col-3">
+		      	<a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}">
+		      		<div class="cover">
+		      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid">
+		      		</div>
+		      		<div class="row cover-text">
+		      			<p class="col-6">{{ buy.city.name }}</p>
+		      			<p class="col-6 text-right">{{ buy.date|date('d/m/Y') }}</p>
+			      		<h3 class="col-12">{{ buy.title }}</h3>
+			      		<p class="col-12 text-right price">{{ buy.price }} €</p>
+		      		</div>
+		      	</a> 
+		      </li>
+		    {% else %}
+		      <li>Votre bonheur n'est pas encore disponible, veuillez nous excuser</li>
+		    {% endfor %}
+		</ul>
+	</section>
 {% endblock %}

@@ -5,7 +5,7 @@ namespace Mango\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Departement
+ * City
  *
  * @ORM\Table(name="city")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\CityRepository")

@@ -17,8 +17,8 @@ class RentRepository extends \Doctrine\ORM\EntityRepository
     $query= $this->createQueryBuilder('r')
                  ->leftJoin('r.image', 'i')  
                  ->addSelect('i')
-                 ->leftJoin('r.cityId', 'city')  
-                 ->addSelect('city')
+                 ->leftJoin('r.city', 'c')  
+                 ->addSelect('c')
                  ->orderBy('r.date', 'DESC')
                  ->getQuery();
 

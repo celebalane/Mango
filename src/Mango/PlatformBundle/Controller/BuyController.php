@@ -13,21 +13,17 @@ class BuyController extends Controller
 {
     public function indexBuyAction($page)  //Afffichage page des annonces de vente
     {
-        if ($page<1){
-            throw new NotFoundHTTPException("La page " .$page. " d'annonces n'existe pas");
-        }
-
-        /*$nbPerPage=3;
-        $listAdverts = $this->getDoctrine()  
+        $nbPerPage=3;
+        $listBuys = $this->getDoctrine()  
                             ->getManager()
-                            ->getRepository('MangoPlatformBundle:Advert')
-                            ->getAdverts($page, $nbPerPage);  //Récupère toutes les annonces
+                            ->getRepository('MangoPlatformBundle:Buy')
+                            ->getRents($page, $nbPerPage);  //Récupère toutes les annonces
 
-        $nbPages = ceil(count($listAdverts)/$nbPerPage); //calcul du nb de page à afficher pour la pagination
+        $nbPages = ceil(count($listBuys)/$nbPerPage); //calcul du nb de page à afficher pour la pagination
 
         if ($page>$nbPages){
             throw new NotFoundHTTPException("La page " .$page. " d'annonces n'existe pas");
-        }*/
-        return $this->render('MangoPlatformBundle:Buy:index.html.twig');
+        }
+        return $this->render('MangoPlatformBundle:Buy:index.html.twig', array('listBuys'=>$listBuys));
     }
 }

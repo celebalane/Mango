@@ -1,7 +1,7 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-  Location - {{ parent()}}
+  Louer - {{ parent()}}
 {% endblock %}
 
 {% block body %}
@@ -15,7 +15,7 @@
 		      			<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid">
 		      		</div>
 		      		<div class="row cover-text">
-		      			<p class="col-6 text-right">{{ rent.city }}</p>
+		      			<p class="col-6">{{ rent.city.name }}</p>
 		      			<p class="col-6 text-right">{{ rent.date|date('d/m/Y') }}</p>
 			      		<h3 class="col-12">{{ rent.title }}</h3>
 			      		<p class="col-12 text-right price">{{ rent.price }} €</p>
@@ -23,7 +23,7 @@
 		      	</a> 
 		      </li>
 		    {% else %}
-		      <li>Pas (encore!) d'annonces</li>
+		      <li>Votre bonheur n'est pas encore disponible, veuillez nous excuser</li>
 		    {% endfor %}
 		</ul>
 	</section>

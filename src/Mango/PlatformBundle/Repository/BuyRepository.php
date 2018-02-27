@@ -2,6 +2,9 @@
 
 namespace Mango\PlatformBundle\Repository;
 
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * BuyRepository
  *
@@ -10,4 +13,18 @@ namespace Mango\PlatformBundle\Repository;
  */
 class BuyRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getRents($page, $nbPerPage){  //arguments pour la pagination
+    $query= $this->createQueryBuilder('r')
+                 ->leftJoin('r.image', 'i')  
+                 ->addSelect('i')
+                 ->leftJoin('r.city', 'c')  
+                 ->addSelect('c')
+                 ->orderBy('r.date', 'DESC')
+                 ->getQuery();
+
+    $query->setFirstResult(($page-1)*$nbPerPage) //Commencement
+          ->setMaxResults($nbPerPage); //Nb par page
+
+    return new Paginator($query, true);
+  }
 }
