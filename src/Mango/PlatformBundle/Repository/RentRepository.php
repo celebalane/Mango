@@ -19,6 +19,8 @@ class RentRepository extends \Doctrine\ORM\EntityRepository
                  ->addSelect('i')
                  ->leftJoin('r.city', 'c')  
                  ->addSelect('c')
+                 ->leftJoin('r.type', 't')  
+                 ->addSelect('t')
                  ->orderBy('r.date', 'DESC')
                  ->getQuery();
 

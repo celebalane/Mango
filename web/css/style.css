@@ -165,8 +165,17 @@ header{
 	overflow: hidden;
 }
 
-.cover-text{
-	
+.city{
+	color: #ea4b02;
+	font-weight: 700;
+}
+
+.date{
+	font-size: 0.9em;
+}
+
+.title{
+	margin-bottom: 0;
 }
 
 .price{

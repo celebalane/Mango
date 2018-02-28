@@ -31,13 +31,6 @@ class Rent
     /**
      * @var int
      *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
@@ -108,6 +101,12 @@ class Rent
     private $city;
 
     /**
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Type", cascade={"persist"})
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $type;
+
+    /**
      * Get id
      *
      * @return int
@@ -139,30 +138,6 @@ class Rent
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     *
-     * @return Rent
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return int
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -427,5 +402,29 @@ class Rent
     public function getDepartement()
     {
         return $this->departement;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Mango\PlatformBundle\Entity\Type $type
+     *
+     * @return Rent
+     */
+    public function setType(\Mango\PlatformBundle\Entity\Type $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Mango\PlatformBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

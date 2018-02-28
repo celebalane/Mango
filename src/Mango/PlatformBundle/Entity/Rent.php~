@@ -5,12 +5,12 @@ namespace Mango\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Buy
+ * Rent
  *
- * @ORM\Table(name="buy")
- * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\BuyRepository")
+ * @ORM\Table(name="rent")
+ * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\RentRepository")
  */
-class Buy
+class Rent
 {
     /**
      * @var int
@@ -34,6 +34,13 @@ class Buy
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="string", length=255)
+     */
+    private $duration;
 
     /**
      * @var int
@@ -74,7 +81,7 @@ class Buy
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
     */
     private $image;
-    
+
     /**
     * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Region", cascade={"persist"})
     * @ORM\JoinColumn(nullable=false)
@@ -99,7 +106,6 @@ class Buy
     */
     private $type;
 
-
     /**
      * Get id
      *
@@ -115,7 +121,7 @@ class Buy
      *
      * @param string $title
      *
-     * @return Buy
+     * @return Rent
      */
     public function setTitle($title)
     {
@@ -139,7 +145,7 @@ class Buy
      *
      * @param integer $price
      *
-     * @return Buy
+     * @return Rent
      */
     public function setPrice($price)
     {
@@ -159,11 +165,35 @@ class Buy
     }
 
     /**
+     * Set duration
+     *
+     * @param string $duration
+     *
+     * @return Rent
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
      * Set size
      *
      * @param integer $size
      *
-     * @return Buy
+     * @return Rent
      */
     public function setSize($size)
     {
@@ -187,7 +217,7 @@ class Buy
      *
      * @param string $content
      *
-     * @return Buy
+     * @return Rent
      */
     public function setContent($content)
     {
@@ -211,7 +241,7 @@ class Buy
      *
      * @param integer $userId
      *
-     * @return Buy
+     * @return Rent
      */
     public function setUserId($userId)
     {
@@ -235,7 +265,7 @@ class Buy
      *
      * @param \DateTime $date
      *
-     * @return Buy
+     * @return Rent
      */
     public function setDate($date)
     {
@@ -259,7 +289,7 @@ class Buy
      *
      * @param boolean $published
      *
-     * @return Buy
+     * @return Rent
      */
     public function setPublished($published)
     {
@@ -283,7 +313,7 @@ class Buy
      *
      * @param \Mango\PlatformBundle\Entity\Image $image
      *
-     * @return Buy
+     * @return Rent
      */
     public function setImage(\Mango\PlatformBundle\Entity\Image $image = null)
     {
@@ -303,11 +333,35 @@ class Buy
     }
 
     /**
+     * Set city
+     *
+     * @param \OC\PlatformBundle\Entity\City $city
+     *
+     * @return Rent
+     */
+    public function setCity(\OC\PlatformBundle\Entity\City $city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \OC\PlatformBundle\Entity\City
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
      * Set region
      *
      * @param \Mango\PlatformBundle\Entity\Region $region
      *
-     * @return Buy
+     * @return Rent
      */
     public function setRegion(\Mango\PlatformBundle\Entity\Region $region)
     {
@@ -331,7 +385,7 @@ class Buy
      *
      * @param \Mango\PlatformBundle\Entity\Departement $departement
      *
-     * @return Buy
+     * @return Rent
      */
     public function setDepartement(\Mango\PlatformBundle\Entity\Departement $departement)
     {
@@ -348,53 +402,5 @@ class Buy
     public function getDepartement()
     {
         return $this->departement;
-    }
-
-    /**
-     * Set city
-     *
-     * @param \Mango\PlatformBundle\Entity\City $city
-     *
-     * @return Buy
-     */
-    public function setCity(\Mango\PlatformBundle\Entity\City $city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \Mango\PlatformBundle\Entity\City
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set type
-     *
-     * @param \Mango\PlatformBundle\Entity\Type $type
-     *
-     * @return Buy
-     */
-    public function setType(\Mango\PlatformBundle\Entity\Type $type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return \Mango\PlatformBundle\Entity\Type
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 }
