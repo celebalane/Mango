@@ -36,18 +36,18 @@ class Rent
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="duration", type="string", length=255)
-     */
-    private $duration;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="size", type="integer")
      */
     private $size;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="meuble", type="boolean")
+     */
+    private $meuble;
 
     /**
      * @var string
@@ -162,30 +162,6 @@ class Rent
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param string $duration
-     *
-     * @return Rent
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return string
-     */
-    public function getDuration()
-    {
-        return $this->duration;
     }
 
     /**
@@ -402,5 +378,29 @@ class Rent
     public function getDepartement()
     {
         return $this->departement;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Mango\PlatformBundle\Entity\Type $type
+     *
+     * @return Rent
+     */
+    public function setType(\Mango\PlatformBundle\Entity\Type $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Mango\PlatformBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

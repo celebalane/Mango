@@ -13,7 +13,7 @@ class RentController extends Controller
 {
     public function indexRentAction($page)  //Afffichage page des annonces de vente
     {
-        $nbPerPage=3;
+        $nbPerPage=8;
         $listRents = $this->getDoctrine()  
                             ->getManager()
                             ->getRepository('MangoPlatformBundle:Rent')

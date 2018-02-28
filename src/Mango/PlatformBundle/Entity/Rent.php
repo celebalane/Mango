@@ -36,18 +36,18 @@ class Rent
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="duration", type="string", length=255)
-     */
-    private $duration;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="size", type="integer")
      */
     private $size;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="meuble", type="boolean")
+     */
+    private $meuble;
 
     /**
      * @var string
@@ -162,30 +162,6 @@ class Rent
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param string $duration
-     *
-     * @return Rent
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return string
-     */
-    public function getDuration()
-    {
-        return $this->duration;
     }
 
     /**
@@ -426,5 +402,29 @@ class Rent
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set meuble
+     *
+     * @param boolean $meuble
+     *
+     * @return Rent
+     */
+    public function setMeuble($meuble)
+    {
+        $this->meuble = $meuble;
+
+        return $this;
+    }
+
+    /**
+     * Get meuble
+     *
+     * @return boolean
+     */
+    public function getMeuble()
+    {
+        return $this->meuble;
     }
 }

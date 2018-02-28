@@ -18,7 +18,7 @@
 		      			<p class="col-6 city">{{ rent.city.name }}</p>
 		      			<p class="col-6 text-right date">{{ rent.date|date('d/m/Y') }}</p>
 			      		<h3 class="col-12 title">{{ rent.title }}</h3>
-			      		<p class="col-12">{{ rent.type.name }} | {{ rent.size }} m²</p>
+			      		<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| meublé{% endif %}</p>
 			      		<p class="col-12 text-right price">{{ rent.price }} €</p>
 		      		</div>
 		      	</a> 
