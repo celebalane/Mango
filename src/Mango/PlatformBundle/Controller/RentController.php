@@ -31,12 +31,12 @@ class RentController extends Controller
     {
     	$em = $this->getDoctrine()->getManager(); //Enclenche les processus de Doctrine pour les entités (objets)
 
-        $advert = $em->getRepository('MangoPlatformBundle:Rent')->find($id); //Doctrine va chercher l'objet Advert en fonction de son id
+        $rent = $em->getRepository('MangoPlatformBundle:Rent')->find($id); //Doctrine va chercher l'objet Advert en fonction de son id
 
-        if(null===$advert){
+        if(null===$rent){
             throw new NotFoundHttpException("L'annonce ".$id." n'existe pas");
         }
-    	return $this->render('MangoPlatformBundle:Rent:view.html.twig', array('advert'=>$advert));
+    	return $this->render('MangoPlatformBundle:Rent:view.html.twig', array('rent'=>$rent));
     }
 
     public function addAction(Request $request)

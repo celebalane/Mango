@@ -43,6 +43,13 @@ class Rent
     private $size;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_parts", type="integer")
+     */
+    private $nbParts;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="meuble", type="boolean")
@@ -426,5 +433,29 @@ class Rent
     public function getMeuble()
     {
         return $this->meuble;
+    }
+
+    /**
+     * Set nbParts
+     *
+     * @param integer $nbParts
+     *
+     * @return Rent
+     */
+    public function setNbParts($nbParts)
+    {
+        $this->nbParts = $nbParts;
+
+        return $this;
+    }
+
+    /**
+     * Get nbParts
+     *
+     * @return integer
+     */
+    public function getNbParts()
+    {
+        return $this->nbParts;
     }
 }

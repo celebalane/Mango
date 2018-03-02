@@ -7,15 +7,15 @@
 {% block body %}
 	<section id="index-rent">
 		<h1>Location</h1>
-		<ul class="row">
+		<ul class="d-flex">
 			{% for rent in listRents %}
 		      <li class="rent col-3">
-		      	<a href="{{ path('mango_platform_view_rent', {'id':rent.id}) }}">
+		      	<a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}">
 		      		<div class="cover">
 		      			<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid">
 		      		</div>
 		      		<div class="row cover-text">
-		      			<p class="col-6 city">{{ rent.city.name }}</p>
+		      			<p class="col-6 city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 		      			<p class="col-6 text-right date">{{ rent.date|date('d/m/Y') }}</p>
 			      		<h3 class="col-12 title">{{ rent.title }}</h3>
 			      		<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| meublé{% endif %}</p>

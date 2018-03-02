@@ -143,21 +143,26 @@ header{
 /////////////////////////////////////////// RENT //////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////*/
 #index-rent{
-	padding: 40px;
+	padding: 30px;
 }
 
 #index-rent h1{
 	margin-bottom: 2%;
 }
 
-#index-rent .row{
-	padding-left: 15px !important;
+#index-rent ul{
+	padding-left: 0;
 }
 
 .rent{
 	padding: 1% 1% 0 1%;
+	margin-right: 1%;
 	list-style: none;
 	border: 1px solid #EF8A1B;
+}
+
+#index-rent .col-3{
+	flex: 0 0 24% !important;
 }
 
 .rent a{
@@ -171,9 +176,7 @@ header{
 	overflow: hidden;
 }
 
-.cover-text p , h3{
-	padding-left: 0 !important;
-}
+
 
 .city{
 	color: #ea4b02;
@@ -189,7 +192,7 @@ header{
 }
 
 .type{
-	margin-bottom: 10%;
+	margin-bottom: 15%;
 }
 
 .price{

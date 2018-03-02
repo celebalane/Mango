@@ -20,14 +20,15 @@ mango_platform_contact:
     path:     /contact
     defaults: { _controller: MangoPlatformBundle:Index:contact }
 
-mango_platform_view_rent:
-  path:    /location/{id}
-  defaults: { _controller: MangoPlatformBundle:Rent:view }
+mango_platform_rentview:
+  path:    /location/annonce/{id}
+  defaults: 
+    _controller: MangoPlatformBundle:Rent:view
   requirements:
     id: \d+
 
 mango_platform_view_buy:
-  path:    /achat/{id}
+  path:    /achat/annonce/{id}
   defaults: { _controller: MangoPlatformBundle:Buy:view }
   requirements:
     id: \d+
