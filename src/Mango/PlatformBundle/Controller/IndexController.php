@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Mango\PlatformBundle\Form\ContactType;
+use Mango\PlatformBundle\Entity\Contact;
 
 class IndexController extends Controller  //
 {
@@ -14,8 +16,24 @@ class IndexController extends Controller  //
     	return $this->render('MangoPlatformBundle:Index:index.html.twig');
     }
 
-    public function contactAction()  //Afffichage page contact
+    public function contactAction(Request $request)  //Afffichage page contact
     {
-        return $this->render('MangoPlatformBundle:Index:contact.html.twig');
+    	$contact = new Contact();
+    	$form = $this->createForm(ContactType::class, $contact);
+
+    	if($request->isMethod('POST')){
+    		$form ->handleRequest($request); //Lie les valeurs du formulaire à $contact
+            if($form->isValid()){
+            	$message = (new \Swift_Message())
+            			->setSubject($contact->getSubject())
+            			->setFrom($contact->getEmail())
+            			->setTo('emilie.leterme@gmail.com')
+            			->setBody($this->renderView('MangoPlatformBundle:Index:message.html.twig', array('contact' => $contact)));
+
+        		$this->get('mailer')->send($message);
+            	$request->getsession()->getflashBag()->add('notice', 'Votre message a bien été envoyé, il sera traité dans les plus brefs délais'); //Notification
+            }
+        } 
+        return $this->render('MangoPlatformBundle:Index:contact.html.twig', array('form'=>$form->createView()));
     }
 }

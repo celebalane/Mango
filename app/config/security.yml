@@ -22,6 +22,7 @@ security:
             pattern: ^/
             anonymous: true
             provider: main
+            logout_on_user_change: true
             form_login: 
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
@@ -30,7 +31,7 @@ security:
                 path: fos_user_security_logout
                 target: /mango
             remember_me:           #pour eviter que l'utilisateur ait à se connecter à chaque fois
-                secret: %secret%
+                secret: "%secret%"
 
     
     access_control:
