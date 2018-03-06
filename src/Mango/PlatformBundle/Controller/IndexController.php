@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Mango\PlatformBundle\Form\ContactType;
 use Mango\PlatformBundle\Entity\Contact;
 
-class IndexController extends Controller  //
+class IndexController extends Controller  
 {
     public function indexAction()  //Affichage page d'accueil
     {
@@ -19,18 +19,19 @@ class IndexController extends Controller  //
     public function contactAction(Request $request)  //Afffichage page contact
     {
     	$contact = new Contact();
-    	$form = $this->createForm(ContactType::class, $contact);
+    	$form = $this->createForm(ContactType::class, $contact); //Création du formulaire
 
     	if($request->isMethod('POST')){
     		$form ->handleRequest($request); //Lie les valeurs du formulaire à $contact
+            
             if($form->isValid()){
-            	$message = (new \Swift_Message())
+            	$message = (new \Swift_Message())  //Envoi mail
             			->setSubject($contact->getSubject())
             			->setFrom($contact->getEmail())
             			->setTo('emilie.leterme@gmail.com')
             			->setBody($this->renderView('MangoPlatformBundle:Index:message.html.twig', array('contact' => $contact)));
+                $this->get('mailer')->send($message);
 
-        		$this->get('mailer')->send($message);
             	$request->getsession()->getflashBag()->add('notice', 'Votre message a bien été envoyé, il sera traité dans les plus brefs délais'); //Notification
             }
         } 

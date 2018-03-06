@@ -9,10 +9,11 @@
 		<h1>Location</h1>
 		<ul class="row">
 			{% for buy in listBuys %}
+
 		      <li class="buy col-3">
 		      	<a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}">
 		      		<div class="cover">
-		      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid">
+		      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 		      		</div>
 		      		<div class="row cover-text">
 		      			<p class="col-6">{{ buy.city.name }}</p>
@@ -22,8 +23,11 @@
 		      		</div>
 		      	</a> 
 		      </li>
+
 		    {% else %}
-		      <li>Votre bonheur n'est pas encore disponible, veuillez nous excuser</li>
+
+		      <li>Il semblerait que l'objet de vos désirs ne soit pas encore disponible sur notre site</li>
+		      
 		    {% endfor %}
 		</ul>
 	</section>

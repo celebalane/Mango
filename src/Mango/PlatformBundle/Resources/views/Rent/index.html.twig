@@ -9,10 +9,11 @@
 		<h1>Location</h1>
 		<ul class="d-flex">
 			{% for rent in listRents %}
+
 		      <li class="rent col-3">
 		      	<a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}">
 		      		<div class="cover">
-		      			<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid">
+		      			<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
 		      		</div>
 		      		<div class="row cover-text">
 		      			<p class="col-6 city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
@@ -23,8 +24,11 @@
 		      		</div>
 		      	</a> 
 		      </li>
+
 		    {% else %}
+
 		      <li>Votre bonheur n'est pas encore disponible, veuillez nous excuser</li>
+
 		    {% endfor %}
 		</ul>
 	</section>

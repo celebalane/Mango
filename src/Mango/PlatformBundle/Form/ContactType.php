@@ -24,7 +24,8 @@ class ContactType extends AbstractType
             ->add('email',   EmailType::class)
             ->add('body', TextareaType::class)
             ->add('Envoyer',      SubmitType::class);
-    }/**
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

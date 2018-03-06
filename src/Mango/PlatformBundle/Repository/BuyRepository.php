@@ -14,7 +14,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 class BuyRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function getRents($page, $nbPerPage){  //arguments pour la pagination
-    $query= $this->createQueryBuilder('r')
+    $query = $this->createQueryBuilder('r')
                  ->leftJoin('r.image', 'i')  
                  ->addSelect('i')
                  ->leftJoin('r.city', 'c')  
