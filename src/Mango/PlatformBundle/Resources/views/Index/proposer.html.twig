@@ -1,0 +1,12 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Proposer une annonce - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<h1>Proposer une annonce</h1>
+	<p>Pour proposer une annonce vous devez être connecté.</p>
+	<p>L'inscription à notre site est rapide et gratuite.</p>
+	{{ include('UserBundle:Security:login.html.twig') }}
+{% endblock %}

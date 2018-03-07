@@ -20,6 +20,10 @@ mango_platform_contact:
     path:     /contact
     defaults: { _controller: MangoPlatformBundle:Index:contact }
 
+mango_platform_proposer:
+    path:     /proposer
+    defaults: { _controller: MangoPlatformBundle:Index:proposer }
+
 mango_platform_rentview:
   path:    /location/annonce/{id}
   defaults: 
@@ -33,18 +37,42 @@ mango_platform_view_buy:
   requirements:
     id: \d+
 
+mango_platform_user:
+  path: /user/index
+  defaults: { _controller: MangoPlatformBundle:User:index }
+  requirements:
+    id: \d+
+
+mango_platform_user_info:
+  path: /user/my-infos
+  defaults: { _controller: MangoPlatformBundle:User:userInfos }
+  requirements:
+    id: \d+
+
 mango_platform_add:
   path:    /add
-  defaults: { _controller: MangoPlatformBundle:Advert:add }
+  defaults: { _controller: MangoPlatformBundle:User:add }
 
 mango_platform_edit:
   path:    /edit/{id}
-  defaults: { _controller: MangoPlatformBundle:Advert:edit }
+  defaults: { _controller: MangoPlatformBundle:User:edit }
   requirements:
     id: \d+
 
 mango_platform_delete:
   path:    /delete/{id}
-  defaults: { _controller: MangoPlatformBundle:Advert:delete }
+  defaults: { _controller: MangoPlatformBundle:User:delete }
   requirements:
     id: \d+
+
+mango_platform_admin_adverts:
+  path: /admin/annonces
+  defaults: { _controller: MangoPlatformBundle:Admin:adverts }
+
+mango_platform_admin_users:
+  path: /admin/users
+  defaults: {_controller: MangoPlatformBundle:Admin:users}
+
+mango_platform_admin_modos:
+  path: /admin/modos
+  defaults: {_controller: MangoPlatformBundle:Admin:modos}

@@ -16,6 +16,11 @@ class IndexController extends Controller
     	return $this->render('MangoPlatformBundle:Index:index.html.twig');
     }
 
+    public function proposerAction()  //Affichage page d'ajout, si non connecté
+    {
+        return $this->render('MangoPlatformBundle:Index:proposer.html.twig');
+    }
+
     public function contactAction(Request $request)  //Afffichage page contact
     {
     	$contact = new Contact();

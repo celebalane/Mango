@@ -25,21 +25,21 @@ class User extends FOSUser
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=20)
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true)
      */
     private $phone;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="rent_id", type="integer")
+     * @ORM\Column(name="rent_id", type="integer", nullable=true)
      */
     private $rentId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="buy_id", type="integer")
+     * @ORM\Column(name="buy_id", type="integer", nullable=true)
      */
     private $buyId;
 

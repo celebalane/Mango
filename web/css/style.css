@@ -48,7 +48,11 @@ header{
 	margin-right: 2%;
 }
 
-#der{
+.navbar-text{
+	margin-right: 10px;
+}
+
+.der{
 	border-left: 2px solid #EF8A1B;
 }
 

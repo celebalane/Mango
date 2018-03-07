@@ -25,34 +25,58 @@
               <a class="nav-link" href="{{ path('mango_platform_rent', {'page': 1}) }}">Louer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ path('fos_user_security_login') }}">Proposer une annonce</a>
+              <a class="nav-link" href="{% if is_granted('ROLE_USER') %} {{ path('mango_platform_add') }} {% else %} {{ path('mango_platform_proposer') }} {% endif %}">Proposer une annonce</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ path('mango_platform_contact') }}">Contacter</a>
             </li>
+            {% if is_granted('ROLE_USER') and not is_granted('ROLE_MODERATEUR') %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ path('mango_platform_user') }}">Mes annonces</a>
+                  <a class="dropdown-item" href="{{ path('mango_platform_user_info') }}">Mes informations</a> 
+                </div>
+              </li>
+            {% elseif is_granted('ROLE_MODERATEUR') or is_granted('ROLE_ADMIN') %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modération</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ path('mango_platform_admin_adverts') }}">Annonces en attente</a>
+                  <a class="dropdown-item" href="{{ path('mango_platform_admin_users') }}">Utilisateurs</a>
+                  {% if is_granted('ROLE_ADMIN') %} 
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('mango_platform_admin_modos') }}">Modérateurs</a>
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
           </ul>
           <ul class="navbar-nav" id="nav-right">
-            <li class="nav-item">
-
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <span class="navbar-text">
               Connecté en tant que {{ app.user.username }}
-              <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-            </li>
+              </span>
+              <li class="nav-item der">
+                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+              </li>
             {% else %}
-              <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a>
-            </li>
-            <li class="nav-item" id="der">
-              <a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a>
+              </li>
+              <li class="nav-item der">
+                <a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a>
+              </li>
             {% endif %}
-
           </ul>
         </div>
       </nav>
     </header>
 		<div>
+
       {% block body %}
       {% endblock %}
+
   	</div>
     <footer class="row-fluid" id="footer">
       <ul class="nav">
@@ -63,7 +87,7 @@
           <a class="nav-link" href="{{ path('mango_platform_rent', {'page': 1}) }}">Louer</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('fos_user_security_login') }}">Proposer une annonce</a>
+          <a class="nav-link" href="{{ path('mango_platform_add') }}">Proposer une annonce</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">A propos de Mango annonces immobilières</a>

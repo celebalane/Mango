@@ -1,0 +1,8 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+	<h1>Inscription</h1>
+	<p>Votre inscription a bien été effectuée, vous pouvez désormais déposer une annonce.</p>
+	<a class="btn btn-primary" href="{{ path('mango_platform_add') }}" role="button">Proposer une annonce</a>
+	<a class="btn btn-primary" href="{{ path('mango_platform_user') }}" role="button">Accéder à mon compte</a>
+{% endblock %}

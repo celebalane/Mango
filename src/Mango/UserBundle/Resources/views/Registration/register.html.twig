@@ -1,6 +1,7 @@
 {% extends "UserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
+	<h1>Inscription</h1>
 	{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form'}}) }}
 		<div class="form-group">
     		{{ form_label(form.username, "Nom d'utilisateur", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
@@ -30,6 +31,7 @@
       			{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
    			</div>
   		</div>
+  		{{ form_rest(form) }}
 		<div>
 	        <input type="submit" value="Confirmer" />
 	    </div>
