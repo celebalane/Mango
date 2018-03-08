@@ -404,28 +404,4 @@ class Buy
     {
         return $this->type;
     }
-
-    /**
-     * Set nbParts
-     *
-     * @param integer $nbParts
-     *
-     * @return Buy
-     */
-    public function setNbParts($nbParts)
-    {
-        $this->nbParts = $nbParts;
-
-        return $this;
-    }
-
-    /**
-     * Get nbParts
-     *
-     * @return integer
-     */
-    public function getNbParts()
-    {
-        return $this->nbParts;
-    }
 }

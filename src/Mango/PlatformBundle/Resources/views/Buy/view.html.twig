@@ -1,0 +1,38 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ buy.title }} - {{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<section class="view">
+		<h1>Acheter</h1>
+		<h2>{{ buy.title }}</h2>
+		<article class="row">
+			<div class="col-4">
+				<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
+			</div>
+			<div class="col-6">
+				<div class="row">
+					<div class="col-6">
+						<p><span>Localisation : </span>{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
+						<p><span>Prix : </span>{{ buy.price }} €</p>
+						<p><span>Superficie : </span>{{ buy.size }} m²</p>
+						{% if buy.type.name != "Terrain" and buy.type.name != "Parking" %}
+							<p><span>Nombre de pièces : {{ buy.nbParts }} pièces</span></p>
+						{% endif %}
+						<p><span>Type de bien : </span>{{ buy.type.name }}</p>
+					</div>
+					<div class="col-5">
+						<iframe width="500" height="350" frameborder="0" style="border:0"
+						src="https://www.google.com/maps/embed/v1/place?q={{ buy.city.name }}&key=AIzaSyBQFyvNGExyTQBLYbOIpyzmD7fBhLMmlx4" allowfullscreen></iframe>
+					</div>
+				</div>
+				<div class="row">
+					<p><span>Description</span></p>
+					<p>{{ buy.content }}</p>
+				</div>
+			</div>
+		</article>
+	</section>
+{% endblock %}
