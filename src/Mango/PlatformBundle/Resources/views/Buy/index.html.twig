@@ -5,30 +5,54 @@
 {% endblock %}
 
 {% block body %}
-	<section id="index-buy">
-		<h1>Location</h1>
+	<section class="index-advert">
+		<h1>Acheter</h1>
 		<ul class="row">
 			{% for buy in listBuys %}
 
-		      <li class="buy col-3">
+		      <li class="advert col-3">
 		      	<a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}">
 		      		<div class="cover">
 		      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 		      		</div>
 		      		<div class="row cover-text">
-		      			<p class="col-6">{{ buy.city.name }}</p>
-		      			<p class="col-6 text-right">{{ buy.date|date('d/m/Y') }}</p>
-			      		<h3 class="col-12">{{ buy.title }}</h3>
+		      			<p class="col-6">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
+		      			<p class="col-6 text-right date">{{ buy.date|date('d/m/Y') }}</p>
+			      		<h3 class="col-12 title">{{ buy.title }}</h3>
+			      		<p class="col-12 type">{{ buy.type.name }} | {{ buy.size }} m²</p>
 			      		<p class="col-12 text-right price">{{ buy.price }} €</p>
 		      		</div>
 		      	</a> 
 		      </li>
-
 		    {% else %}
 
 		      <li>Il semblerait que l'objet de vos désirs ne soit pas encore disponible sur notre site</li>
 		      
 		    {% endfor %}
 		</ul>
+		<!-- Pagination -->
+		{% if nbPages > 1 %}
+			<nav aria-label="navigation page achat">
+				<ul class="pagination justify-content-center">
+					<li class="page-item">
+					   	<a class="page-link" href="{{ path('mango_platform_buy', {'page': page-1}) }}" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					        <span class="sr-only">Précédent</span>
+					    </a>
+					</li>
+					{% for p in range(1, nbPages) %}
+						<li{% if p == page %} class="page-item"{% endif %}>
+					      <a href="{{ path('mango_platform_buy', {'page': p}) }}" class="page-link">{{ p }}</a>
+					    </li>
+					{% endfor %}
+					<li class="page-item">
+				      <a class="page-link" href="{{ path('mango_platform_buy', {'page': page+1}) }}" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				        <span class="sr-only">Suivant</span>
+				      </a>
+				    </li>
+				</ul>
+			</nav>
+		{% endif %}
 	</section>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 body{
 	font-family: 'Yantramanav', sans-serif;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .container-fluid{
@@ -146,30 +146,31 @@ header{
 /*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// RENT //////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////*/
-#index-rent{
+.index-advert{
 	padding: 30px;
 }
 
-#index-rent h1{
+.index-advert h1{
 	margin-bottom: 2%;
 }
 
-#index-rent ul{
+.index-advert ul{
 	padding-left: 0;
 }
 
-.rent{
+.index-advert .col-3{
+	flex: 0 0 24% !important;
+	margin-bottom: 1%;
+}
+
+.advert{
 	padding: 1% 1% 0 1%;
 	margin-right: 1%;
 	list-style: none;
 	border: 1px solid #EF8A1B;
 }
 
-#index-rent .col-3{
-	flex: 0 0 24% !important;
-}
-
-.rent a{
+.advert a{
 	color: black;
 	text-decoration: none;
 }
@@ -179,8 +180,6 @@ header{
 	height: 200px;
 	overflow: hidden;
 }
-
-
 
 .city{
 	color: #ea4b02;

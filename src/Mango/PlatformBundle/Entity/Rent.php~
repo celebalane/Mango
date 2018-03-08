@@ -465,28 +465,4 @@ class Rent
     {
         return $this->nbParts;
     }
-
-    /**
-     * Set collocation
-     *
-     * @param boolean $collocation
-     *
-     * @return Rent
-     */
-    public function setCollocation($collocation)
-    {
-        $this->collocation = $collocation;
-
-        return $this;
-    }
-
-    /**
-     * Get collocation
-     *
-     * @return boolean
-     */
-    public function getCollocation()
-    {
-        return $this->collocation;
-    }
 }

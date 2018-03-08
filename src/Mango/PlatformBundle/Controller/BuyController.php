@@ -21,7 +21,7 @@ class BuyController extends Controller
         if($page>$nbPages){
             throw new NotFoundHTTPException("La page " . $page . " d'annonces n'existe pas");
         }
-        return $this->render('MangoPlatformBundle:Buy:index.html.twig', array('listBuys' => $listBuys));
+        return $this->render('MangoPlatformBundle:Buy:index.html.twig', array('listBuys' => $listBuys, 'nbPages'=>$nbPages, 'page'=>$page));
     }
 
     public function viewAction($id) //Affichage d'une seule annonce

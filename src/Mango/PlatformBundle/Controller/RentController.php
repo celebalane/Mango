@@ -21,7 +21,7 @@ class RentController extends Controller
         if($page>$nbPages){
             throw new NotFoundHTTPException("La page " . $page . " d'annonces n'existe pas");
         }
-        return $this->render('MangoPlatformBundle:Rent:index.html.twig', array('listRents' => $listRents));
+        return $this->render('MangoPlatformBundle:Rent:index.html.twig', array('listRents' => $listRents, 'nbPages'=>$nbPages, 'page'=>$page));
     }
 
     public function viewAction($id)
