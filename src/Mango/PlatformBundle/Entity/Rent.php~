@@ -38,6 +38,13 @@ class Rent
     /**
      * @var int
      *
+     * @ORM\Column(name="charge", type="integer")
+     */
+    private $charge;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="size", type="integer")
      */
     private $size;
@@ -464,5 +471,29 @@ class Rent
     public function getNbParts()
     {
         return $this->nbParts;
+    }
+
+    /**
+     * Set collocation
+     *
+     * @param boolean $collocation
+     *
+     * @return Rent
+     */
+    public function setCollocation($collocation)
+    {
+        $this->collocation = $collocation;
+
+        return $this;
+    }
+
+    /**
+     * Get collocation
+     *
+     * @return boolean
+     */
+    public function getCollocation()
+    {
+        return $this->collocation;
     }
 }

@@ -1,21 +1,23 @@
+<div class="d-flex justify-content-center">
 {% if error %}
     	<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
-	<form action="{{ path("fos_user_security_check") }}" method="post">
+	<form action="{{ path("fos_user_security_check") }}" class="col-6" method="post">
 	    {% if csrf_token %}
 	        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 	    {% endif %}
 	    <div class="form-group">
 		    <label for="username">Nom d'utilisateur</label>
-		    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+		    <input type="text" id="username" class="form-control" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
 		</div>
 		<div class="form-group">
 		   	<label for="password">Mot de passe</label>
-		    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+		    <input type="password" id="password" class="form-control" name="_password" required="required" autocomplete="current-password" />
 		</div>
-		<div class="form-group">
-		    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    	<label for="remember_me">Se souvenir de moi</label>
+		<div class="custom-control custom-checkbox">
+		    <input type="checkbox" id="remember_me" class="custom-control-input" class="form-control" name="_remember_me" value="on" />
+	    	<label for="remember_me" class="custom-control-label">Se souvenir de moi</label>
 	    </div>
-	    <input type="submit" id="_submit" name="_submit" value="Se connecter" />
+	    <input type="submit" id="_submit" class="btn col-12" name="_submit" value="Se connecter" />
 	</form>
+</div>

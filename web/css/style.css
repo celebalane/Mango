@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700,900');
 
+html{
+	height: 100%;
+}
+
 body{
 	font-family: 'Yantramanav', sans-serif;
 	overflow-x: hidden;
+	padding-bottom: 60px;
+	min-height: 100%;
+	position: relative;
 }
 
 .container-fluid{
@@ -14,10 +21,47 @@ section{
 	margin-bottom: 2%;
 }
 
+.contenu{
+	padding: 2% 2% 0 2%;
+}
+
 h1{
 	color: #ea4b02;
 	font-weight: 900;
 	font-size: 4em;
+}
+
+.btn{
+	background-color: #ea4b02;
+	font-weight: 700;
+	font-size: 1.1em;
+	color: white;
+}
+
+.btn:hover{
+	background-color: unset;
+	color: #ea4b02;
+}
+
+.custom-control-label{
+	margin-bottom: 4%;
+}
+
+.form-control:focus {
+	border-color: #EF8A1B;
+  	box-shadow: 0 0 0 0.2rem rgba(239, 138, 27, 0.25);
+}
+
+.custom-control-input:focus ~ .custom-control-label::before{
+	box-shadow: 0 0 0 0.2rem rgba(239, 138, 27, 0.25);
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+	background-color: #EF8A1B; 
+}
+
+.custom-control-input:checked~.custom-control-label::before{
+	background-color: #EF8A1B;
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +116,10 @@ header{
 //////////////////////////////////////////////////////////////////////////////////////////*/
 
 #footer .nav{
+	height: 60px;
+	position: absolute;
+	bottom: 0px;
+	min-width: 100%;
 	margin-top: 4%;
 	padding-left: 20px;
 	background-color: #EF8A1B;
@@ -252,34 +300,44 @@ header{
 
 .view span{
 	font-size: 1.1em;
+	font-weight: 700;
+	color: #EF8A1B;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////// PROPOSER /////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#proposer{
-	padding: 2% 2% 0 2%;
-}
-#loginBis{
-	
+#proposer h2{
+	margin-bottom: 4%;
+	color: #EF8A1B;
+	font-weight: 700;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////// CONTACT //////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#contact{
-	padding: 2% 2% 0 2%;
-}
-
 #contact label{
 	font-weight: 700;
 }
 
-#contact .btn{
-	background-color: #ea4b02;
-	font-weight: 700;
-	font-size: 1.1em;
-	color: white;
+/*/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// LOGIN ////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#login h1{
+	margin-bottom: 4%;
+}
+
+#forgot-password{
+	margin-top: 2%;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// RESET ////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#reset h1{
+	margin-bottom: 4%;
 }

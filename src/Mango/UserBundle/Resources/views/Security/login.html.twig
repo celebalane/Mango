@@ -1,6 +1,11 @@
 {% extends "UserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-	<h1>Connexion</h1>
-	{% include "UserBundle:Security:login_content.html.twig" %}
+	<div class="contenu" id="login">
+		<h1>Connexion</h1>
+		{% include "UserBundle:Security:login_content.html.twig" %}
+		<div class="d-flex justify-content-center">
+			<a href="{{ path('fos_user_resetting_request') }}" id="forgot-password">Mot de passe oublié</a>
+		</div>
+	</div>
 {% endblock  fos_user_content%}

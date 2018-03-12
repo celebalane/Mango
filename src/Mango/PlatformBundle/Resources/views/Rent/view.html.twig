@@ -17,9 +17,9 @@
 					<div class="col-6">
 						<p><span>Localisation : </span>{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 						<p><span>Type de bien : </span>{{ rent.type.name }}</p>
-						<p><span>Prix : </span>{{ rent.price }}</p>
+						<p><span>Prix : </span>{{ rent.price }} €/mois | <span>Charges :</span> {{ rent.charge }}</p>
 						<p><span>Superficie : </span>{{ rent.size }} m²</p>
-						<p><span>Nombre de pièces : {{ rent.nbParts }} pièces</span></p>
+						<p><span>Nombre de pièces : </span>{{ rent.nbParts }} pièces</p>
 						<p><span>Meublé: </span>{% if rent.meuble == 1 %} Oui {% else %} Non {% endif %}</p>
 						<p><span>Collocation: </span>{% if rent.collocation == 1 %} Oui {% else %} Non {% endif %}</p>
 					</div>

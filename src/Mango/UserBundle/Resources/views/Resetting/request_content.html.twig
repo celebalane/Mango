@@ -1,0 +1,14 @@
+<section class="contenu">
+	<h1>Mot de passe oublié</h1>
+	<div class="d-flex justify-content-center">
+		<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="col-4">
+		    <div class="form-group">
+		        <label for="username">Nom d'utilisateur</label>
+		        <input type="text" id="username" class="form-control" name="username" required="required" />
+		    </div>
+		    <div>
+		        <input type="submit" value="Envoyer" class="btn" />
+		    </div>
+		</form>
+	</div>
+</section>

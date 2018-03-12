@@ -38,6 +38,13 @@ class Rent
     /**
      * @var int
      *
+     * @ORM\Column(name="charge", type="integer")
+     */
+    private $charge;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="size", type="integer")
      */
     private $size;
@@ -488,5 +495,29 @@ class Rent
     public function getCollocation()
     {
         return $this->collocation;
+    }
+
+    /**
+     * Set charge
+     *
+     * @param integer $charge
+     *
+     * @return Rent
+     */
+    public function setCharge($charge)
+    {
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * Get charge
+     *
+     * @return integer
+     */
+    public function getCharge()
+    {
+        return $this->charge;
     }
 }
