@@ -107,6 +107,10 @@ header{
 	margin-right: 10px;
 }
 
+.dropdown-toggle{
+	color: #EF8A1B !important;
+}
+
 .der{
 	border-left: 2px solid #EF8A1B;
 }
@@ -302,6 +306,10 @@ header{
 	font-size: 1.1em;
 	font-weight: 700;
 	color: #EF8A1B;
+}
+
+.description{
+	margin-left: 0;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////

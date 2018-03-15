@@ -14,19 +14,34 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 class RentRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function getRents($page, $nbPerPage){  //arguments pour la pagination
-    $query = $this->createQueryBuilder('r')
-                 ->leftJoin('r.image', 'i')  
-                 ->addSelect('i')
-                 ->leftJoin('r.city', 'c')  
-                 ->addSelect('c')
-                 ->leftJoin('r.type', 't')  
-                 ->addSelect('t')
-                 ->orderBy('r.date', 'DESC')
-                 ->getQuery();
+        $query = $this->createQueryBuilder('r')
+                     ->leftJoin('r.image', 'i')  
+                     ->addSelect('i')
+                     ->leftJoin('r.city', 'c')  
+                     ->addSelect('c')
+                     ->leftJoin('r.type', 't')  
+                     ->addSelect('t')
+                     ->orderBy('r.date', 'DESC')
+                     ->getQuery();
 
-    $query->setFirstResult(($page-1)*$nbPerPage) //Commencement
-          ->setMaxResults($nbPerPage); //Nb par page
+        $query->setFirstResult(($page-1)*$nbPerPage) //Commencement
+              ->setMaxResults($nbPerPage); //Nb par page
 
-    return new Paginator($query, true);
-  }
+        return new Paginator($query, true);
+    }
+
+    public function getRentsByUser($userId){  //Recherche par utilisateur
+        $query = $this->createQueryBuilder('r')
+                     ->where('r.userId = :user_id')
+                     ->setParameter('user_id', $userId)
+                     ->leftJoin('r.image', 'i')  
+                     ->addSelect('i')
+                     ->leftJoin('r.city', 'c')  
+                     ->addSelect('c')
+                     ->orderBy('r.date', 'DESC')
+                     ->getQuery()
+                     ->getResult();
+
+        return $query;
+    }
 }

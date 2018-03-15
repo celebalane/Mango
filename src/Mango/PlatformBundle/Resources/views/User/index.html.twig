@@ -1,0 +1,61 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Mes annonces - {{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<section id="my-adverts">
+		<h1 class="row">Mes annonces</h1>
+		<div class="col-6">
+			<h2>En vente</h2>
+			<ul class="row">
+
+				{% for buy in listBuys %} {# Affichage des annonces #}
+			      <li class="advert col-3">
+			      	<a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}">
+			      		<div class="cover">
+			      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
+			      		</div>
+			      		<div class="row cover-text">
+			      			<p class="col-6">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
+			      			<p class="col-6 text-right date">{{ buy.date|date('d/m/Y') }}</p>
+				      		<h3 class="col-12 title">{{ buy.title }}</h3>
+				      		<p class="col-12 type">{{ buy.type.name }} | {{ buy.size }} m²</p>
+				      		<p class="col-12 text-right price">{{ buy.price }} €</p>
+			      		</div>
+			      	</a> 
+			      </li>
+			    {% else %}
+			      <li>Il semblerait que l'objet de vos désirs ne soit pas encore disponible sur notre site</li> 
+			    {% endfor %}
+
+			</ul>
+		</div>
+		<div class="col-6">
+			<h2>En location</h2>
+			<ul class="row">
+
+				{% for rent in listRents %} {# Affichage des annonces #}
+			      <li class="advert col-3">
+			      	<a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}">
+			      		<div class="cover">
+			      			<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
+			      		</div>
+			      		<div class="row cover-text">
+			      			<p class="col-6 city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
+			      			<p class="col-6 text-right date">{{ rent.date|date('d/m/Y') }}</p>
+				      		<h3 class="col-12 title">{{ rent.title }}</h3>
+				      		<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| meublé{% elseif rent.collocation == 1 %}| collocation{% endif %}</p>
+				      		<p class="col-12 text-right price">{{ rent.price }} €</p>
+			      		</div>
+			      	</a> 
+			      </li>
+			    {% else %}
+			      <li>Votre bonheur n'est pas encore disponible, veuillez nous excuser</li>
+			    {% endfor %}
+
+			</ul>
+		</div>
+	</section>
+{% endblock %} 

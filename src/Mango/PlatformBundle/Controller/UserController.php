@@ -5,9 +5,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Entity\User;
 
 class UserController extends Controller
 {
+    public function indexAction()  //Affichage page d'accueil des utilisateurs, affiche le récapitulatif de leurs annonces
+    {
+        $userId = $this->getUser()->getId(); //Récupère l'id de l'utilisateur courant
+        $listRents = $this->getDoctrine()   
+                            ->getManager()
+                            ->getRepository('MangoPlatformBundle:Rent')
+                            ->getRentsByUser($userId);  //Récupère toutes les annonces de l'utilisateur
+
+        $listBuys = $this->getDoctrine()  
+                            ->getManager()
+                            ->getRepository('MangoPlatformBundle:Buy')
+                            ->getBuysByUser($userId);  
+
+        return $this->render('MangoPlatformBundle:User:index.html.twig', array('listBuys' => $listBuys, 'listRents' => $listRents));
+    }
+
 	public function addAction(Request $request)
     {
         if(!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) { //Verification role utilisateur

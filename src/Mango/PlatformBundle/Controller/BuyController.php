@@ -15,7 +15,7 @@ class BuyController extends Controller
         $listBuys = $this->getDoctrine()  
                             ->getManager()
                             ->getRepository('MangoPlatformBundle:Buy')
-                            ->getRents($page, $nbPerPage);  //Récupère toutes les annonces
+                            ->getBuys($page, $nbPerPage);  //Récupère toutes les annonces
 
         $nbPages = ceil(count($listBuys)/$nbPerPage); //calcul du nb de page à afficher pour la pagination
 

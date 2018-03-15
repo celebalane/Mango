@@ -13,18 +13,35 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class BuyRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getRents($page, $nbPerPage){  //arguments pour la pagination
-    $query = $this->createQueryBuilder('r')
-                 ->leftJoin('r.image', 'i')  
-                 ->addSelect('i')
-                 ->leftJoin('r.city', 'c')  
-                 ->addSelect('c')
-                 ->orderBy('r.date', 'DESC')
-                 ->getQuery();
+	public function getBuys($page, $nbPerPage){  //arguments pour la pagination
+        $query = $this->createQueryBuilder('b')
+                     ->leftJoin('b.image', 'i')  
+                     ->addSelect('i')
+                     ->leftJoin('b.city', 'c')  
+                     ->addSelect('c')
+                     ->leftJoin('b.type', 't')  
+                     ->addSelect('t')
+                     ->orderBy('b.date', 'DESC')
+                     ->getQuery();
 
-    $query->setFirstResult(($page-1)*$nbPerPage) //Commencement
-          ->setMaxResults($nbPerPage); //Nb par page
+        $query->setFirstResult(($page-1)*$nbPerPage) //Commencement
+              ->setMaxResults($nbPerPage); //Nb par page
 
-    return new Paginator($query, true);
+        return new Paginator($query, true);
+  }
+
+    public function getBuysByUser($userId){  //Recherche par utilisateur
+        $query = $this->createQueryBuilder('b')
+                     ->where('b.userId = :user_id')
+                     ->setParameter('user_id', $userId)
+                     ->leftJoin('b.image', 'i')  
+                     ->addSelect('i')
+                     ->leftJoin('b.city', 'c')  
+                     ->addSelect('c')
+                     ->orderBy('b.date', 'DESC')
+                     ->getQuery()
+                     ->getResult();
+
+        return $query;
   }
 }

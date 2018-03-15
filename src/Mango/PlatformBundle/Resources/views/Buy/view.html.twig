@@ -19,7 +19,7 @@
 						<p><span>Prix : </span>{{ buy.price }} €</p>
 						<p><span>Superficie : </span>{{ buy.size }} m²</p>
 						{% if buy.type.name != "Terrain" and buy.type.name != "Parking" %}
-							<p><span>Nombre de pièces : {{ buy.nbParts }} pièces</span></p>
+							<p><span>Nombre de pièces : </span>{{ buy.nbParts }} pièces</p>
 						{% endif %}
 						<p><span>Type de bien : </span>{{ buy.type.name }}</p>
 					</div>
@@ -28,7 +28,7 @@
 						src="https://www.google.com/maps/embed/v1/place?q={{ buy.city.name }}&key=AIzaSyBQFyvNGExyTQBLYbOIpyzmD7fBhLMmlx4" allowfullscreen></iframe>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row description">
 					<p><span>Description</span></p>
 					<p>{{ buy.content }}</p>
 				</div>
