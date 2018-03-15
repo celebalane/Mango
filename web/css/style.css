@@ -349,3 +349,41 @@ header{
 #reset h1{
 	margin-bottom: 4%;
 }
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// MES ANNONCES /////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#my-adverts{
+	padding: 2% 2% 0 2%;
+}
+
+#my-adverts ul{
+	padding-left: 2%;
+}
+
+.my-advert{
+	padding: 1% 1% 1% 1%;
+	margin-right: 1%;
+	list-style: none;
+	border: 1px solid #EF8A1B;
+}
+
+.my-advert a{
+	color: black;
+	text-decoration: none;
+}
+
+.my-city{
+	color: #ea4b02;
+	font-weight: 700;
+	font-size:0.9em;
+}
+
+.my-title{
+	font-size: 1.5em;
+}
+
+#btn-create{
+	margin-top: 5%;
+}
