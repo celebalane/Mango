@@ -26,6 +26,10 @@
 							      	<p class="col-12 text-right price">{{ buy.price }} €</p>
 						      	</div>
 						    </a> 
+						    <div class="text-right">
+						    	<a href="{{ path('mango_platform_edit', {'id': buy.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
+						    	<a href="{{ path('mango_platform_delete', {'id': buy.id}) }}" class="btn btn-delete">Supprimer   <span class="fas fa-trash-alt"></span></a>
+						   </div>
 						</li>
 					{% else %}
 						<li>Vous n'avez pas encore posté d'annonce dans la section "Achat"</li> 
@@ -50,7 +54,11 @@
 							      	<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| meublé{% elseif rent.collocation == 1 %}| collocation{% endif %}</p>
 							      	<p class="col-12 text-right price">{{ rent.price }} €</p>
 						      	</div>
-						    </a> 
+						    </a>
+						    <div class="text-right">
+						    	<a href="{{ path('mango_platform_edit', {'id': rent.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
+						    	<a href="{{ path('mango_platform_delete', {'id': rent.id}) }}" class="btn btn-delete">Supprimer   <span class="fas fa-trash-alt"></span></a>
+						   </div> 
 						</li>
 					{% else %}
 						<li>Vous n'avez pas encore posté d'annonce dans la section "Louer"</li>

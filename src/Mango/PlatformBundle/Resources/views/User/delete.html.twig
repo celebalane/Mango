@@ -1,0 +1,28 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Supprimer une annonce - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <section class="view">
+    <h1>Supprimer une annonce</h1>
+    <p><span class="fas fa-exclamation-circle"></span> Attention toute suppression d'annonce est définitive.<br>Etes-vous certain de vouloir supprimer l'annonce "{% if rent is not null %} {{ rent.title }} {% else %} {{ buy.title }} {% endif %}" ?</p>
+
+    {% if rent is not null %}
+      {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+      <form action="{{ path('mango_platform_delete', {'id': rent.id}) }}" method="post">
+        <a href="{{ path('mango_platform_user') }}" class="btn">Retour</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {{ form_rest(form) }}
+      </form>
+    {% else %}
+      <form action="{{ path('mango_platform_delete', {'id': buy.id}) }}" method="post">
+        <a href="{{ path('mango_platform_user') }}" class="btn">Retour</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {{ form_rest(form) }}
+      </form>
+    {% endif %}
+  </section>
+
+{% endblock %}

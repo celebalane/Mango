@@ -76,26 +76,32 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:edit.html.twig', array('rent' => $rent,'form' => $form->createView()));
     }
 
-    public function deleteAction($id)
+    public function deleteAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $rent = $em->getRepository('MangoPlatformBundle:Rent')->find($id);
+        $buy = $em->getRepository('MangoPlatformBundle:Buy')->find($id);
 
-        if (null === $rent) {
+        if (null === $rent && null === $buy) {
             throw new NotFoundHttpException("L'annonce n°" . $id . " n'existe pas.");
         }
 
         $form = $this->get('form.factory')->create(); //Création d'un form vide n'ayant qu'un champ CSRF pour proteger d'une faille
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em->remove($advert);
-            $em->flush();
+            if (isset($rent)){
+                $em->remove($rent);
+                $em->flush();
+            }else{
+                $em->remove($buy);
+                $em->flush();
+            }
 
             $request->getSession()->getFlashBag()->add('info', "L'annonce a bien été supprimée.");
 
-            return $this->redirectToRoute('mango_platform_home'); //Changer le chemin pour retomber sur la page d'accueil utilisateur
+            return $this->redirectToRoute('mango_platform_user'); 
         }
-        return $this->render('MangoPlatformBundle:User:delete.html.twig', array('rent' => $rent,'form' => $form->createView()));
+        return $this->render('MangoPlatformBundle:User:delete.html.twig', array('rent' => $rent,'buy' =>$buy, 'form' => $form->createView()));
     }
 }
