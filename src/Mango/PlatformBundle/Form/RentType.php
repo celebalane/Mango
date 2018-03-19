@@ -3,7 +3,7 @@
 namespace Mango\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,21 +29,19 @@ class RentType extends AbstractType
     {
         $builder
             ->add('title',     TextType::class)
-/*            ->add('price', IntegerType::class)
+            ->add('price', IntegerType::class)
             ->add('charge', IntegerType::class)
             ->add('size', IntegerType::class)
             ->add('nbParts', IntegerType::class)
-            ->add('meuble', RadioType::class)
-            ->add('collocation', RadioType::class)
             ->add('userId',    HiddenType::class)
-            ->add('content',   TextType::class)*/
-/*            ->add('type', EntityType::class, array(    //Permet de faire un <select>
+            ->add('content',   TextareaType::class)
+            ->add('type', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Type',
                     'placeholder'  => 'Sélectionnez le type de bien',
                     'choice_label' => 'name',
                     'multiple'     => false,
                     'required'     => false
-            ))*/
+            ))
             ->add('region', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Region',
                     'placeholder'  => 'Sélectionnez votre région',

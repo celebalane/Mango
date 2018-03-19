@@ -8,16 +8,65 @@
   {% endif %}
 
   <div class="form-group">
-    {{ form_label(form.title, "Titre de l'annonce", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    {{ form_label(form.title, "Titre de l'annonce") }}
     {{ form_errors(form.title) }}
     {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
   </div>
-{#  <div class="form-group">
-    {{ form_label(form.content, "Contenu de l'annonce", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+  <div class="form-group">
+    {{ form_label(form.price, "Loyer (€)") }}
+    {{ form_errors(form.price) }}
+    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.charge, "Charges (€)") }}
+    {{ form_errors(form.charge) }}
+    {{ form_widget(form.charge, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.size, "Taille (m²)") }}
+    {{ form_errors(form.size) }}
+    {{ form_widget(form.size, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.type, "Type de bien") }}
+    {{ form_errors(form.type) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.nbParts, "Nombre de pièces") }}
+    {{ form_errors(form.nbParts) }}
+    {{ form_widget(form.nbParts, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="col-12">Cochez si besoin</div>
+  <div class="form-check">
+    <input type="checkbox" id="mango_platformbundle_rent_meuble" name="mango_platformbundle_rent[meuble]" class="form-check-input" value="1">
+    <label class="form-check-label" for="mango_platformbundle_rent_meuble">Meublé</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" id="mango_platformbundle_rent_collocation" name="mango_platformbundle_rent[collocation]" class="form-check-input" value="1">
+    <label class="form-check-label" for="mango_platformbundle_rent_collocation">En collocation</label>
+  </div>
+  <div class="form-group">
+    {{ form_label(form.region, "Région") }}
+    {{ form_errors(form.region) }}
+    {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.departement, "Département") }}
+    {{ form_errors(form.departement) }}
+    {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.city, "Ville") }}
+    {{ form_errors(form.city) }}
+    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.content, "Description", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
     {{ form_errors(form.content) }}
     {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
   </div>
-  {{ form_widget(form.userId, {'attr' : {'value' : userId  }})}} #}
+  {{ form_widget(form.userId, {'attr' : {'value' : userId  }})}} 
   <div class="form-group">
   {{ form_rest(form) }}
 </div>
