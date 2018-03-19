@@ -3,6 +3,7 @@
 namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rent
@@ -118,6 +119,7 @@ class Rent
     /**
     * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\City", cascade={"persist"})
     * @ORM\JoinColumn(nullable=false)
+    * @Assert\NotBlank();
     */
     private $city;
 
@@ -126,6 +128,12 @@ class Rent
     * @ORM\JoinColumn(nullable=false)
     */
     private $type;
+
+
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+    }
 
     /**
      * Get id

@@ -75,7 +75,7 @@ class Buy
      *
      * @ORM\Column(name="published", type="boolean")
      */
-    private $published;
+    private $published = false;
 
     /**
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
@@ -106,6 +106,11 @@ class Buy
     */
     private $type;
 
+
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+    }
 
     /**
      * Get id
@@ -403,5 +408,29 @@ class Buy
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set nbParts
+     *
+     * @param integer $nbParts
+     *
+     * @return Buy
+     */
+    public function setNbParts($nbParts)
+    {
+        $this->nbParts = $nbParts;
+
+        return $this;
+    }
+
+    /**
+     * Get nbParts
+     *
+     * @return integer
+     */
+    public function getNbParts()
+    {
+        return $this->nbParts;
     }
 }

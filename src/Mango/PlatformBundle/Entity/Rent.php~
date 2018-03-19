@@ -127,6 +127,12 @@ class Rent
     */
     private $type;
 
+
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+    }
+
     /**
      * Get id
      *
@@ -495,5 +501,29 @@ class Rent
     public function getCollocation()
     {
         return $this->collocation;
+    }
+
+    /**
+     * Set charge
+     *
+     * @param integer $charge
+     *
+     * @return Rent
+     */
+    public function setCharge($charge)
+    {
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * Get charge
+     *
+     * @return integer
+     */
+    public function getCharge()
+    {
+        return $this->charge;
     }
 }

@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Entity\User;
+use Mango\PlatformBundle\Entity\Rent;
+use Mango\PlatformBundle\Entity\Buy;
+use Mango\PlatformBundle\Form\RentType;
+use Mango\PlatformBundle\Form\BuyType;
 
 class UserController extends Controller
 {
@@ -25,13 +29,14 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:index.html.twig', array('listBuys' => $listBuys, 'listRents' => $listRents));
     }
 
-	public function addAction(Request $request)
+	public function addRentAction(Request $request)  //Ajout d'une annonce de location
     {
         if(!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) { //Verification role utilisateur
       
             throw new AccessDeniedException('Veuillez vous connecter.');
         }
-        //Ajouter condition "si location"
+        $title = 'rent';
+        $userId = $this->getUser()->getId(); //Récupère l'id de l'utilisateur courant
         $rent = new Rent(); //Ajout d'une annonce de location
 
         $form = $this->createForm(RentType::class, $rent); 
@@ -41,6 +46,7 @@ class UserController extends Controller
 
             if($form->isValid()){      //si valide on enregistre en bdd 
                 
+                $rent->setPublished(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($rent);
                 $em->flush();
@@ -50,7 +56,7 @@ class UserController extends Controller
                 return $this->RedirectToRoute('mango_platform_view', array('id'=>$rent->getId()));
             }
     	}
-    	return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView()));
+    	return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView(), 'userId' => $userId, 'title' => $title));
     }
 
     public function editAction($id, Request $request)

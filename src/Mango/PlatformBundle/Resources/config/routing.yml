@@ -49,9 +49,13 @@ mango_platform_user_info:
   requirements:
     id: \d+
 
-mango_platform_add:
-  path:    /add
-  defaults: { _controller: MangoPlatformBundle:User:add }
+mango_platform_addrent:
+  path:    /add/rent
+  defaults: { _controller: MangoPlatformBundle:User:addRent }
+
+mango_platform_addbuy:
+  path:    /add/buy
+  defaults: { _controller: MangoPlatformBundle:User:addBuy }
 
 mango_platform_edit:
   path:    /edit/{id}

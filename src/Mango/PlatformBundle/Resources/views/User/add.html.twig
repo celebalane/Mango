@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+	Ajouter une annonce - {{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<section class="view">
+		<h1>Ajouter une annonce : {% if title == 'rent' %}louer{% else %}vendre{% endif %}</h1>
+
+		{% if title == 'rent' %}
+	  		{{ include("MangoPlatformBundle:User:formRent.html.twig") }}
+	  	{% else %}
+	  		{{ include("MangoPlatformBundle:User:formBuy.html.twig") }}
+	  	{% endif %}
+	  	
+	    <a href="{{ path('mango_platform_user') }}" class="btn btn-default">Retour à mes annonces</a>
+  	</section>
+{% endblock %}

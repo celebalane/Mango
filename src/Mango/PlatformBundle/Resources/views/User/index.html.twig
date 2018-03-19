@@ -67,6 +67,9 @@
 				</ul>
 			</div>
 		</div>
-		<a href="#" class="btn col-6 offset-lg-3" id="btn-create">Créer une annonce</a>
+		<div class="row justify-content-around">
+			<a href="{{ path('mango_platform_addbuy') }}" class="btn col-4" id="btn-create">Créer une annonce Achat</a>
+			<a href="{{ path('mango_platform_addrent') }}" class="btn col-4" id="btn-create">Créer une annonce Location</a>
+		</div>
 	</section>
 {% endblock %} 

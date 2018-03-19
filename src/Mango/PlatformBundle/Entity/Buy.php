@@ -75,7 +75,7 @@ class Buy
      *
      * @ORM\Column(name="published", type="boolean")
      */
-    private $published;
+    private $published = false;
 
     /**
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
@@ -106,6 +106,11 @@ class Buy
     */
     private $type;
 
+
+    public function __construct()
+    {
+        $this->date = new \Datetime();
+    }
 
     /**
      * Get id

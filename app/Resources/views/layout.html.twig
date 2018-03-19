@@ -26,9 +26,11 @@
             <li class="nav-item">
               <a class="nav-link {% if active is defined and active == "louer" %} active {% endif %}" href="{{ path('mango_platform_rent', {'page': 1}) }}">Louer</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link {% if active is defined and active  == "proposer" %} active {% endif %}" href="{% if is_granted('ROLE_USER') %} {{ path('mango_platform_add') }} {% else %} {{ path('mango_platform_proposer') }} {% endif %}">Proposer une annonce</a>
-            </li>
+            {% if not is_granted('ROLE_USER') %}
+              <li class="nav-item">
+                <a class="nav-link {% if active is defined and active  == "proposer" %} active {% endif %}" href="{{ path('mango_platform_proposer') }}">Proposer une annonce</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link {% if active is defined and active == "contacter" %} active {% endif %}" href="{{ path('mango_platform_contact') }}">Contacter</a>
             </li>
@@ -88,9 +90,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ path('mango_platform_rent', {'page': 1}) }}">Louer</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('mango_platform_add') }}">Proposer une annonce</a>
-        </li>
+        {% if not is_granted('ROLE_USER') %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('mango_platform_proposer') }}">Proposer une annonce</a>
+          </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="#">A propos de Mango annonces immobilières</a>
         </li>
@@ -108,6 +112,7 @@
   	{% block javascripts %}
     	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
   	{% endblock %}
 </body>
 </html>

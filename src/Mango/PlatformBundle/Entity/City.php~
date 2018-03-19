@@ -129,33 +129,4 @@ class City
     {
         return $this->gps;
     }
-
-    /**
-     * Set departement
-     *
-     * @param \Mango\PlatformBundle\Entity\Departement $departement
-     *
-     * @return City
-     */
-    public function setDepartement(\Mango\PlatformBundle\Entity\Departement $departement = null)
-    {
-        $this->departement = $departement;
-
-        return $this;
-    }
-
-    /**
-     * Get departement
-     *
-     * @return \Mango\PlatformBundle\Entity\Departement
-     */
-    public function getDepartement()
-    {
-        return $this->departement;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
-    }
 }

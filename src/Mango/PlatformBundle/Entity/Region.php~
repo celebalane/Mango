@@ -5,12 +5,12 @@ namespace Mango\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type
+ * Region
  *
- * @ORM\Table(name="type")
- * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\TypeRepository")
+ * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\RegionRepository")
  */
-class Type
+class Region
 {
     /**
      * @var int
@@ -28,6 +28,11 @@ class Type
      */
     private $name;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Mango\PlatformBundle\Entity\Departement", mappedBy="region")
+    */
+    private $departements;
+
 
     /**
      * Get id
@@ -44,7 +49,7 @@ class Type
      *
      * @param string $name
      *
-     * @return Type
+     * @return Region
      */
     public function setName($name)
     {
@@ -63,3 +68,4 @@ class Type
         return $this->name;
     }
 }
+
