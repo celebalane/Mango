@@ -58,12 +58,13 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $rent = $em->getRepository('MangoPlatformBundle:Rent')->find($id);
+        $buy = $em->getRepository('MangoPlatformBundle:Buy')->find($id);
 
-        if (null === $rent) {
+        if (null === $rent && null === $buy) {
             throw new NotFoundHttpException("L'annonce n°" . $id . " n'existe pas.");
         }
 
-        $form = $this->get('form.factory')->create(RentEditType::class, $rent);
+        $form = $this->get('form.factory')->create(RentEditType::class, $rent); //Ajouter condition si rent ou buy
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush(); //On enregistre les modifs

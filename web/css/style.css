@@ -364,6 +364,7 @@ header{
 
 .my-advert{
 	padding: 1% 1% 1% 1%;
+		margin-bottom: 4% !important;
 	margin-right: 1%;
 	list-style: none;
 	border: 1px solid #EF8A1B;
