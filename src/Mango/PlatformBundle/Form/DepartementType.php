@@ -22,7 +22,7 @@ class DepartementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\PlatformBundle\Entity\Departement'
+            'data_class' => 'Mango\PlatformBundle\Entity\Departement'
         ));
     }
 
@@ -31,7 +31,7 @@ class DepartementType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'oc_platformbundle_departement';
+        return 'mango_platformbundle_departement';
     }
 
 

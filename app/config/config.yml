@@ -10,7 +10,6 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
     secret: "%secret%"
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -32,7 +31,7 @@ framework:
     assets: ~
     php_errors:
         log: true
-    translator: { fallback: %locale% }
+    translator: { fallback: '%locale%' }
 
 # Twig Configuration
 twig:

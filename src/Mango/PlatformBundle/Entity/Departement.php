@@ -36,7 +36,8 @@ class Departement
     private $dep_code;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Region")
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Region", inversedBy="departements")
+    * @ORM\JoinColumn(nullable=false)
     */
     private $region;
 

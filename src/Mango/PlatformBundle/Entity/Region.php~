@@ -67,5 +67,45 @@ class Region
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add departement
+     *
+     * @param \Mango\PlatformBundle\Entity\Departement $departement
+     *
+     * @return Region
+     */
+    public function addDepartement(\Mango\PlatformBundle\Entity\Departement $departement)
+    {
+        $this->departements[] = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Remove departement
+     *
+     * @param \Mango\PlatformBundle\Entity\Departement $departement
+     */
+    public function removeDepartement(\Mango\PlatformBundle\Entity\Departement $departement)
+    {
+        $this->departements->removeElement($departement);
+    }
+
+    /**
+     * Get departements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartements()
+    {
+        return $this->departements;
+    }
+}

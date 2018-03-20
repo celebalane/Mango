@@ -1,3 +1,4 @@
+//Gère dynamiquement l'affichage des régions, départemnts et ville
 $(document).on('change', '#mango_platformbundle_rent_region, #mango_platformbundle_rent_departement', function () {
   let $field = $(this) //Cible de l'événement
   let $regionField = $('#mango_platformbundle_rent_region')

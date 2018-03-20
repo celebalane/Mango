@@ -22,7 +22,7 @@ class RegionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\PlatformBundle\Entity\Region'
+            'data_class' => 'Mango\PlatformBundle\Entity\Region'
         ));
     }
 
@@ -31,7 +31,7 @@ class RegionType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'oc_platformbundle_region';
+        return 'mango_platformbundle_region';
     }
 
 

@@ -38,13 +38,15 @@
     {{ form_widget(form.nbParts, {'attr': {'class': 'form-control'}}) }}
   </div>
   <div class="col-12">Cochez si besoin</div>
-  <div class="form-check">
-    <input type="checkbox" id="mango_platformbundle_rent_meuble" name="mango_platformbundle_rent[meuble]" class="form-check-input" value="1">
-    <label class="form-check-label" for="mango_platformbundle_rent_meuble">Meublé</label>
+  <div class="form-group">
+    {{ form_label(form.meuble) }}
+    {{ form_errors(form.meuble) }}
+    {{ form_widget(form.meuble, {'attr': {'class': 'form-control'}}) }}
   </div>
-  <div class="form-check">
-    <input type="checkbox" id="mango_platformbundle_rent_collocation" name="mango_platformbundle_rent[collocation]" class="form-check-input" value="1">
-    <label class="form-check-label" for="mango_platformbundle_rent_collocation">En collocation</label>
+  <div class="form-group">
+    {{ form_label(form.collocation) }}
+    {{ form_errors(form.collocation) }}
+    {{ form_widget(form.collocation, {'attr': {'class': 'form-control'}}) }}
   </div>
   <div class="form-group">
     {{ form_label(form.region, "Région") }}
@@ -65,6 +67,11 @@
     {{ form_label(form.content, "Description", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
     {{ form_errors(form.content) }}
     {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+  </div>
+  <div class="form-group">
+    {{ form_label(form.image.file, "Image de présentation", {'label_attr': {'for': 'mango_platformbundle_rent_image_file'}}) }}
+    {{ form_errors(form.image.file) }}
+    {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file'}}) }}
   </div>
   {{ form_widget(form.userId, {'attr' : {'value' : userId  }})}} 
   <div class="form-group">

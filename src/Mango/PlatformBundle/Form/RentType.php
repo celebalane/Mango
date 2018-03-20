@@ -32,9 +32,18 @@ class RentType extends AbstractType
             ->add('price', IntegerType::class)
             ->add('charge', IntegerType::class)
             ->add('size', IntegerType::class)
+            ->add('meuble', CheckboxType::class, array(
+              'required'=>false,
+              'label'=>'Meublé'
+            ))
+            ->add('collocation', CheckboxType::class, array(
+              'required'=>false,
+              'label'=>'Collocation'
+            ))
             ->add('nbParts', IntegerType::class)
             ->add('userId',    HiddenType::class)
             ->add('content',   TextareaType::class)
+            ->add('image',     ImageType::class)
             ->add('type', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Type',
                     'placeholder'  => 'Sélectionnez le type de bien',
@@ -92,8 +101,6 @@ class RentType extends AbstractType
         [
           'class'           => 'MangoPlatformBundle:Departement',
           'placeholder'     => $region ? 'Sélectionnez votre département' : 'Veuillez sélectionnez une région avant',
-          'mapped'          => false,
-          'required'        => false,
           'auto_initialize' => false,
           'choices'         => $region ? $region->getDepartements() : []
         ]
@@ -119,7 +126,6 @@ class RentType extends AbstractType
             [
               'class'           => 'MangoPlatformBundle:City',
               'placeholder'     => $departement ? 'Sélectionnez votre ville' : 'Veuillez sélectionnez un département avant',
-              'mapped'          => false,
               'auto_initialize' => false,
               'choices'         => $departement ? $departement->getCities() : []
             ]

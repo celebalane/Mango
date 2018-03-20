@@ -43,7 +43,7 @@ class City
     private $gps;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Departement")
+    * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\Departement", inversedBy="cities")
     */
     private $departement;
 

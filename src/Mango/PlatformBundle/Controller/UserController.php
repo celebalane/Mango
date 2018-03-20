@@ -43,6 +43,14 @@ class UserController extends Controller
 
     	if($request->isMethod('POST')){
     		$form ->handleRequest($request); //Lie les valeurs du formulaire à $rent
+                if($form->getData()->getMeuble() == null){
+                    $rent->setMeuble(0);
+                }else if ($form->getData()->getMeuble() == 1){
+                    $rent->setMeuble(1);
+                }
+                if($form->getData()->getCollocation() == null){
+                    $rent->setCollocation(0);
+                }
 
             if($form->isValid()){      //si valide on enregistre en bdd 
                 
@@ -53,7 +61,7 @@ class UserController extends Controller
 
                 $request->getsession()->getflashBag()->add('notice', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
 
-                return $this->RedirectToRoute('mango_platform_view', array('id'=>$rent->getId()));
+                return $this->RedirectToRoute('mango_platform_rentview', array('id'=>$rent->getId()));
             }
     	}
     	return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView(), 'userId' => $userId, 'title' => $title));

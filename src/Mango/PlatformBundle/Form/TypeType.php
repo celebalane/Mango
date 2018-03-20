@@ -22,7 +22,7 @@ class TypeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\PlatformBundle\Entity\Type'
+            'data_class' => 'Mango\PlatformBundle\Entity\Type'
         ));
     }
 
@@ -31,7 +31,7 @@ class TypeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'oc_platformbundle_type';
+        return 'mango_platformbundle_type';
     }
 
 

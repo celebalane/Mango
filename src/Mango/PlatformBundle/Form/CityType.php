@@ -22,7 +22,7 @@ class CityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'OC\PlatformBundle\Entity\City'
+            'data_class' => 'Mango\PlatformBundle\Entity\City'
         ));
     }
 
@@ -31,7 +31,7 @@ class CityType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'oc_platformbundle_city';
+        return 'mango_platformbundle_city';
     }
 
 

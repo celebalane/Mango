@@ -3,7 +3,6 @@
 namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rent
@@ -119,7 +118,6 @@ class Rent
     /**
     * @ORM\ManyToOne(targetEntity="Mango\PlatformBundle\Entity\City", cascade={"persist"})
     * @ORM\JoinColumn(nullable=false)
-    * @Assert\NotBlank();
     */
     private $city;
 
@@ -340,11 +338,11 @@ class Rent
     /**
      * Set city
      *
-     * @param \OC\PlatformBundle\Entity\City $city
+     * @param \Mango\PlatformBundle\Entity\City $city
      *
      * @return Rent
      */
-    public function setCity(\OC\PlatformBundle\Entity\City $city)
+    public function setCity(\Mango\PlatformBundle\Entity\City $city)
     {
         $this->city = $city;
 
@@ -354,7 +352,7 @@ class Rent
     /**
      * Get city
      *
-     * @return \OC\PlatformBundle\Entity\City
+     * @return \Mango\PlatformBundle\Entity\City
      */
     public function getCity()
     {
