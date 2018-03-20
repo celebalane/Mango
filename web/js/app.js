@@ -14,5 +14,24 @@ $(document).on('change', '#mango_platformbundle_rent_region, #mango_platformbund
     let $input = $(data).find(target)
     // On remplace notre <select> actuel
     $(target).replaceWith($input)
+    $(target).parent().removeClass('d-none')  //Apparition des champs
   })
 })
+
+$(document).on('change', '#mango_platformbundle_buy_region, #mango_platformbundle_buy_departement', function () {
+  let $field = $(this) 
+  let $regionField = $('#mango_platformbundle_buy_region')
+  let $form = $field.closest('form')
+  let target = '#' + $field.attr('id').replace('departement', 'city').replace('region', 'departement')
+
+  let data = {}
+  data[$regionField.attr('name')] = $regionField.val()
+  data[$field.attr('name')] = $field.val()
+
+  $.post($form.attr('action'), data).then(function (data) {
+    let $input = $(data).find(target)
+    $(target).replaceWith($input)
+    $(target).parent().removeClass('d-none')  
+  })
+})
+
