@@ -7,6 +7,12 @@
 {% block body %}
 	<section id="my-adverts">
 		<h1 class="col-12">Mes annonces</h1>
+		{% for message in app.flashes('success') %}
+		    <div class="alert alert-success">
+		        {{ message }}
+		    </div>
+		{% endfor %}
+
 		<div class="row">
 			<div class="col-6">
 				<h2 class="col-12">En vente</h2>
@@ -16,7 +22,7 @@
 						<li class="my-advert col-12">
 						    <a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}" class="row">
 						      	<div class="cover col-6">
-						      		<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
+						      		<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 						      	</div>
 						      	<div class="cover-text col-6">
 						      		<p class="col-12 my-city">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
@@ -45,13 +51,13 @@
 						<li class="my-advert col-12">
 						    <a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}" class="row">
 						      	<div class="cover col-6">
-						      		<img src="{{ asset(rent.image.coverUrl) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
+						      		<img src="{{ asset(rent.image.webPath) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
 						      	</div>
 						      	<div class="cover-text col-6">
 						      		<p class="col-12 my-city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 						      		<p class="col-12 date">{{ rent.date|date('d/m/Y') }}</p>
 							      	<h3 class="col-12 my-title">{{ rent.title }}</h3>
-							      	<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| meublé{% elseif rent.collocation == 1 %}| collocation{% endif %}</p>
+							      	<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| Meublé{% elseif rent.collocation == 1 %}| Collocation{% endif %}</p>
 							      	<p class="col-12 text-right price">{{ rent.price }} €</p>
 						      	</div>
 						    </a>

@@ -15,6 +15,7 @@ class BuyRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function getBuys($page, $nbPerPage){  //arguments pour la pagination
         $query = $this->createQueryBuilder('b')
+                     ->where('b.published = 1')  //On ne sélectionne que les annonces publiées
                      ->leftJoin('b.image', 'i')  
                      ->addSelect('i')
                      ->leftJoin('b.city', 'c')  

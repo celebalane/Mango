@@ -29,6 +29,8 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:index.html.twig', array('listBuys' => $listBuys, 'listRents' => $listRents));
     }
 
+    //////////////////////////////////////////////////////// AJOUT /////////////////////////////////////////////////////////////////////////
+
 	public function addRentAction(Request $request)  //Ajout d'une annonce de location
     {
         if(!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) { //Verification role utilisateur
@@ -50,22 +52,55 @@ class UserController extends Controller
                 }
                 if($form->getData()->getCollocation() == null){
                     $rent->setCollocation(0);
+                }else if ($form->getData()->getCollocation() == 1){
+                    $rent->setCollocation(1);
                 }
 
             if($form->isValid()){      //si valide on enregistre en bdd 
-                
                 $rent->setPublished(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($rent);
                 $em->flush();
 
-                $request->getsession()->getflashBag()->add('notice', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
+                $request->getsession()->getflashBag()->add('success', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
 
-                return $this->RedirectToRoute('mango_platform_rentview', array('id'=>$rent->getId()));
+                return $this->RedirectToRoute('mango_platform_user');
             }
     	}
     	return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView(), 'userId' => $userId, 'title' => $title));
     }
+
+
+    public function addBuyAction(Request $request)  //Ajout d'une annonce de vente
+    {
+        if(!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) { //Verification role utilisateur
+      
+            throw new AccessDeniedException('Veuillez vous connecter.');
+        }
+        $title = 'buy';
+        $userId = $this->getUser()->getId(); //Récupère l'id de l'utilisateur courant
+        $buy = new Buy(); //Ajout d'une annonce de location
+
+        $form = $this->createForm(BuyType::class, $buy); 
+
+        if($request->isMethod('POST')){
+            $form ->handleRequest($request); //Lie les valeurs du formulaire à $rent
+
+            if($form->isValid()){      //si valide on enregistre en bdd 
+                $rent->setPublished(0);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($buy);
+                $em->flush();
+
+                $request->getsession()->getflashBag()->add('success', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
+
+                return $this->RedirectToRoute('mango_platform_user');
+            }
+        }
+        return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView(), 'userId' => $userId, 'title' => $title));
+    }
+
+    ////////////////////////////////////////////////////////////////// EDITION ///////////////////////////////////////////////////////////////////////////
 
     public function editAction($id, Request $request)
     {
@@ -90,6 +125,8 @@ class UserController extends Controller
 
         return $this->render('MangoPlatformBundle:User:edit.html.twig', array('rent' => $rent,'form' => $form->createView()));
     }
+
+    //////////////////////////////////////////////////// SUPPRESSION //////////////////////////////////////////////////////////////////////////////
 
     public function deleteAction($id, Request $request)
     {

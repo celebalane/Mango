@@ -8,12 +8,12 @@
 	<section class="index-advert">
 		<h1 class="row">Acheter</h1>
 		<ul class="row">
-
+			
 			{% for buy in listBuys %} {# Affichage des annonces #}
 		      <li class="advert col-3">
 		      	<a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}">
 		      		<div class="cover">
-		      			<img src="{{ asset(buy.image.coverUrl) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
+		      			<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 		      		</div>
 		      		<div class="row cover-text">
 		      			<p class="col-6">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>

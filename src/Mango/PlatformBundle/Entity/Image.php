@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\ImageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
@@ -25,9 +26,9 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="cover_url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255)
      */
-    private $coverUrl;
+    private $url;
 
     /**
      * @var string
@@ -39,8 +40,7 @@ class Image
     private $file;
 
     private $tempFilename; //Temporaire
-
-
+  
     public function getFile()
     {
         return $this->file;
@@ -51,12 +51,12 @@ class Image
         $this->file = $file;
 
         // On vérifie si on avait déjà un fichier pour cette entité
-        if (null !== $this->coverUrl) {
+        if (null !== $this->url) {
             // On sauvegarde l'extension du fichier pour le supprimer plus tard
-            $this->tempFilename = $this->coverUrl;
+            $this->tempFilename = $this->url;
 
             // On réinitialise les valeurs des attributs url et alt
-            $this->coverUrl = null;
+            $this->url = null;
             $this->alt = null;
         }
     }
@@ -72,27 +72,27 @@ class Image
     }
 
     /**
-     * Set coverUrl
+     * Set url
      *
-     * @param string $coverUrl
+     * @param string $url
      *
      * @return image
      */
-    public function setCoverUrl($url)
+    public function setUrl($url)
     {
-        $this->coverUrl = $coverUrl;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get coverUrl
+     * Get url
      *
      * @return string
      */
-    public function getCoverUrl()
+    public function getUrl()
     {
-        return $this->coverUrl;
+        return $this->url;
     }
 
     /**
@@ -132,7 +132,7 @@ class Image
 
     // Le nom du fichier est son id, on doit juste stocker également son extension
     // Pour faire propre, on devrait renommer cet attribut en « extension », plutôt que « url »
-    $this->coverUrl = $this->file->guessExtension();
+    $this->url = $this->file->guessExtension();
 
     // Et on génère l'attribut alt de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
     $this->alt = $this->file->getClientOriginalName();
@@ -146,7 +146,7 @@ class Image
     {
         // Si jamais il n'y a pas de fichier (champ facultatif), on ne fait rien
         if (null === $this->file) {
-          return;
+            return;
         }
 
         // Si on avait un ancien fichier, on le supprime
@@ -160,7 +160,7 @@ class Image
         // On déplace le fichier envoyé dans le répertoire de notre choix
         $this->file->move(
           $this->getUploadRootDir(), // Le répertoire de destination
-          $this->id.'.'.$this->coverUrl   // Le nom du fichier à créer, ici « id.extension »
+          $this->id.'.'.$this->url   // Le nom du fichier à créer, ici « id.extension »
         );
     }
 
@@ -170,7 +170,7 @@ class Image
     public function preRemoveUpload()
     {
         // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
-        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->coverUrl;
+        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
     }
 
     /**
@@ -188,7 +188,7 @@ class Image
     public function getUploadDir()
     {
         // On retourne le chemin relatif vers l'image pour un navigateur
-        return 'img/';
+        return 'img/photo';
     }
 
     protected function getUploadRootDir()
@@ -199,6 +199,6 @@ class Image
 
     public function getWebPath() //Simplification de la vue twig pour l'image
     {
-        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getCoverUrl();
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
     }
 }

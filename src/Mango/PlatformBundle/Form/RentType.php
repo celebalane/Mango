@@ -4,7 +4,6 @@ namespace Mango\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -49,7 +48,6 @@ class RentType extends AbstractType
                     'placeholder'  => 'Sélectionnez le type de bien',
                     'choice_label' => 'name',
                     'multiple'     => false,
-                    'required'     => false
             ))
             ->add('region', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Region',

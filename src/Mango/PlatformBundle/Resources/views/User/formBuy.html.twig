@@ -18,11 +18,6 @@
     {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
   </div>
   <div class="form-group">
-    {{ form_label(form.charge, "Charges (€)") }}
-    {{ form_errors(form.charge) }}
-    {{ form_widget(form.charge, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="form-group">
     {{ form_label(form.size, "Taille (m²)") }}
     {{ form_errors(form.size) }}
     {{ form_widget(form.size, {'attr': {'class': 'form-control'}}) }}
@@ -36,17 +31,6 @@
     {{ form_label(form.nbParts, "Nombre de pièces") }}
     {{ form_errors(form.nbParts) }}
     {{ form_widget(form.nbParts, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="col-12">Cochez si besoin</div>
-  <div class="form-group">
-    {{ form_label(form.meuble) }}
-    {{ form_errors(form.meuble) }}
-    {{ form_widget(form.meuble, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="form-group">
-    {{ form_label(form.collocation) }}
-    {{ form_errors(form.collocation) }}
-    {{ form_widget(form.collocation, {'attr': {'class': 'form-control'}}) }}
   </div>
   <div class="form-group">
     {{ form_label(form.region, "Région") }}

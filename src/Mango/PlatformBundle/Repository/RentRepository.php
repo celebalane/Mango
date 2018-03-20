@@ -15,6 +15,7 @@ class RentRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function getRents($page, $nbPerPage){  //arguments pour la pagination
         $query = $this->createQueryBuilder('r')
+                     ->where('r.published = 1')
                      ->leftJoin('r.image', 'i')  
                      ->addSelect('i')
                      ->leftJoin('r.city', 'c')  
