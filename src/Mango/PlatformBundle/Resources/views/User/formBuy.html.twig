@@ -1,86 +1,99 @@
-{{ form_start(form, {'attr': {'class': 'col-6'}}) }}
+{{ form_start(form, {'attr': {'class': 'row'}}) }}
 
   {# Les erreurs générales du formulaire. #}
   {{ form_errors(form) }}
 
-  {% if form.date is defined %}
-    {{ form_row(form.date) }}
-  {% endif %}
-
-  <div class="form-group">
-    {{ form_label(form.title, "Titre de l'annonce") }}
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'minlength' : '10', 'maxlength' : '50'}}) }}
-    <small class="form-text text-muted">
-      Le titre doit faire entre 10 et 50 caractères
-    </small>
-  </div>
-  <div class="form-group">
-    {{ form_label(form.price, "Prix") }}
-    {{ form_errors(form.price) }}
-    <div class="input-group">
-      {{ form_widget(form.price, {'attr': {'class': 'form-control', 'maxlength' : '7'}}) }}
-      <div class="input-group-append">
-        <span class="input-group-text">€</span>
+  <div class="col-6">
+    {# titre #}
+    <div class="form-group">
+      {{ form_label(form.title, "Titre de l'annonce") }}
+      {{ form_errors(form.title) }}
+      {{ form_widget(form.title, {'attr': {'class': 'form-control', 'minlength' : '10', 'maxlength' : '50'}}) }}
+      <small class="form-text text-muted">
+        Le titre doit faire entre 10 et 50 caractères
+      </small>
+    </div>
+    <div class="form-row">
+      {# type #}
+      <div class="form-group col-3">
+        {{ form_label(form.type, "Type de bien") }}
+        {{ form_errors(form.type) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      {# Prix #}
+      <div class="form-group col-3">
+        {{ form_label(form.price, "Prix") }}
+        {{ form_errors(form.price) }}
+        <div class="input-group">
+          {{ form_widget(form.price, {'attr': {'class': 'form-control', 'maxlength' : '7'}}) }}
+          <div class="input-group-append">
+            <span class="input-group-text">€</span>
+          </div>
+        </div>
+      </div>
+      {# Superficie #}
+      <div class="form-group col-3">
+        {{ form_label(form.size, "Superficie") }}
+        {{ form_errors(form.size) }}
+        <div class="input-group">
+          {{ form_widget(form.size, {'attr': {'class': 'form-control', 'maxlength' : '6'}}) }}
+          <div class="input-group-append">
+            <span class="input-group-text">m²</span>
+          </div>
+        </div>
+      </div>
+      {# Pièces #}
+      <div class="form-group col-3">
+        {{ form_label(form.nbParts, "Nombre de pièces") }}
+        {{ form_errors(form.nbParts) }}
+        {{ form_widget(form.nbParts, {'attr': {'class': 'form-control', 'maxlength' : '2'}}) }}
       </div>
     </div>
-  </div>
-  <div class="form-group">
-    {{ form_label(form.size, "Superficie") }}
-    {{ form_errors(form.size) }}
-    <div class="input-group">
-      {{ form_widget(form.size, {'attr': {'class': 'form-control', 'maxlength' : '6'}}) }}
-      <div class="input-group-append">
-        <span class="input-group-text">m²</span>
-      </div>
+    {# Localisation #}
+    <div class="form-group">
+      {{ form_label(form.region, "Région") }}
+      {{ form_errors(form.region) }}
+      {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <span class="load fas fa-spinner"></span>
+    <div class="form-group d-none">
+      {{ form_label(form.departement, "Département") }}
+      {{ form_errors(form.departement) }}
+      {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group d-none">
+      {{ form_label(form.city, "Ville") }}
+      {{ form_errors(form.city) }}
+      {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
     </div>
   </div>
-  <div class="form-group">
-    {{ form_label(form.type, "Type de bien") }}
-    {{ form_errors(form.type) }}
-    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="form-group">
-    {{ form_label(form.nbParts, "Nombre de pièces") }}
-    {{ form_errors(form.nbParts) }}
-    {{ form_widget(form.nbParts, {'attr': {'class': 'form-control', 'maxlength' : '2'}}) }}
-  </div>
-  <div class="form-group">
-    {{ form_label(form.region, "Région") }}
-    {{ form_errors(form.region) }}
-    {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <span class="load fas fa-spinner"></span>
-  <div class="form-group d-none">
-    {{ form_label(form.departement, "Département") }}
-    {{ form_errors(form.departement) }}
-    {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="form-group d-none">
-    {{ form_label(form.city, "Ville") }}
-    {{ form_errors(form.city) }}
-    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-  </div>
-  <div class="form-group">
-    {{ form_label(form.content, "Description") }}
-    {{ form_errors(form.content) }}
-    {{ form_widget(form.content, {'attr': {'class': 'form-control', 'minlength' : '140', 'maxlength' : '3000'}}) }}
-    <small class="form-text text-muted">
-      La description doit faire entre 140 et 3000 caractères
-    </small>
-  </div>
-  <div class="form-group">
-    {{ form_label(form.image.file, "Image de présentation") }}
-    {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file'}}) }}
-    <small class="form-text text-muted">
-      Formats acceptés : .jpg et .png <br>
-      Poids max : 500 Ko
-    </small>
+  {# Deuxième colonne #}
+  <div class="col-6">
+    {# Descritpion #}
+    <div class="form-group">
+      {{ form_label(form.content, "Description") }}
+      {{ form_errors(form.content) }}
+      {{ form_widget(form.content, {'attr': {'class': 'form-control', 'rows' : '10', 'minlength' : '140', 'maxlength' : '3000'}}) }}
+      <small class="form-text text-muted">
+        La description doit faire entre 140 et 3000 caractères
+      </small>
+    </div>
+    {# Image #}
+    <div class="form-group">
+      {{ form_label(form.image.file, "Image de présentation") }}
+      {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file'}}) }}
+      <small class="form-text text-muted">
+        Formats acceptés : .jpg et .png <br>
+        Poids max : 500 Ko
+      </small>
+    </div>
   </div>
   {{ form_widget(form.userId, {'attr' : {'value' : userId  }})}} 
   <div class="form-group">
-  {{ form_rest(form) }}
-</div>
- <input type="submit" id="_submit" class="btn col-12" name="_submit" value="Envoyer" />
+    {{ form_rest(form) }}
+  </div>
+  <div class="d-flex justify-content-center col-12" id="submit">
+    <input type="submit" id="_submit" class="btn col-6" name="_submit" value="Envoyer" />
+  </div>
 
 {{ form_end(form) }}

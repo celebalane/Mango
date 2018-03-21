@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
-	<section class="view">
-		<h1>Ajouter une annonce : {% if title == 'rent' %}Louer{% else %}Vendre{% endif %}</h1>
+	<section class="view" id="add">
+		<h1>Ajouter une annonce : {% if title == 'rent' %}Location{% else %}Vente{% endif %}</h1>
 
 		{% if title == 'rent' %}
 	  		{{ include("MangoPlatformBundle:User:formRent.html.twig") }}

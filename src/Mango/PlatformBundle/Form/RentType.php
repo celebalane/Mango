@@ -3,7 +3,6 @@
 namespace Mango\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,14 +30,6 @@ class RentType extends AbstractType
             ->add('price', IntegerType::class)
             ->add('charge', IntegerType::class)
             ->add('size', IntegerType::class)
-            ->add('meuble', CheckboxType::class, array(
-              'required'=>false,
-              'label'=>'Meublé'
-            ))
-            ->add('collocation', CheckboxType::class, array(
-              'required'=>false,
-              'label'=>'Collocation'
-            ))
             ->add('nbParts', IntegerType::class)
             ->add('userId',    HiddenType::class)
             ->add('content',   TextareaType::class)

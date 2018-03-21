@@ -36,7 +36,7 @@ class BuyType extends AbstractType
             ->add('image',     ImageType::class)
             ->add('type', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Type',
-                    'placeholder'  => '-- Sélectionnez le type de bien --',
+                    'placeholder'  => '-- Type de bien --',
                     'choice_label' => 'name',
                     'multiple'     => false,
             ))

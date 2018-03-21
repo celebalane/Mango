@@ -12,7 +12,7 @@
 		        {{ message }}
 		    </div>
 		{% endfor %}
-
+		
 		<div class="row">
 			<div class="col-6">
 				<h2 class="col-12">En vente</h2>
@@ -73,9 +73,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="row justify-content-around">
-			<a href="{{ path('mango_platform_addbuy') }}" class="btn col-4" id="btn-create">Créer une annonce Achat</a>
-			<a href="{{ path('mango_platform_addrent') }}" class="btn col-4" id="btn-create">Créer une annonce Location</a>
+		<div class="row justify-content-around" id="add">
+			<a href="{{ path('mango_platform_addrent') }}" class="btn col-4 btn-create">Créer une annonce Location</a>
+			<a href="{{ path('mango_platform_addbuy') }}" class="btn col-4 btn-create">Créer une annonce Vente</a>
 		</div>
 	</section>
 {% endblock %} 

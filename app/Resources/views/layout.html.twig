@@ -38,6 +38,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon compte</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ path('mango_platform_addrent') }}">Créer une location</a>
+                  <a class="dropdown-item" href="{{ path('mango_platform_addbuy') }}">Créer une vente</a>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ path('mango_platform_user') }}">Mes annonces</a>
                   <a class="dropdown-item" href="{{ path('mango_platform_user_info') }}">Mes informations</a> 
                 </div>
