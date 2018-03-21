@@ -3,6 +3,7 @@
 namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rent
@@ -25,6 +26,7 @@ class Rent
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=10, max=50, minMessage="Le titre doit faire au minimum 10 caractère", maxMessage="Le titre doit faire maximum 50 caractère")
      */
     private $title;
 
@@ -32,6 +34,7 @@ class Rent
      * @var int
      *
      * @ORM\Column(name="price", type="integer")
+     * @Assert\Range(min=0, max=99999, minMessage="Merci d'indiquer un prix", maxMessage="Le prix est maximum de 99999 €")
      */
     private $price;
 
@@ -39,6 +42,7 @@ class Rent
      * @var int
      *
      * @ORM\Column(name="charge", type="integer")
+     * @Assert\Range(min=0, max=9999, minMessage="Merci d'indiquer un prix", maxMessage="Le prix est maximum de 9999 €")
      */
     private $charge;
 
@@ -46,6 +50,7 @@ class Rent
      * @var int
      *
      * @ORM\Column(name="size", type="integer")
+     * @Assert\Range(min=0, max=999999, minMessage="Merci d'indiquer une superficie", maxMessage="La superficie est maximum de 999999 m²")
      */
     private $size;
 
@@ -53,6 +58,7 @@ class Rent
      * @var int
      *
      * @ORM\Column(name="nb_parts", type="integer")
+     * @Assert\Range(min=0, max=99, minMessage="Merci d'indiquer le nombre de pièce", maxMessage="Le nombre de pièces maximum est de 99")
      */
     private $nbParts;
 
@@ -74,6 +80,8 @@ class Rent
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\Length(min=140, max=3000, minMessage="La description doit faire au minimum 140 caractères", 
+     * maxMessage="La description doit faire maximum 3000 caractères")
      */
     private $content;
 
@@ -100,6 +108,7 @@ class Rent
 
     /**
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
+    * @Assert\Valid() 
     */
     private $image;
 

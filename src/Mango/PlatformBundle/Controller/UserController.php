@@ -87,7 +87,7 @@ class UserController extends Controller
             $form ->handleRequest($request); //Lie les valeurs du formulaire à $rent
 
             if($form->isValid()){      //si valide on enregistre en bdd 
-                $rent->setPublished(0);
+                $buy->setPublished(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($buy);
                 $em->flush();

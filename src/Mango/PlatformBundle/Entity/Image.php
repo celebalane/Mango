@@ -4,6 +4,7 @@ namespace Mango\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -27,6 +28,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * 
      */
     private $url;
 
@@ -37,6 +39,14 @@ class Image
      */
     private $alt;
 
+    /**
+    * @Assert\File(
+    *   mimeTypes = {"image/jpeg", "image/jpg", "image/png"},
+    *   mimeTypesMessage = "Veuillez sélectionner une image au format .jpg ou .png",
+    *   maxSize = "500k",
+    *   maxSizeMessage = "Le poids de votre image est trop important (<500ko)"
+    *)
+    */
     private $file;
 
     private $tempFilename; //Temporaire

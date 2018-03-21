@@ -36,13 +36,13 @@ class BuyType extends AbstractType
             ->add('image',     ImageType::class)
             ->add('type', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Type',
-                    'placeholder'  => 'Sélectionnez le type de bien',
+                    'placeholder'  => '-- Sélectionnez le type de bien --',
                     'choice_label' => 'name',
                     'multiple'     => false,
             ))
             ->add('region', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Region',
-                    'placeholder'  => 'Sélectionnez votre région',
+                    'placeholder'  => '-- Sélectionnez votre région --',
                     'choice_label' => 'name',
                     'multiple'     => false,
             ))
@@ -89,7 +89,7 @@ class BuyType extends AbstractType
         null,
         [
           'class'           => 'MangoPlatformBundle:Departement',
-          'placeholder'     => $region ? 'Sélectionnez votre département' : 'Veuillez sélectionnez une région avant',
+          'placeholder'     => $region ? ' -- Sélectionnez votre département --' : '-- Veuillez sélectionnez une région avant --',
           'auto_initialize' => false,
           'choices'         => $region ? $region->getDepartements() : []
         ]
@@ -114,7 +114,7 @@ class BuyType extends AbstractType
             null,
             [
               'class'           => 'MangoPlatformBundle:City',
-              'placeholder'     => $departement ? 'Sélectionnez votre ville' : 'Veuillez sélectionnez un département avant',
+              'placeholder'     => $departement ? '-- Sélectionnez votre ville --' : '-- Veuillez sélectionnez un département avant --',
               'auto_initialize' => false,
               'choices'         => $departement ? $departement->getCities() : []
             ]
