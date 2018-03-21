@@ -1,4 +1,5 @@
-//Gère dynamiquement l'affichage des régions, départemnts et ville
+//////////////////////////////////////////// AFFICHAGE DYNAMIQUE DES CHAMPS //////////////////////////////////////////
+
 $(document).on('change', '#mango_platformbundle_rent_region, #mango_platformbundle_rent_departement', function () {
   let $field = $(this) //Cible de l'événement
   let $regionField = $('#mango_platformbundle_rent_region')
@@ -16,7 +17,7 @@ $(document).on('change', '#mango_platformbundle_rent_region, #mango_platformbund
     $(target).replaceWith($input)
     $(target).parent().removeClass('d-none')  //Apparition des champs
   })
-})
+});
 
 $(document).on('change', '#mango_platformbundle_buy_region, #mango_platformbundle_buy_departement', function () {
   let $field = $(this) 
@@ -33,5 +34,17 @@ $(document).on('change', '#mango_platformbundle_buy_region, #mango_platformbundl
     $(target).replaceWith($input)
     $(target).parent().removeClass('d-none')  
   })
-})
+});
+
+
+//////////////////////////// Icone de chargement ///////////////////////
+
+$.ajaxSetup({
+    beforeSend: function() {
+        $(".load").show();
+    },
+    complete: function() {
+        $(".load").hide();
+    }
+});
 
