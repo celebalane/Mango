@@ -78,6 +78,46 @@ label{
 	background-color: unset;
 }
 
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	.contenu{
+		padding-left: 4%;
+		padding-top: 20%;
+		margin-bottom: 5%;
+	}
+	
+	#contact .row{
+	 	margin-left: 0;
+	 	margin-right: 0;
+	}
+
+	#contact h1{
+		font-size: 2em;
+	}
+}
+
+@media (max-width: 767.98px) and (orientation: landscape){
+	.contenu{
+		padding-top: 10%;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.contenu{
+		padding-top: 10%;
+		margin-bottom: 10%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.contenu{
+		padding-top: 5%;
+	}
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// HEADER ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////*/
@@ -190,7 +230,7 @@ header{
 	}
 }
 
-/*/////////////////////////////// Tablette //////////////////////////////////*/
+/*/////////////////////////////// Grande Tablette //////////////////////////////////*/
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	#footer .nav{

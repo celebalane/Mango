@@ -5,29 +5,31 @@
 {% endblock %}
 
 {% block body %}
-	<section class="row contenu" id="proposer">
-		<h1 class="col-12">Proposer une annonce</h1>
-		<div class="col-5">
-			<p>Pour proposer une annonce vous devez être connecté.</p>
-			<p>L'inscription à notre site est rapide et gratuite.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget blandit mi. Aliquam ut lorem congue, ornare eros egestas, suscipit erat. Nam eleifend vel justo sit amet cursus. Aliquam erat volutpat. Duis nulla arcu, convallis ut molestie vitae, ultrices eu felis. Aenean imperdiet leo ac purus venenatis placerat non in sapien. In sem velit, posuere quis lectus eu, tristique fringilla ante. Pellentesque velit libero, ullamcorper et lacinia et, ultrices id nisl. Morbi ultrices turpis aliquam leo pharetra, in dapibus velit tempus. Quisque suscipit ipsum non volutpat scelerisque. Donec pulvinar mauris at augue semper, sed euismod sem egestas. Maecenas porta, sem ut porta ullamcorper, ante mauris finibus ligula, eu consequat nibh metus et lorem. Nunc consectetur pellentesque purus ac placerat. Integer hendrerit lorem et commodo tristique. Sed placerat scelerisque molestie.</p>
-			<div class="col-12">
-				<img src="{{ asset('img/search.svg') }}" class="img-fluid col-3" />
-				<img src="{{ asset('img/calendar.svg') }}" class="img-fluid col-3" />
-				<img src="{{ asset('img/hand.svg') }}" class="img-fluid col-3" />
+	<section class="contenu" id="proposer">
+		<div class="row">
+			<h1 class="col-12">Proposer une annonce</h1>
+			<div class="col-5">
+				<p>Pour proposer une annonce vous devez être connecté.</p>
+				<p>L'inscription à notre site est rapide et gratuite.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget blandit mi. Aliquam ut lorem congue, ornare eros egestas, suscipit erat. Nam eleifend vel justo sit amet cursus. Aliquam erat volutpat. Duis nulla arcu, convallis ut molestie vitae, ultrices eu felis. Aenean imperdiet leo ac purus venenatis placerat non in sapien. In sem velit, posuere quis lectus eu, tristique fringilla ante. Pellentesque velit libero, ullamcorper et lacinia et, ultrices id nisl. Morbi ultrices turpis aliquam leo pharetra, in dapibus velit tempus. Quisque suscipit ipsum non volutpat scelerisque. Donec pulvinar mauris at augue semper, sed euismod sem egestas. Maecenas porta, sem ut porta ullamcorper, ante mauris finibus ligula, eu consequat nibh metus et lorem. Nunc consectetur pellentesque purus ac placerat. Integer hendrerit lorem et commodo tristique. Sed placerat scelerisque molestie.</p>
+				<div class="col-12">
+					<img src="{{ asset('img/search.svg') }}" class="img-fluid col-3" />
+					<img src="{{ asset('img/calendar.svg') }}" class="img-fluid col-3" />
+					<img src="{{ asset('img/hand.svg') }}" class="img-fluid col-3" />
+				</div>
 			</div>
-		</div>
-		<div class="col-6">
-			<h2 class="text-center">Se connecter</h2>
-			{% block fos_user_content %}
-				<div id="loginBis">
-					{{ render(controller("FOSUserBundle:User:loginBis")) }}
-		 		</div>
-			{% endblock fos_user_content %}
-			<hr class="col-6">
-			<h2 class="text-center">S'inscrire</h2>
-			<div class="d-flex justify-content-center">
-				<a href="{{ path('fos_user_registration_register') }}" class="btn col-6">Créer mon compte</a>
+			<div class="col-6">
+				<h2 class="text-center">Se connecter</h2>
+				{% block fos_user_content %}
+					<div id="loginBis">
+						{{ render(controller("FOSUserBundle:User:loginBis")) }}
+			 		</div>
+				{% endblock fos_user_content %}
+				<hr class="col-6">
+				<h2 class="text-center">S'inscrire</h2>
+				<div class="d-flex justify-content-center">
+					<a href="{{ path('fos_user_registration_register') }}" class="btn col-6">Créer mon compte</a>
+				</div>
 			</div>
 		</div>
 	</section>
