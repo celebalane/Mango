@@ -31,10 +31,12 @@ class BuyController extends Controller
         $em = $this->getDoctrine()->getManager(); //Enclenche les processus de Doctrine pour les entités 
 
         $buy = $em->getRepository('MangoPlatformBundle:Buy')->find($id); //Récupération de l'objet Buy selon son Id
+        $userId = $buy->getUserId();
+        $user = $em->getRepository('UserBundle:User')->find($userId); //Récupération de l'objet User
 
         if(null===$buy){
             throw new NotFoundHttpException("Désolé, l'annonce n°" . $id . " n'existe pas");
         }
-        return $this->render('MangoPlatformBundle:Buy:view.html.twig', array('buy' => $buy, 'active' => $active));
+        return $this->render('MangoPlatformBundle:Buy:view.html.twig', array('buy' => $buy, 'user' => $user, 'active' => $active));
     }
 }

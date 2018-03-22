@@ -1,24 +1,26 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-  Bienvenue - {{ parent()}}
+  Bienvenue - {{ parent()}} 
 {% endblock %}
 
 {% block body %}
-<section id="index" class="row">
-	<div class="col-4" id="key"></div>
-	<div class="col" id="contenu-index">
-		<div class="row align-items-center">
-			<div id="text-index" class="col-12">
-				<blockquote class="blockquote text-right">
-					<p>"Bienvenue chez vous"</p>
-				 	<footer class="blockquote-footer">Un agent immobilier</footer>
-				</blockquote>
-				<ul class="nav flex-column hover-effect">
-					<li class="nav-item"><a href="{{ path('mango_platform_buy', {'page': 1}) }}" data-hover="Acheter">Acheter</a></li>
-					<li class="nav-item"><a href="{{ path('mango_platform_rent', {'page': 1}) }}" data-hover="Louer">Louer</a></li>
-					<li class="nav-item"><a href="{{ path('mango_platform_proposer') }}" data-hover="Proposer">Proposer</a></li>
-				</ul>
+<section id="index">
+	<div class="row">
+		<div class="col-12 col-lg-4 col-xl-4" id="key"></div>
+		<div class="col" id="contenu-index">
+			<div class="row align-items-center">
+				<div id="text-index" class="col-12">
+					<blockquote class="blockquote text-right">
+						<p>"Bienvenue chez vous"</p>
+					 	<footer class="blockquote-footer">Un agent immobilier</footer>
+					</blockquote>
+					<ul class="nav flex-column hover-effect">
+						<li class="nav-item"><a href="{{ path('mango_platform_buy', {'page': 1}) }}" data-hover="Acheter">Acheter</a></li>
+						<li class="nav-item"><a href="{{ path('mango_platform_rent', {'page': 1}) }}" data-hover="Louer">Louer</a></li>
+						<li class="nav-item"><a href="{{ path('mango_platform_proposer') }}" data-hover="Proposer">Proposer</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

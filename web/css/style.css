@@ -5,6 +5,7 @@ html{
 }
 
 body{
+	max-width: 100%;
 	font-family: 'Yantramanav', sans-serif;
 	overflow-x: hidden;
 	padding-bottom: 60px;
@@ -82,11 +83,12 @@ label{
 //////////////////////////////////////////////////////////////////////////////////////////*/
 
 header{
+	max-width: 100%;
 	margin-bottom: 5%;
 	font-size: 1.1em;
 }
 
-#navbarNav{
+.navbarNav{
 	justify-content: space-between;
 }
 
@@ -96,6 +98,11 @@ header{
 
 .navbar-light .navbar-nav .nav-link{
 	color: rgba(0,0,0,0.7);
+}
+
+.navbar-light .navbar-toggler{
+	color: #ea4b02;
+	border-color: #EF8A1B;
 }
 
 .navbar-brand img {
@@ -128,6 +135,14 @@ header{
 	border-left: 2px solid #EF8A1B;
 }
 
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	.der{
+		border:none;
+	}
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// FOOTER ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////*/
@@ -155,9 +170,42 @@ header{
 	padding: 20px 0 0 20px;
 }
 
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	#footer .nav{
+		font-size: 0.8em;
+	}
+
+	.no-mobile{
+		display: none;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#footer .nav{
+		height: 110px;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	#footer .nav{
+		font-size: 0.8em;
+	}
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// INDEX /////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////*/
+
+#index .row{
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
 
 #key{
 	background-image: url('../img/key.png');
@@ -217,6 +265,44 @@ header{
 
 .blockquote-footer{
 	color: #ea4b02;
+}
+
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	#key{
+		height: 260px;
+		padding: 20px;
+	}
+
+	#contenu-index .row{
+		margin-top: -5%;
+		height: 400px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.blockquote{
+		font-size: 1.2em;
+		line-height: 0.6em;
+	}
+
+	#text-index{
+		height: 350px;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#key{
+		height: 350px;
+		background-position: unset;
+	}
+
+	#contenu-index .row{
+		margin-top: -5%;
+	}
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////
@@ -323,6 +409,10 @@ header{
 
 .description{
 	margin-left: 0;
+}
+
+#contact-user{
+	display: none;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////

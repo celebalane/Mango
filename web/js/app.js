@@ -48,3 +48,6 @@ $.ajaxSetup({
     }
 });
 
+$('#btn-contact-user').click(function(){
+  $('#contact-user').show()
+});

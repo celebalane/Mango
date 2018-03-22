@@ -31,8 +31,13 @@
 				<div class="row description">
 					<p><span>Description</span></p>
 					<p>{{ rent.content }}</p>
+					<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
 				</div>
 			</div>
 		</article>
+		<button class="btn" id="btn-contact-user">Contacter</button>
+		<div id="contact-user">
+			{{ user.email }}
+		</div>
 	</section>
 {% endblock %}

@@ -31,10 +31,13 @@ class RentController extends Controller
     	$em = $this->getDoctrine()->getManager(); //Enclenche les processus de Doctrine pour les entités 
 
         $rent = $em->getRepository('MangoPlatformBundle:Rent')->find($id); //Récupération de l'objet Rent en fonction de son id
+        $userId = $rent->getUserId();
+        $user = $em->getRepository('UserBundle:User')->find($userId); //Récupération de l'objet User
 
         if(null===$rent){
             throw new NotFoundHttpException("Désolé, l'annonce n°" . $id . " n'existe pas");
         }
-    	return $this->render('MangoPlatformBundle:Rent:view.html.twig', array('rent' => $rent, 'active' => $active));
+    	return $this->render('MangoPlatformBundle:Rent:view.html.twig', array('rent' => $rent, 'user' => $user, 'active' => $active));
     }
+
 }
