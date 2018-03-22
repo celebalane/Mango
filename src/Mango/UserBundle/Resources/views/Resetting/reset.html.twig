@@ -4,7 +4,7 @@
 	<section class="contenu" id="reset">
 		<h1>Réinitialisation du mot de passe</h1>
 		<div class="d-flex justify-content-center">
-			{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'col-5' } }) }}
+			{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'col-12 col-md-6 col-lg-6' } }) }}
 			    <div class="form-group">
 		      		{{ form_label(form.plainPassword.first, "Mot de passe") }}
 		      		{{ form_errors(form.plainPassword.first) }}

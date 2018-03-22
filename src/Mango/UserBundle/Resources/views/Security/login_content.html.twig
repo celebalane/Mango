@@ -4,7 +4,7 @@
     </div>
 {% endif %}
 <div class="d-flex justify-content-center">
-	<form action="{{ path("fos_user_security_check") }}" class="col-6" method="post">
+	<form action="{{ path("fos_user_security_check") }}" class="col-12 col-md-6 col-lg-6" method="post">
 	    {% if csrf_token %}
 	        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 	    {% endif %}
