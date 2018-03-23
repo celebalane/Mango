@@ -3,7 +3,7 @@
   {# Les erreurs générales du formulaire. #}
   {{ form_errors(form) }}
 
-  <div class="col-6">
+  <div class="col-12 col-md-6">
     {# titre #}
     <div class="form-group">
       {{ form_label(form.title, "Titre de l'annonce") }}
@@ -15,13 +15,13 @@
     </div>
     <div class="form-row">
       {# type #}
-      <div class="form-group col-3">
+      <div class="form-group col-12 col-md-6 col-lg-3">
         {{ form_label(form.type, "Type de bien") }}
         {{ form_errors(form.type) }}
         {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
       </div>
       {# Prix #}
-      <div class="form-group col-3">
+      <div class="form-group col-12 col-md-6 col-lg-3">
         {{ form_label(form.price, "Prix") }}
         {{ form_errors(form.price) }}
         <div class="input-group">
@@ -32,7 +32,7 @@
         </div>
       </div>
       {# Superficie #}
-      <div class="form-group col-3">
+      <div class="form-group col-12 col-md-6 col-lg-3">
         {{ form_label(form.size, "Superficie") }}
         {{ form_errors(form.size) }}
         <div class="input-group">
@@ -43,7 +43,7 @@
         </div>
       </div>
       {# Pièces #}
-      <div class="form-group col-3">
+      <div class="form-group col-12 col-md-6 col-lg-3">
         {{ form_label(form.nbParts, "Nombre de pièces") }}
         {{ form_errors(form.nbParts) }}
         {{ form_widget(form.nbParts, {'attr': {'class': 'form-control', 'maxlength' : '2'}}) }}
@@ -68,7 +68,7 @@
     </div>
   </div>
   {# Deuxième colonne #}
-  <div class="col-6">
+  <div class="col-12 col-md-6">
     {# Descritpion #}
     <div class="form-group">
       {{ form_label(form.content, "Description") }}
@@ -93,7 +93,7 @@
     {{ form_rest(form) }}
   </div>
   <div class="d-flex justify-content-center col-12" id="submit">
-    <input type="submit" id="_submit" class="btn col-6" name="_submit" value="Envoyer" />
+    <input type="submit" id="_submit" class="btn col-12 col-md-6" name="_submit" value="Envoyer" />
   </div>
 
 {{ form_end(form) }}

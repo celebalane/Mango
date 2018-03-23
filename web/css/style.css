@@ -52,6 +52,11 @@ label{
 	margin-bottom: 4%;
 }
 
+form .form-row{
+	margin-right: 0;
+	margin-left: 0;
+}
+
 .form-control:focus {
 	border-color: #EF8A1B;
   	box-shadow: 0 0 0 0.2rem rgba(239, 138, 27, 0.25);
