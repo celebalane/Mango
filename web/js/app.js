@@ -47,7 +47,3 @@ $.ajaxSetup({
         $(".load").hide();
     }
 });
-
-$('#btn-contact-user').click(function(){
-  $('#contact-user').show()
-});

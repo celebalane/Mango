@@ -451,6 +451,10 @@ header{
 
 @media (min-width: 768px) and (max-width: 991.98px) {
 
+	.index-advert{
+		padding-top: 10%;
+	}
+
  	.advert{
  		margin-right: 4%;
  	}
@@ -486,14 +490,77 @@ header{
 	display: none;
 }
 
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	.view{
+		padding-top: 20%;
+	}
+
+	.view .row{
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+	.view .col-12{
+		padding: 0;
+	}
+
+	.view iframe{
+		height: 400px;
+	}
+
+	.view .btn{
+		padding: 2%;
+	}
+
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.view{
+		padding-top: 10%;
+	}
+
+	.view iframe{
+		height: 300px;
+	}
+
+	.view .btn{
+		margin-bottom: 8%;
+	}
+}
+
+/*/////////////////////////////// Grande Tablette //////////////////////////////////*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.view iframe{
+		height: 300px;
+	}
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////// PROPOSER /////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#proposer .row{
+	margin-right: 0;
+	margin-left: 0;
+}
 
 #proposer h2{
 	margin-bottom: 4%;
 	color: #EF8A1B;
 	font-weight: 700;
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#loginBis{
+		margin-top: 5%;
+	}
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,12 +9,12 @@
 		<h1>Louer</h1>
 		<h2>{{ rent.title }}</h2>
 		<article class="row">
-			<div class="col-4">
+			<div class="col-12 col-lg-4">
 				<img src="{{ asset(rent.image.webPath) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
 			</div>
-			<div class="col-6">
+			<div class="col-12 col-lg-8">
 				<div class="row">
-					<div class="col-6">
+					<div class="col-12 col-lg-4">
 						<p><span>Localisation : </span>{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 						<p><span>Type de bien : </span>{{ rent.type.name }}</p>
 						<p><span>Prix : </span>{{ rent.price }} €/mois | <span>Charges :</span> {{ rent.charge }}</p>
@@ -23,21 +23,20 @@
 						<p><span>Meublé: </span>{% if rent.meuble == 1 %} Oui {% else %} Non {% endif %}</p>
 						<p><span>Collocation: </span>{% if rent.collocation == 1 %} Oui {% else %} Non {% endif %}</p>
 					</div>
-					<div class="col-5">
-						<iframe width="500" height="300" frameborder="0" style="border:0"
+					<div class="col-12 col-lg-8">
+						<iframe width="100%" height="300" frameborder="0" style="border:0"
 						src="https://www.google.com/maps/embed/v1/place?q={{ rent.city.name }}&key=AIzaSyBQFyvNGExyTQBLYbOIpyzmD7fBhLMmlx4" allowfullscreen></iframe>
 					</div>
 				</div>
 				<div class="row description">
-					<p><span>Description</span></p>
-					<p>{{ rent.content }}</p>
-					<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
+					<div class="col-12">
+						<p><span>Description</span></p>
+						<p>{{ rent.content }}</p>
+						<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
+					</div>
 				</div>
 			</div>
 		</article>
-		<button class="btn" id="btn-contact-user">Contacter</button>
-		<div id="contact-user">
-			{{ user.email }}
-		</div>
+		<a href="{{ path('mango_platform_rent', {'page': 1}) }}" class="btn col-12 col-lg-4">Retour aux annonces</a>
 	</section>
 {% endblock %}
