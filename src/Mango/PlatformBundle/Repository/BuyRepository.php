@@ -2,6 +2,7 @@
 
 namespace Mango\PlatformBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
@@ -29,7 +30,7 @@ class BuyRepository extends \Doctrine\ORM\EntityRepository
               ->setMaxResults($nbPerPage); //Nb par page
 
         return new Paginator($query, true);
-  }
+    }
 
     public function getBuysByUser($userId){  //Recherche par utilisateur
         $query = $this->createQueryBuilder('b')
@@ -44,5 +45,19 @@ class BuyRepository extends \Doctrine\ORM\EntityRepository
                      ->getResult();
 
         return $query;
-  }
+    }
+
+    public function findBuyWithRegion($id){      //Récupération à partir de la région (moins de requête)
+        $query = $this->createQueryBuilder('b')
+                ->select('b, t, c, d, r')
+                ->join('b.type', 't')
+                ->join('b.city', 'c')
+                ->join('c.departement', 'd')
+                ->join('d.region', 'r')
+                ->where('b.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleResult();
+        return $query;
+    }
 }

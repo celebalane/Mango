@@ -33,7 +33,7 @@
 						      	</div>
 						    </a> 
 						    <div class="text-right">
-						    	<a href="{{ path('mango_platform_edit', {'id': buy.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
+						    	<a href="{{ path('mango_platform_edit_buy', {'id': buy.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
 						    	<a href="{{ path('mango_platform_delete', {'id': buy.id}) }}" class="btn btn-delete">Supprimer   <span class="fas fa-trash-alt"></span></a>
 						   </div>
 						</li>
@@ -49,7 +49,7 @@
 
 					{% for rent in listRents %} {# Affichage des annonces #}
 						<li class="my-advert col-12">
-						    <a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}" class="row">
+						    <a href="{{ path('mango_platform_rent_view', {'id':rent.id}) }}" class="row">
 						      	<div class="cover col-12 col-md-6">
 						      		<img src="{{ asset(rent.image.webPath) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
 						      	</div>
@@ -62,7 +62,7 @@
 						      	</div>
 						    </a>
 						    <div class="text-right">
-						    	<a href="{{ path('mango_platform_edit', {'id': rent.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
+						    	<a href="{{ path('mango_platform_edit_rent', {'id': rent.id}) }}" class="btn btn-delete">Modifier   <span class="fas fa-pencil-alt"></span></a>
 						    	<a href="{{ path('mango_platform_delete', {'id': rent.id}) }}" class="btn btn-delete">Supprimer   <span class="fas fa-trash-alt"></span></a>
 						   </div> 
 						</li>

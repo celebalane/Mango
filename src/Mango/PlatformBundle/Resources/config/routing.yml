@@ -24,7 +24,7 @@ mango_platform_proposer:
     path:     /proposer
     defaults: { _controller: MangoPlatformBundle:Index:proposer }
 
-mango_platform_rentview:
+mango_platform_rent_view:
   path:    /location/annonce/{id}
   defaults: 
     _controller: MangoPlatformBundle:Rent:view
@@ -57,9 +57,15 @@ mango_platform_addbuy:
   path:    /add/buy
   defaults: { _controller: MangoPlatformBundle:User:addBuy }
 
-mango_platform_edit:
-  path:    /edit/{id}
-  defaults: { _controller: MangoPlatformBundle:User:edit }
+mango_platform_edit_rent:
+  path:    /edit/location/{id}
+  defaults: { _controller: MangoPlatformBundle:User:editRent }
+  requirements:
+    id: \d+
+
+mango_platform_edit_buy:
+  path:    /edit/achat/{id}
+  defaults: { _controller: MangoPlatformBundle:User:editBuy }
   requirements:
     id: \d+
 

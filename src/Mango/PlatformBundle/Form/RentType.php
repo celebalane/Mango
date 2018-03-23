@@ -33,14 +33,16 @@ class RentType extends AbstractType
             ->add('nbParts', IntegerType::class)
             ->add('userId',    HiddenType::class)
             ->add('content',   TextareaType::class)
-            ->add('image',     ImageType::class)
+            ->add('image',     ImageType::class, array(
+                    'required'     => false
+            ))
             ->add('type', EntityType::class, array(    //Permet de faire un <select>
                     'class'        => 'MangoPlatformBundle:Type',
                     'placeholder'  => 'Sélectionnez le type de bien',
                     'choice_label' => 'name',
                     'multiple'     => false,
             ))
-            ->add('region', EntityType::class, array(    //Permet de faire un <select>
+            ->add('region', EntityType::class, array(   
                     'class'        => 'MangoPlatformBundle:Region',
                     'placeholder'  => 'Sélectionnez votre région',
                     'choice_label' => 'name',
@@ -55,11 +57,10 @@ class RentType extends AbstractType
                 }
             );
 
-        $builder->addEventListener(
+        $builder->addEventListener(        //Pour l'édition
               FormEvents::POST_SET_DATA,
               function (FormEvent $event) {
                 $data = $event->getData();
-                /* @var $ville Ville */
                 $ville = $data->getCity();
                 $form = $event->getForm();
                 if ($ville) {

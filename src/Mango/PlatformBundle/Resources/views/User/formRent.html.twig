@@ -1,7 +1,7 @@
 {{ form_start(form, {'attr': {'class': 'row'}}) }}
 
   {# Les erreurs générales du formulaire. #}
-  {{ form_errors(form) }}
+  {{ form_errors(form, {'attr': {'class': 'row'}}) }}
 
   <div class="col-12 col-md-6">
     {# Titre #}
@@ -75,22 +75,27 @@
       </div>
     </div>
     {# Localisation #}
-    <div class="form-group">
-      {{ form_label(form.region, "Région") }}
-      {{ form_errors(form.region) }}
-      {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <span class="load fas fa-spinner"></span>
-    <div class="form-group d-none">
-      {{ form_label(form.departement, "Département") }}
-      {{ form_errors(form.departement) }}
-      {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group d-none">
-      {{ form_label(form.city, "Ville") }}
-      {{ form_errors(form.city) }}
-      {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-    </div>
+    {% if title != 'rentEdit' %}
+      <div class="form-group">
+        {{ form_label(form.region, "Région") }}
+        {{ form_errors(form.region) }}
+        {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
+        <small class="form-text text-muted">
+          <span class="fas fa-exclamation-circle"></span>Attention vous ne pourrez plus modifier la localisation après l'envoi
+        </small>
+      </div>
+      <span class="load fas fa-spinner"></span>
+      <div class="form-group ">
+        {{ form_label(form.departement, "Département") }}
+        {{ form_errors(form.departement) }}
+        {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group ">
+        {{ form_label(form.city, "Ville") }}
+        {{ form_errors(form.city) }}
+        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    {% endif %}
   </div>
   <div class="col-12 col-md-6">
     {# Description #}
@@ -105,14 +110,20 @@
     {# Image #}
     <div class="form-group">
       {{ form_label(form.image.file, "Image de présentation") }}
-      {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file'}}) }}
+      {% if title == 'rent' or title == 'rentEdit' %}
+        {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file'}}) }}
+      {% else %}
+        {{ form_widget(form.image.file, {'attr': {'class': 'form-control-file', 'required' : 'required'}}) }}
+      {% endif %}
       <small class="form-text text-muted">
         Formats acceptés : .jpg et .png <br>
         Poids max : 500 Ko
       </small>
     </div>
   </div>
-  {{ form_widget(form.userId, {'attr' : {'value' : userId  }})}} 
+  {% if title != 'rent' and title != 'rentEdit' %}
+    {{ form_widget(form.userId, {'attr' : {'value' : userId  }}) }} 
+  {% endif %}
   <div class="form-group">
     {{ form_rest(form) }}
   </div>

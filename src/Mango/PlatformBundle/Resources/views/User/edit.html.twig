@@ -1,0 +1,20 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+	Modifier l'annonce : {% if title == 'rent' or title == 'rentEdit' %} {{ rent.title }} {% elseif title == 'buy' or title == 'buyEdit' %} {{ buy.title }} {%endif %} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="view">
+		<h1>Modifier l'annonce : {% if title == 'rent' or title == 'rentEdit' %} {{ rent.title }} {% elseif title == 'buy' or title == 'buyEdit' %} {{ buy.title }} {% endif %}</h1>
+
+		{% if title == 'rent' or title == 'rentEdit' %}
+	  		{{ include("MangoPlatformBundle:User:formRent.html.twig") }}
+	  	{% endif %}
+	  	{% if title == 'buy' or title == 'buyEdit' %}
+	  		{{ include("MangoPlatformBundle:User:formBuy.html.twig") }}
+	  	{% endif %}
+
+		<a href="{{ path('mango_platform_user')}}" class="btn btn-default">Retour à mes annonces</a>
+	</section>
+{% endblock %}

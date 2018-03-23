@@ -7,36 +7,40 @@
 {% block body %}
 	<section class="view">
 		<h1>Acheter</h1>
-		<h2>{{ buy.title }}</h2>
-		<article class="row">
-			<div class="col-12 col-lg-4">
-				<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
-			</div>
-			<div class="col-12 col-lg-8">
-				<div class="row">
-					<div class="col-12 col-lg-4">
-						<p><span>Localisation : </span>{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
-						<p><span>Prix : </span>{{ buy.price }} €</p>
-						<p><span>Superficie : </span>{{ buy.size }} m²</p>
-						{% if buy.type.name != "Terrain" and buy.type.name != "Parking" %}
-							<p><span>Nombre de pièces : </span>{{ buy.nbParts }} pièces</p>
-						{% endif %}
-						<p><span>Type de bien : </span>{{ buy.type.name }}</p>
+		{% if buy.published != 0 %}
+			<h2>{{ buy.title }}</h2>
+			<article class="row">
+				<div class="col-12 col-lg-4">
+					<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
+				</div>
+				<div class="col-12 col-lg-8">
+					<div class="row">
+						<div class="col-12 col-lg-4">
+							<p><span>Localisation : </span>{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
+							<p><span>Prix : </span>{{ buy.price }} €</p>
+							<p><span>Superficie : </span>{{ buy.size }} m²</p>
+							{% if buy.type.name != "Terrain" and buy.type.name != "Parking" %}
+								<p><span>Nombre de pièces : </span>{{ buy.nbParts }} pièces</p>
+							{% endif %}
+							<p><span>Type de bien : </span>{{ buy.type.name }}</p>
+						</div>
+						<div class="col-12 col-lg-8">
+							<iframe width="100%" height="300" frameborder="0" style="border:0"
+							src="https://www.google.com/maps/embed/v1/place?q={{ buy.city.name }}&key=AIzaSyBQFyvNGExyTQBLYbOIpyzmD7fBhLMmlx4" allowfullscreen></iframe>
+						</div>
 					</div>
-					<div class="col-12 col-lg-8">
-						<iframe width="100%" height="300" frameborder="0" style="border:0"
-						src="https://www.google.com/maps/embed/v1/place?q={{ buy.city.name }}&key=AIzaSyBQFyvNGExyTQBLYbOIpyzmD7fBhLMmlx4" allowfullscreen></iframe>
+					<div class="row description">
+						<div class="col-12">
+							<p><span>Description</span></p>
+							<p>{{ buy.content }}</p>
+							<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
+						</div>
 					</div>
 				</div>
-				<div class="row description">
-					<div class="col-12">
-						<p><span>Description</span></p>
-						<p>{{ buy.content }}</p>
-						<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
-					</div>
-				</div>
-			</div>
-		</article>
+			</article>
+		{% else %}
+			<p>Désolé cette annonce n'est pas encore disponible</p>
+		{% endif %}
 		<a href="{{ path('mango_platform_buy', {'page': 1}) }}" class="btn col-12 col-lg-4">Retour aux annonces</a>
 	</section>
 {% endblock %}
