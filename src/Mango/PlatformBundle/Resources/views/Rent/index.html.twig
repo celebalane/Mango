@@ -7,10 +7,10 @@
 {% block body %}
 	<section class="index-advert">
 		<h1 class="row">Louer</h1>
-		<ul class="row">
+		<ul class="row justify-content-md-center">
 
 			{% for rent in listRents %} {# Affichage des annonces #}
-			    <li class="advert col-3">
+			    <li class="advert col-12 col-md-6 col-lg-3">
 			      	<a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}">
 			      		<div class="cover">
 			      			<img src="{{ asset(rent.image.webPath) }}" alt="{{ rent.image.alt }}" class="img-fluid" />

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Type
  *
- * @ORM\Table(name="type")
+ * @ORM\Table(name="mango_type")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\TypeRepository")
  */
 class Type

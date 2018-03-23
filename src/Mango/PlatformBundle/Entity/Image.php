@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Image
  *
- * @ORM\Table(name="image")
+ * @ORM\Table(name="mango_image")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */

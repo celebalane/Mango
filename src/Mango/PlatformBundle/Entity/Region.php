@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Region
  *
- * @ORM\Table(name="region")
+ * @ORM\Table(name="mango_region")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\RegionRepository")
  */
 class Region

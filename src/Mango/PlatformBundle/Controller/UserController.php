@@ -58,6 +58,7 @@ class UserController extends Controller
 
             if($form->isValid()){      //si valide on enregistre en bdd 
                 $rent->setPublished(0);
+                $rent->setEdited(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($rent);
                 $em->flush();
@@ -88,6 +89,7 @@ class UserController extends Controller
 
             if($form->isValid()){      //si valide on enregistre en bdd 
                 $buy->setPublished(0);
+                $rent->setEdited(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($buy);
                 $em->flush();

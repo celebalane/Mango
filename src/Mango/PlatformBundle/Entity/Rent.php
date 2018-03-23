@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Rent
  *
- * @ORM\Table(name="rent")
+ * @ORM\Table(name="mango_rent")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\RentRepository")
  */
 class Rent
@@ -105,6 +105,13 @@ class Rent
      * @ORM\Column(name="published", type="boolean")
      */
     private $published;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="edited", type="boolean")
+     */
+    private $edited;
 
     /**
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
@@ -534,5 +541,29 @@ class Rent
     public function getCharge()
     {
         return $this->charge;
+    }
+
+    /**
+     * Set edited
+     *
+     * @param boolean $edited
+     *
+     * @return Rent
+     */
+    public function setEdited($edited)
+    {
+        $this->edited = $edited;
+
+        return $this;
+    }
+
+    /**
+     * Get edited
+     *
+     * @return boolean
+     */
+    public function getEdited()
+    {
+        return $this->edited;
     }
 }

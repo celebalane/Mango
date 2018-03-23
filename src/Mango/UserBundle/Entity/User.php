@@ -8,7 +8,7 @@ use FOS\UserBundle\Model\User as FOSUser;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="mango_user")
  * @ORM\Entity(repositoryClass="Mango\UserBundle\Repository\UserRepository")
  */
 class User extends FOSUser

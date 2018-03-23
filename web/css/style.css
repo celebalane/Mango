@@ -355,7 +355,7 @@ header{
 	padding-left: 0;
 }
 
-.index-advert .col-3{
+.index-advert .col-lg-3{
 	flex: 0 0 24% !important;
 	margin-bottom: 1%;
 }
@@ -426,6 +426,42 @@ header{
 	color: #FFF;
 	background-color: #EF8A1B !important;
 	border-color: #EF8A1B !important;
+}
+
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	.index-advert{
+		padding-top: 20%;
+	}
+
+	.index-advert .col-12{
+		flex: unset !important;
+		margin-bottom: 4%;
+	}
+}
+
+@media (max-width: 767.98px) and (orientation:landscape){
+	.index-advert{
+		padding-top: 10%;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+ 	.advert{
+ 		margin-right: 4%;
+ 	}
+
+	.index-advert .col-md-6{
+		flex: 0 0 35% !important;
+	}
+
+	.pagination{
+		margin-bottom: 10%;
+	}
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////

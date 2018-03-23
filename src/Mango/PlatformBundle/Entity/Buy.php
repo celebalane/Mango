@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Buy
  *
- * @ORM\Table(name="buy")
+ * @ORM\Table(name="mango_buy")
  * @ORM\Entity(repositoryClass="Mango\PlatformBundle\Repository\BuyRepository")
  */
 class Buy
@@ -82,7 +82,14 @@ class Buy
      *
      * @ORM\Column(name="published", type="boolean")
      */
-    private $published = false;
+    private $published;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="edited", type="boolean")
+     */
+    private $edited;
 
     /**
     * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
@@ -440,5 +447,29 @@ class Buy
     public function getNbParts()
     {
         return $this->nbParts;
+    }
+
+    /**
+     * Set edited
+     *
+     * @param boolean $edited
+     *
+     * @return Buy
+     */
+    public function setEdited($edited)
+    {
+        $this->edited = $edited;
+
+        return $this;
+    }
+
+    /**
+     * Get edited
+     *
+     * @return boolean
+     */
+    public function getEdited()
+    {
+        return $this->edited;
     }
 }
