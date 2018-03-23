@@ -178,6 +178,15 @@ header{
 	}
 }
 
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#nav-right .navbar-text{
+		font-size: 0.8em;
+		line-height: 1.9em;
+	}
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// FOOTER ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////*/
@@ -611,13 +620,18 @@ header{
 	padding: 2% 2% 0 2%;
 }
 
+#my-adverts .row{
+	margin-right: 0;
+	margin-left: 0;
+}
+
 #my-adverts ul{
 	padding-left: 2%;
 }
 
 .my-advert{
 	padding: 1% 1% 1% 1%;
-		margin-bottom: 4% !important;
+	margin-bottom: 4% !important;
 	margin-right: 1%;
 	list-style: none;
 	border: 1px solid #EF8A1B;
@@ -638,6 +652,10 @@ header{
 	font-size: 1.5em;
 }
 
+.my-advert-null{
+	list-style: none;
+}
+
 .btn-delete{
 	color: white !important;
 }
@@ -648,6 +666,26 @@ header{
 
 .btn-create{
 	margin-top: 5%;
+}
+
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){	
+	#my-adverts{
+		padding-top: 20%;
+	}
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#my-adverts{
+		padding-top: 10%;
+	}
+
+	#my-adverts #add{
+		margin-bottom: 10%;
+	}
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////
@@ -686,3 +724,10 @@ header{
 	color: red;
 }
 
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	#btn-return-delete{
+		margin-top: 5%;
+	}
+}

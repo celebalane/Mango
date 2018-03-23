@@ -12,17 +12,18 @@
     {% if rent is not null %}
       {# On met l'id de l'annonce dans la route de l'action du formulaire #}
       <form action="{{ path('mango_platform_delete', {'id': rent.id}) }}" method="post">
-        <a href="{{ path('mango_platform_user') }}" class="btn">Retour</a>
-        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        <input type="submit" value="Supprimer" class="btn btn-danger col-12 col-md-2" />
+        <a href="{{ path('mango_platform_user') }}" class="btn col-12 col-md-2" id="btn-return-delete">Retour</a>
         {{ form_rest(form) }}
       </form>
     {% else %}
       <form action="{{ path('mango_platform_delete', {'id': buy.id}) }}" method="post">
-        <a href="{{ path('mango_platform_user') }}" class="btn">Retour</a>
-        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        <input type="submit" value="Supprimer" class="btn btn-danger col-12 col-md-2" />
+        <a href="{{ path('mango_platform_user') }}" class="btn col-12 col-md-2" id="btn-return-delete">Retour</a>
         {{ form_rest(form) }}
       </form>
     {% endif %}
+
   </section>
 
 {% endblock %}

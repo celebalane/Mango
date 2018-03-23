@@ -7,24 +7,24 @@
 {% block body %}
 	<section id="my-adverts">
 		<h1 class="col-12">Mes annonces</h1>
-		{% for message in app.flashes('success') %}
+		{% for message in app.flashes('notice') %}
 		    <div class="alert alert-success">
 		        {{ message }}
 		    </div>
 		{% endfor %}
 		
 		<div class="row">
-			<div class="col-6">
+			<div class="col-12 col-lg-6">
 				<h2 class="col-12">En vente</h2>
 				<ul>
 
 					{% for buy in listBuys %} {# Affichage des annonces #}
 						<li class="my-advert col-12">
 						    <a href="{{ path('mango_platform_view_buy', {'id':buy.id}) }}" class="row">
-						      	<div class="cover col-6">
+						      	<div class="cover col-12 col-md-6">
 						      		<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 						      	</div>
-						      	<div class="cover-text col-6">
+						      	<div class="cover-text col-12 col-md-6">
 						      		<p class="col-12 my-city">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
 						      		<p class="col-12 date">{{ buy.date|date('d/m/Y') }}</p>
 							      	<h3 class="col-12 my-title">{{ buy.title }}</h3>
@@ -38,22 +38,22 @@
 						   </div>
 						</li>
 					{% else %}
-						<li>Vous n'avez pas encore posté d'annonce dans la section "Achat"</li> 
+						<li class="my-advert-null col-12">Vous n'avez pas encore posté d'annonce dans la section "Achat"</li> 
 					{% endfor %}
 
 				</ul>
 			</div>
-			<div class="col-6">
+			<div class="col-12 col-lg-6">
 				<h2 class="col-12">En location</h2>
 				<ul>
 
 					{% for rent in listRents %} {# Affichage des annonces #}
 						<li class="my-advert col-12">
 						    <a href="{{ path('mango_platform_rentview', {'id':rent.id}) }}" class="row">
-						      	<div class="cover col-6">
+						      	<div class="cover col-12 col-md-6">
 						      		<img src="{{ asset(rent.image.webPath) }}" alt="{{ rent.image.alt }}" class="img-fluid" />
 						      	</div>
-						      	<div class="cover-text col-6">
+						      	<div class="cover-text col-12 col-md-6">
 						      		<p class="col-12 my-city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 						      		<p class="col-12 date">{{ rent.date|date('d/m/Y') }}</p>
 							      	<h3 class="col-12 my-title">{{ rent.title }}</h3>
@@ -67,15 +67,17 @@
 						   </div> 
 						</li>
 					{% else %}
-						<li>Vous n'avez pas encore posté d'annonce dans la section "Louer"</li>
+						<li class="my-advert-null col-12">Vous n'avez pas encore posté d'annonce dans la section "Louer"</li>
 					{% endfor %}
 
 				</ul>
 			</div>
 		</div>
-		<div class="row justify-content-around" id="add">
-			<a href="{{ path('mango_platform_addrent') }}" class="btn col-4 btn-create">Créer une annonce Location</a>
-			<a href="{{ path('mango_platform_addbuy') }}" class="btn col-4 btn-create">Créer une annonce Vente</a>
+		<div class="row" id="add">
+			<div class="col-12 d-lg-flex justify-content-lg-around">
+				<a href="{{ path('mango_platform_addrent') }}" class="btn col-12 col-lg-4 btn-create">Créer une annonce Location</a>
+				<a href="{{ path('mango_platform_addbuy') }}" class="btn col-12 col-lg-4 btn-create">Créer une annonce Vente</a>
+			</div>
 		</div>
 	</section>
 {% endblock %} 

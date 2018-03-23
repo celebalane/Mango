@@ -63,7 +63,7 @@ class UserController extends Controller
                 $em->persist($rent);
                 $em->flush();
 
-                $request->getsession()->getflashBag()->add('success', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
+                $request->getsession()->getflashBag()->add('notice', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
 
                 return $this->RedirectToRoute('mango_platform_user');
             }
@@ -94,7 +94,7 @@ class UserController extends Controller
                 $em->persist($buy);
                 $em->flush();
 
-                $request->getsession()->getflashBag()->add('success', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
+                $request->getsession()->getflashBag()->add('notice', 'Votre annonce a bien été enregistrée, celle-ci sera visible après validation par notre équipe'); //Notification
 
                 return $this->RedirectToRoute('mango_platform_user');
             }
