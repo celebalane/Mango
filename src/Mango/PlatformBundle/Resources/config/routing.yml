@@ -46,8 +46,6 @@ mango_platform_user:
 mango_platform_user_info:
   path: /user/my-infos
   defaults: { _controller: MangoPlatformBundle:User:userInfos }
-  requirements:
-    id: \d+
 
 mango_platform_addrent:
   path:    /add/rent

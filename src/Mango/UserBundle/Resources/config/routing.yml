@@ -1,3 +1,7 @@
 user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Security:login }
+
+fos_user_profile_show:
+    path: /user/my-infos
+    defaults: { _controller: MangoPlatformBundle:User:userInfos }
