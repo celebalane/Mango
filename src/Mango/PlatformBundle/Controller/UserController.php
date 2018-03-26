@@ -31,7 +31,11 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:index.html.twig', array('listBuys' => $listBuys, 'listRents' => $listRents));
     }
 
-    //////////////////////////////////////////////////////// AJOUT /////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////// ANNONCES //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////// AJOUT ANNONCE /////////////////////////////////////////////////////////////////////////
 
 	public function addRentAction(Request $request)  //Ajout d'une annonce de location
     {
@@ -90,20 +94,9 @@ class UserController extends Controller
         if($request->isMethod('POST')){
             $form ->handleRequest($request); //Lie les valeurs du formulaire à $rent
 
-            if($form->getData()->getMeuble() == null){
-                $rent->setMeuble(0);
-            }else if ($form->getData()->getMeuble() == 1){
-                $rent->setMeuble(1);
-            }
-            if($form->getData()->getCollocation() == null){
-                    $rent->setCollocation(0);
-            }else if ($form->getData()->getCollocation() == 1){
-                $rent->setCollocation(1);
-            }
-
             if($form->isValid()){      //si valide on enregistre en bdd 
                 $buy->setPublished(0);
-                $rent->setEdited(0);
+                $buy->setEdited(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($buy);
                 $em->flush();
@@ -116,7 +109,7 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:add.html.twig', array('form' => $form->createView(), 'userId' => $userId, 'title' => $title));
     }
 
-    ////////////////////////////////////////////////////////////////// EDITION ///////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// EDITION ANNONCE ///////////////////////////////////////////////////////////////////////////
 
     public function editRentAction(Request $request)
     {
@@ -127,7 +120,7 @@ class UserController extends Controller
 
         $title = 'rentEdit';
 
-        $rent = $this->getDoctrine()->getRepository('MangoPlatformBundle:Rent')->findWithRegion($request->get('id')); //Pour avoir moins de requêtes
+        $rent = $this->getDoctrine()->getRepository('MangoPlatformBundle:Rent')->findWithoutLocalisation($request->get('id')); //Pour avoir moins de requêtes
 
         if (null === $rent) {
             throw new NotFoundHttpException("L'annonce n°" . $request->get('id') . " n'existe pas.");
@@ -169,7 +162,7 @@ class UserController extends Controller
 
         $title = 'buyEdit';
 
-        $buy = $this->getDoctrine()->getRepository('MangoPlatformBundle:Buy')->findBuyWithRegion($request->get('id')); //Pour avoir moins de requêtes
+        $buy = $this->getDoctrine()->getRepository('MangoPlatformBundle:Buy')->findWithoutLocalisation($request->get('id')); 
 
         if (null === $buy) {
             throw new NotFoundHttpException("L'annonce n°" . $request->get('id') . " n'existe pas.");
@@ -191,7 +184,7 @@ class UserController extends Controller
         return $this->render('MangoPlatformBundle:User:edit.html.twig', array('buy' => $buy, 'title' => $title, 'form' => $form->createView()));
     }
 
-    //////////////////////////////////////////////////// SUPPRESSION //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////// SUPPRESSION ANNONCE //////////////////////////////////////////////////////////////////////////////
 
     public function deleteAction($id, Request $request)
     {
@@ -220,5 +213,42 @@ class UserController extends Controller
             return $this->redirectToRoute('mango_platform_user'); 
         }
         return $this->render('MangoPlatformBundle:User:delete.html.twig', array('rent' => $rent,'buy' =>$buy, 'form' => $form->createView()));
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////// USER //////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function userInfosAction(Request $request)
+    {
+        $infos = $this->getUser();
+
+        $form = $this->get('form.factory')->create();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {  //Suppression du compte
+
+            $userId = $infos->getId();    //Recherche des annonces liées à l'utilisateur
+            $em = $this->getDoctrine()->getManager();
+            $user = $em->getRepository('UserBundle:User')->find($userId);
+            $listRents = $em->getRepository('MangoPlatformBundle:Rent')->getRentsByUser($userId);
+            $listBuys = $em->getRepository('MangoPlatformBundle:Buy')->getBuysByUser($userId);
+
+            foreach ($listRents as $rent){  //Un utilisateur peut avoir plusieurs annonces
+                $em->remove($rent);
+            }
+
+            foreach ($listBuys as $buy) {
+                $em->remove($buy);
+            }
+
+            $em->remove($user);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('info', "Votre compte à bien été supprimé");
+
+            return $this->redirectToRoute('fos_user_security_logout'); 
+        }
+
+        return $this->render('MangoPlatformBundle:User:infos.html.twig', array('infos' => $infos, 'form' => $form->createView()));
     }
 }

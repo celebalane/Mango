@@ -46,6 +46,18 @@ class RentRepository extends \Doctrine\ORM\EntityRepository
         return $query;
     }
 
+    public function findWithoutLocalisation($id){  //Pour l'édition pas besoin de la localisation
+        $query = $this->createQueryBuilder('r')
+                ->select('r, t, i')
+                ->join('r.type', 't')
+                ->join('r.image', 'i')
+                ->where('r.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleResult();
+        return $query;
+    }
+
     public function findWithRegion($id){      //Récupération à partir de la région (moins de requête)
         $query = $this->createQueryBuilder('r')
                 ->select('r, t, c, d, region')

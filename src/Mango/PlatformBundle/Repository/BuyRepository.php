@@ -47,6 +47,18 @@ class BuyRepository extends \Doctrine\ORM\EntityRepository
         return $query;
     }
 
+    public function findWithoutLocalisation($id){  //Pour l'édition pas besoin de la localisation
+        $query = $this->createQueryBuilder('b')
+                ->select('b, t, i')
+                ->join('b.type', 't')
+                ->join('b.image', 'i')
+                ->where('b.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleResult();
+        return $query;
+    }
+
     public function findBuyWithRegion($id){      //Récupération à partir de la région (moins de requête)
         $query = $this->createQueryBuilder('b')
                 ->select('b, t, c, d, r')

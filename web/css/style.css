@@ -482,6 +482,20 @@ header{
 	}
 }
 
+/*/////////////////////////////// Grande Tablette //////////////////////////////////*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.cover-text p{
+		margin-bottom: 2%;
+	}
+	.city{
+		font-size: 0.8em;
+	}
+	.price{
+		bottom: -20%;
+	}
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////// VIEW //////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -635,6 +649,7 @@ header{
 }
 
 .my-advert{
+	height: 320px;
 	padding: 1% 1% 1% 1%;
 	margin-bottom: 4% !important;
 	margin-right: 1%;
@@ -645,6 +660,14 @@ header{
 .my-advert a{
 	color: black;
 	text-decoration: none;
+}
+
+.no-published{
+	color: #fb0101;
+}
+
+.published{
+	color: #006400;
 }
 
 .my-city{
@@ -659,6 +682,13 @@ header{
 
 .my-advert-null{
 	list-style: none;
+}
+
+.btn-my-advert{
+	position: absolute;
+	bottom: 20px;
+	right: 1%;
+	margin-bottom: 0;
 }
 
 .btn-delete{
@@ -690,6 +720,17 @@ header{
 
 	#my-adverts #add{
 		margin-bottom: 10%;
+	}
+}
+
+/*/////////////////////////////// Grande Tablette //////////////////////////////////*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.my-city{
+		font-size: 0.8em;
+	}
+	.my-title{
+		font-size: 1.4em;
 	}
 }
 

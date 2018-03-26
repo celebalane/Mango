@@ -1,0 +1,38 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Mes informations - {{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<section class="view">
+		<h1>Mes informations</h1>
+		<div class="row">
+			<h2 class="col-12">Mes coordonnées</h2>
+			<p class="col-12"><span>Pseudo :</span> {{ infos.username }}</p>
+			<p class="col-12"><span>Email :</span> {{ infos.email }}</p>
+			<p class="col-12"><span>Téléphone :</span> {{ infos.phone }}</p>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<h2>Changement mot de passe</h2>
+				<a href="#" class="btn col-12 col-md-2">Changer mon mot de passe</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<h2>Suppression du compte</h2>
+				<form action="{{ path('mango_platform_user_info') }}" method="post">
+	        		<input type="submit" value="Supprimer mon compte" class="btn btn-danger col-12 col-md-2" />
+	        		
+	        		{{ form_rest(form) }}
+	      		</form>
+	      	</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<a href="{{ path('mango_platform_user') }}" class="btn col-12 col-md-2" id="btn-return-delete">Retour</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}

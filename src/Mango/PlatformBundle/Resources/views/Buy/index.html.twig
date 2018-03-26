@@ -16,7 +16,7 @@
 		      			<img src="{{ asset(buy.image.webPath) }}" alt="{{ buy.image.alt }}" class="img-fluid" />
 		      		</div>
 		      		<div class="row cover-text">
-		      			<p class="col-6">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
+		      			<p class="col-6 city">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
 		      			<p class="col-6 text-right date">{{ buy.date|date('d/m/Y') }}</p>
 			      		<h3 class="col-12 title">{{ buy.title }}</h3>
 			      		<p class="col-12 type">{{ buy.type.name }} | {{ buy.size }} m²</p>

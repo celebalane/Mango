@@ -92,7 +92,7 @@ class Buy
     private $edited;
 
     /**
-    * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist"})
+    * @ORM\OneToOne(targetEntity="Mango\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
     * @Assert\Valid()
     */
     private $image;

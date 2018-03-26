@@ -29,19 +29,6 @@ class User extends FOSUser
      */
     private $phone;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="rent_id", type="integer", nullable=true)
-     */
-    private $rentId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="buy_id", type="integer", nullable=true)
-     */
-    private $buyId;
 
     public function __construct(){
     	parent::__construct();
@@ -73,51 +60,4 @@ class User extends FOSUser
         return $this->phone;
     }
 
-    /**
-     * Set rentId
-     *
-     * @param integer $rentId
-     *
-     * @return User
-     */
-    public function setRentId($rentId)
-    {
-        $this->rentId = $rentId;
-
-        return $this;
-    }
-
-    /**
-     * Get rentId
-     *
-     * @return integer
-     */
-    public function getRentId()
-    {
-        return $this->rentId;
-    }
-
-    /**
-     * Set buyId
-     *
-     * @param integer $buyId
-     *
-     * @return User
-     */
-    public function setBuyId($buyId)
-    {
-        $this->buyId = $buyId;
-
-        return $this;
-    }
-
-    /**
-     * Get buyId
-     *
-     * @return integer
-     */
-    public function getBuyId()
-    {
-        return $this->buyId;
-    }
 }
