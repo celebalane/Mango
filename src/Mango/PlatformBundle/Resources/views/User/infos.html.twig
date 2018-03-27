@@ -5,34 +5,32 @@
 {% endblock %}
 
 {% block body %}
-	<section class="view">
+	<section class="view" id="infos-user">
 		<h1>Mes informations</h1>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="row">
-			<div class="col-12 col-md-4">
+			<div class="col-12 col-lg-4">
 				<h2 class="col-12">Mes coordonnées</h2>
 				<p class="col-12"><span>Pseudo :</span> {{ infos.username }}</p>
 				<p class="col-12"><span>Email :</span> {{ infos.email }}</p>
 				<p class="col-12"><span>Téléphone :</span> {{ infos.phone }}</p>
 				<div class="col-12">
-					<a href="#" class="btn col-12 col-md-8">Modification</a>
+					<a href="{{ path("mango_platform_user_edit_info") }}" class="btn col-12 col-md-4 col-lg-8">Modifier</a>
 				</div>
 			</div>
-			<div class="col-12 col-md-4 infos">
-				<h2>Changement mot de passe</h2>
-
-				{% for message in app.flashes('success') %}
-				    <div class="alert alert-success">
-				        {{ message }}
-				    </div>
-				{% endfor %}
-
-				<a href='{{ path("fos_user_change_password") }}' class="btn col-12 col-md-8">Changer mon mot de passe</a>
+			<div class="col-12 col-lg-4 infos">
+				<h2 class="col-12">Changement mot de passe</h2>
+				<a href='{{ path("fos_user_change_password") }}' class="btn col-12 col-md-4 col-lg-8">Changer mon mot de passe</a>
 			</div>
-			<div class="col-12 col-md-4 infos">
-				<h2>Suppression du compte</h2>
-				<p id="infos-danger"><span class="fas fa-exclamation-circle"></span> Attention toute suppression du compte est définitive.<br> Les informations et annonces associées au compte seront perdues.</p>
+			<div class="col-12 col-lg-4 infos">
+				<h2 class="col-12">Suppression du compte</h2>
+				<p class="col-12" id="infos-danger"><span class="fas fa-exclamation-circle"></span> Attention toute suppression du compte est définitive.<br> Les informations et annonces associées au compte seront perdues.<br> Si vous souhaitez supprimer votre compte, appuyez sur le bouton ci-dessous.</p>
 				<form action="{{ path('mango_platform_user_info') }}" method="post">
-		        	<input type="submit" value="Supprimer mon compte" class="btn col-12 col-md-8" />
+		        	<input type="submit" value="Supprimer mon compte" class="btn col-12 col-md-4 col-lg-8" />
 		        	{{ form_rest(form) }}
 		      	</form>
 		    </div>

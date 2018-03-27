@@ -47,6 +47,10 @@ mango_platform_user_info:
   path: /user/my-infos
   defaults: { _controller: MangoPlatformBundle:User:userInfos }
 
+mango_platform_user_edit_info:
+  path: /user/my-infos/edit
+  defaults: { _controller: MangoPlatformBundle:User:editInfos }
+
 mango_platform_addrent:
   path:    /add/rent
   defaults: { _controller: MangoPlatformBundle:User:addRent }

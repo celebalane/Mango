@@ -6,6 +6,11 @@
 
 {% block body %}
 <section id="index">
+	{% for message in app.flashes('info') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 	<div class="row">
 		<div class="col-12 col-lg-4 col-xl-4" id="key"></div>
 		<div class="col" id="contenu-index">

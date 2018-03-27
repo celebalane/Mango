@@ -789,15 +789,80 @@ header{
 .infos a{
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	left: 5%;
 }
 
 .infos input{
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	left: 6%;
 }
 
 #infos-retour{
 	margin-top: 10%;
+}
+
+/*/////////////////////////////// Mobile et tablette //////////////////////////////////*/
+
+@media (max-width: 991.98px){
+	.infos{
+		margin-top: 5%;
+	}
+
+	.infos a{
+		position: unset;
+	}
+
+	.infos input{
+		position: unset;
+	}
+
+	#infos-user h2{
+		font-size: 1.7em;
+	}
+
+}
+
+/*/////////////////////////////// Tablette //////////////////////////////////*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.infos a{
+		margin-left: 2%;
+	}
+
+	.infos input{
+		margin-left: 2%;
+	}
+}
+
+/*/////////////////////////////// Grande Tablette //////////////////////////////////*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	#infos-danger{
+		font-size: 0.9em;
+	}
+
+	#infos-user h2{
+		font-size: 1.7em;
+	}
+
+	.infos a{
+		margin-left: 2%;
+	}
+
+	.infos input{
+		margin-left: 2%;
+	}
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// EDIT MES INFOS ////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	#btn-retour-edit-info{
+		margin-top: 5%;
+	}
 }

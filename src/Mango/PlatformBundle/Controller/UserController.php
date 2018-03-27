@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Entity\User;
+use Mango\UserBundle\Form\UserType;
 use Mango\PlatformBundle\Entity\Rent;
 use Mango\PlatformBundle\Entity\Buy;
 use Mango\PlatformBundle\Form\RentType;
@@ -223,6 +224,10 @@ class UserController extends Controller
     {
         $infos = $this->getUser();
 
+        if (null === $infos) {
+            throw new NotFoundHttpException("Cet utilisateur n'existe pas");
+        }
+
         $form = $this->get('form.factory')->create();
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {  //Suppression du compte
@@ -250,5 +255,34 @@ class UserController extends Controller
         }
 
         return $this->render('MangoPlatformBundle:User:infos.html.twig', array('infos' => $infos, 'form' => $form->createView()));
+    }
+
+    public function editInfosAction(Request $request)
+    {
+        if(!$this->get('security.authorization_checker')->isGranted('ROLE_USER')) { //Verification role utilisateur
+      
+            throw new AccessDeniedException('Veuillez vous connecter.');
+        }
+
+        $infos = $this->getUser();
+
+        if (null === $infos) {
+            throw new NotFoundHttpException("Cet utilisateur n'existe pas");
+        }
+
+        $form = $this->createForm(UserType::class, $infos);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $this->getDoctrine()
+                 ->getManager()
+                 ->flush(); 
+
+            $request->getSession()->getFlashBag()->add('success', "Vos coordonnées ont bien été modifiées");
+
+            return $this->redirectToRoute('mango_platform_user_info');
+        }
+
+        return $this->render('MangoPlatformBundle:User:editUserInfos.html.twig', array('infos' => $infos, 'form' => $form->createView()));
     }
 }
