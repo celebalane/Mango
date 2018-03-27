@@ -37,5 +37,4 @@ class UserType extends AbstractType
     {
         return 'mango_userbundle_user';
     }
-
 }

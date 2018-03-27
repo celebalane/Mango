@@ -15,14 +15,13 @@ use Mango\UserBundle\Entity\User;
 class UserController extends SecurityController {
  
     public function LoginBisAction()
-{
-    $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+	{
+    	$csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
  
-    return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login_content.html.twig', array(
-        'last_username' => null,
-        'error'         => null,
-        'csrf_token'    => $csrfToken
-    ));
-}
-     
+    	return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login_content.html.twig', array(
+        	'last_username' => null,
+        	'error'         => null,
+        	'csrf_token'    => $csrfToken
+    	));
+	}    
 }

@@ -33,6 +33,4 @@ class RegionType extends AbstractType
     {
         return 'mango_platformbundle_region';
     }
-
-
 }

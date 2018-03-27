@@ -33,6 +33,4 @@ class TypeType extends AbstractType
     {
         return 'mango_platformbundle_type';
     }
-
-
 }

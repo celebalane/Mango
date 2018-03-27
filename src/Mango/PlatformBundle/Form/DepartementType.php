@@ -33,6 +33,4 @@ class DepartementType extends AbstractType
     {
         return 'mango_platformbundle_departement';
     }
-
-
 }

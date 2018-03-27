@@ -33,6 +33,4 @@ class CityType extends AbstractType
     {
         return 'mango_platformbundle_city';
     }
-
-
 }

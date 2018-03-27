@@ -33,6 +33,4 @@ class ImageType extends AbstractType
     {
         return 'mango_platformbundle_image';
     }
-
-
 }

@@ -140,6 +140,4 @@ class BuyType extends AbstractType
     {
         return 'mango_platformbundle_buy';
     }
-
-
 }

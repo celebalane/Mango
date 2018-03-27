@@ -53,5 +53,4 @@ class RentEditType extends AbstractType
     {
         return 'mango_platformbundle_rent_edit';
     }
-
 }
