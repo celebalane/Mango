@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
 html{
 	height: 100%;
@@ -11,6 +12,10 @@ body{
 	padding-bottom: 60px;
 	min-height: 100%;
 	position: relative;
+}
+
+p{
+	font-family: 'Open Sans', sans-serif;
 }
 
 .container-fluid{
@@ -223,7 +228,7 @@ header{
 
 @media (max-width: 767.98px){
 	#footer .nav{
-		font-size: 0.8em;
+		font-size: 0.7em;
 	}
 
 	.no-mobile{
@@ -453,6 +458,11 @@ header{
 		flex: unset !important;
 		margin-bottom: 4%;
 	}
+
+	.price{
+		position: unset;
+		padding-right: 5%;
+	}
 }
 
 @media (max-width: 767.98px) and (orientation:landscape){
@@ -467,6 +477,7 @@ header{
 
 	.index-advert{
 		padding-top: 10%;
+		margin-bottom: 10%;
 	}
 
  	.advert{
@@ -477,6 +488,14 @@ header{
 		flex: 0 0 35% !important;
 	}
 
+	.cover{
+		height: 150px;
+	}
+
+	.city{
+		font-size: 0.8em;
+	}
+
 	.pagination{
 		margin-bottom: 10%;
 	}
@@ -485,14 +504,14 @@ header{
 /*/////////////////////////////// Grande Tablette //////////////////////////////////*/
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-	.cover-text p{
-		margin-bottom: 2%;
+	.cover{
+		height: 150px;
 	}
 	.city{
-		font-size: 0.8em;
+		font-size: 0.7em;
 	}
-	.price{
-		bottom: -20%;
+	.type{
+		margin-bottom: 25%;
 	}
 }
 
@@ -864,5 +883,39 @@ header{
 @media (max-width: 767.98px){
 	#btn-retour-edit-info{
 		margin-top: 5%;
+	}
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////// ERROR //////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////*/
+
+#error-mango{
+	background-image: url('../img/error404.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 500px;
+}
+
+#error{
+	background-image: url('../img/error.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 500px;
+}
+
+.error span{
+	color: #ea4b02;
+}
+
+/*/////////////////////////////// Mobile //////////////////////////////////*/
+
+@media (max-width: 767.98px){
+	#error-mango{
+		height: 420px;
+	}
+
+	#error{
+		height: 420px;
 	}
 }

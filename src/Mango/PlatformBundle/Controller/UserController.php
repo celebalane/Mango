@@ -53,12 +53,12 @@ class UserController extends Controller
     	if($request->isMethod('POST')){
     		$form ->handleRequest($request); //Lie les valeurs du formulaire à $rent
 
-                if($form->getData()->getMeuble() == null){  //Pour éviter l'erreur de doublon de champ
+                if($form->getData()->getMeuble() === null){  //Pour éviter l'erreur de doublon de champ
                     $rent->setMeuble(0);
                 }else if ($form->getData()->getMeuble() == 1){
                     $rent->setMeuble(1);
                 }
-                if($form->getData()->getCollocation() == null){
+                if($form->getData()->getCollocation() === null){
                     $rent->setCollocation(0);
                 }else if ($form->getData()->getCollocation() == 1){
                     $rent->setCollocation(1);
@@ -131,12 +131,12 @@ class UserController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
-            if($form->getData()->getMeuble() == null){
+            if($form->getData()->getMeuble() === null){
                 $rent->setMeuble(0);
             }else if ($form->getData()->getMeuble() == 1){
                 $rent->setMeuble(1);
             }
-            if($form->getData()->getCollocation() == null){
+            if($form->getData()->getCollocation() === null){
                     $rent->setCollocation(0);
             }else if ($form->getData()->getCollocation() == 1){
                 $rent->setCollocation(1);
