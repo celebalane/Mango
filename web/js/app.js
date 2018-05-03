@@ -73,9 +73,14 @@ $('.contact').click(function(){  //Affichage de la demande de connexion
 });
 
 $('#btn-mail').click(function(){
-  let data = {};
-  $.get($(this).attr('action'), data).then(function(data){
-    $('#mail-user').remove();
-    $('#btn-mail').text(data);
-  })
+  let id = $("#user-mail").val();
+  $.ajax({
+    url:"http://localhost/mango/web/app_dev.php/mango/achat/annonce/" + id + "/mail",
+    data: { id : $("#user-mail").val() },
+    type:'POST',
+    success: function(response){
+      $('#mail-user').remove();
+      $('#btn-mail').text(response);
+    }
+  });
 });

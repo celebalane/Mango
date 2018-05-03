@@ -40,9 +40,9 @@
 									<a href="#" class="btn col-12 col-md-4 contact">Contacter   <span class="fas fa-address-book"></span></a>
 								</div>
 							{% else %}
-								<form class="text-right" action="{{ path('mango_platform_view_buy_mail', {'id':buy.id}) }}">
+								<form class="text-right" action="">
 									<button class="btn col-12 col-md-4" type="button" id='btn-mail'>Envoyer un mail   <span class="fas fa-envelope"></span></button>
-									<input type="hidden" name="mailUser" id="user-mail" />
+									<input type="hidden" name="mailUser" id="user-mail" value='{{ user.id }}'/>
 								</form>
 								<div class="text-right">
 									<a href="#" class="btn col-12 col-md-4">Téléphoner   <span class="fas fa-phone"></span></a>
