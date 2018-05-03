@@ -573,8 +573,23 @@ header{
 	z-index: 9999; 
 }
 
-#show-contact div{
+#show-contact div:first-child{
+	padding: 2%;
 	background-color: white;
+}
+
+#close-contact{
+	margin-bottom: 2%;
+    padding: 2% 2% 1% 2% !important;
+    border: 1px solid #EF8A1B;
+    border-radius: 0.25rem;
+	background-color: #EF8A1B !important;
+	color: #FFFFFF;
+	font-size: 1.5em;
+}
+
+#show-contact a{
+	margin-bottom: 4%;
 }
 
 
@@ -604,6 +619,10 @@ header{
 
 	.contact{
 		margin-bottom: 5%;
+	}
+
+	#show-contact div:first-child{
+		padding: 5%;
 	}
 
 }

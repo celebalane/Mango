@@ -52,13 +52,23 @@ $.ajaxSetup({
 
 /////////////////////////// Contact //////////////////////////////////
 
-$('.contact').click(function(){
+
+$('.contact').click(function(){  //Affichage de la demande de connexion
   $('body').append(
     '<div id="show-contact" class="d-flex justify-content-center align-items-center">' +
-      '<div class="col-lg-4 d-flex flex-column">' +
-        '<a href="#">Se connecter</a>' +
-        '<a href="#">S\'inscrire</a>' +
+      '<div class="col-10 col-lg-4 d-flex flex-column justify-content-center align-items-center">' +
+        '<div id="close-contact" class="ml-auto">' +
+          '<span class="far fa-times-circle"></span>' +
+        '</div>' +
+        '<p>Pour rentrer en contact avec l\'auteur de cette annonce merci de bien vouloir vous connecter. Si vous ne disposez pas encore de compte sur Mango ann-immo, nous serions ravis de vous compter parmis nos utilisateurs. L\'inscription est simple et gratuite</p>' +
+        '<a href="/login" class="btn col-12 col-md-6 col-lg-6">Se connecter</a>' +
+        '<a href="/register/" class="btn col-12 col-md-6 col-lg-6">S\'inscrire</a>' +
       '</div>' +
     '</div>'
   );
+
+  $('#close-contact').click(function(){  //Fermeture du message
+    $('#show-contact').remove();
+  });
 });
+
