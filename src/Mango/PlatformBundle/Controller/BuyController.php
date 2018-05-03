@@ -39,4 +39,17 @@ class BuyController extends Controller
         }
         return $this->render('MangoPlatformBundle:Buy:view.html.twig', array('buy' => $buy, 'user' => $user, 'active' => $active));
     }
+
+    public function viewMailAction(Request $request){
+        $user = $em->getRepository('UserBundle:User')->find($userId); 
+        if($request->isXmlHttpRequest())
+        {
+            $request->getData();
+            $mailUser = $user->getEmail();
+            $data->setData($mailUser);
+
+            return $data;
+        }
+    }
+
 }

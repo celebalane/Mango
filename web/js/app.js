@@ -55,9 +55,9 @@ $.ajaxSetup({
 
 $('.contact').click(function(){  //Affichage de la demande de connexion
   $('body').append(
-    '<div id="show-contact" class="d-flex justify-content-center align-items-center">' +
+    '<div id="show-message" class="d-flex justify-content-center align-items-center">' +
       '<div class="col-10 col-lg-4 d-flex flex-column justify-content-center align-items-center">' +
-        '<div id="close-contact" class="ml-auto">' +
+        '<div id="close-message" class="ml-auto">' +
           '<span class="far fa-times-circle"></span>' +
         '</div>' +
         '<p>Pour rentrer en contact avec l\'auteur de cette annonce merci de bien vouloir vous connecter. Si vous ne disposez pas encore de compte sur Mango ann-immo, nous serions ravis de vous compter parmis nos utilisateurs. L\'inscription est simple et gratuite</p>' +
@@ -67,8 +67,15 @@ $('.contact').click(function(){  //Affichage de la demande de connexion
     '</div>'
   );
 
-  $('#close-contact').click(function(){  //Fermeture du message
-    $('#show-contact').remove();
+  $('#close-message').click(function(){  //Fermeture du message
+    $('#show-message').remove();
   });
 });
 
+$('#btn-mail').click(function(){
+  let data = {};
+  $.get($(this).attr('action'), data).then(function(data){
+    $('#mail-user').remove();
+    $('#btn-mail').text(data);
+  })
+});

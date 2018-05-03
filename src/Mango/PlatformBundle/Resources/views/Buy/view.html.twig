@@ -34,11 +34,21 @@
 							<p><span>Description</span></p>
 							<p>{{ buy.content }}</p>
 							<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
+
 							{% if not is_granted('ROLE_USER') %}
 								<div class="text-right">
 									<a href="#" class="btn col-12 col-md-4 contact">Contacter   <span class="fas fa-address-book"></span></a>
 								</div>
+							{% else %}
+								<form class="text-right" action="{{ path('mango_platform_view_buy_mail', {'id':buy.id}) }}">
+									<button class="btn col-12 col-md-4" type="button" id='btn-mail'>Envoyer un mail   <span class="fas fa-envelope"></span></button>
+									<input type="hidden" name="mailUser" id="user-mail" />
+								</form>
+								<div class="text-right">
+									<a href="#" class="btn col-12 col-md-4">Téléphoner   <span class="fas fa-phone"></span></a>
+								</div>
 							{% endif %}
+
 						</div>
 					</div>
 				</div>

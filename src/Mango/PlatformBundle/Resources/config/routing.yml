@@ -37,6 +37,12 @@ mango_platform_view_buy:
   requirements:
     id: \d+
 
+mango_platform_view_buy_mail:
+  path: /achat/annonce/{id}/mail
+  defaults: { _controller: MangoPlatformBundle:Buy:viewMail}
+  requirements:
+    id: \d+
+
 mango_platform_user:
   path: /user/index
   defaults: { _controller: MangoPlatformBundle:User:index }
