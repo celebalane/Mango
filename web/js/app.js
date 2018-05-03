@@ -48,3 +48,17 @@ $.ajaxSetup({
         $(".load").hide();
     }
 });
+
+
+/////////////////////////// Contact //////////////////////////////////
+
+$('.contact').click(function(){
+  $('body').append(
+    '<div id="show-contact" class="d-flex justify-content-center align-items-center">' +
+      '<div class="col-lg-4 d-flex flex-column">' +
+        '<a href="#">Se connecter</a>' +
+        '<a href="#">S\'inscrire</a>' +
+      '</div>' +
+    '</div>'
+  );
+});

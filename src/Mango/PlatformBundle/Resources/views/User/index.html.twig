@@ -14,7 +14,7 @@
 		{% endfor %}
 		
 		<div class="row">
-			<div class="col-12 col-lg-6">
+			<div class="col-12 col-md-6">
 				<h2 class="col-12">En vente</h2>
 				<ul>
 
@@ -31,11 +31,10 @@
 									{% else %}
 										<p class="col-12 published">Publié</p>
 									{% endif %}
-
+									<p class="col-12 date">{{ buy.date|date('d/m/Y') }}</p>
 						      		<p class="col-12 my-city">{{ buy.city.name }} ({{ buy.city.zipcode }})</p>
-						      		<p class="col-12 date">{{ buy.date|date('d/m/Y') }}</p>
 							      	<h3 class="col-12 my-title">{{ buy.title }}</h3>
-							      	<p class="col-12 type">{{ buy.type.name }} | {{ buy.size }} m²</p>
+							      	<p class="col-12 my-type">{{ buy.type.name }} | {{ buy.size }} m²</p>
 							      	<p class="col-12 text-right price">{{ buy.price }} €</p>
 						      	</div>
 						    </a> 
@@ -50,7 +49,7 @@
 
 				</ul>
 			</div>
-			<div class="col-12 col-lg-6">
+			<div class="col-12 col-md-6">
 				<h2 class="col-12">En location</h2>
 				<ul>
 
@@ -71,7 +70,7 @@
 						      		<p class="col-12 my-city">{{ rent.city.name }} ({{ rent.city.zipcode }})</p>
 						      		<p class="col-12 date">{{ rent.date|date('d/m/Y') }}</p>
 							      	<h3 class="col-12 my-title">{{ rent.title }}</h3>
-							      	<p class="col-12 type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| Meublé{% elseif rent.collocation == 1 %}| Collocation{% endif %}</p>
+							      	<p class="col-12 my-type">{{ rent.type.name }} | {{ rent.size }} m² {% if rent.meuble == 1 %}| Meublé{% elseif rent.collocation == 1 %}| Collocation{% endif %}</p>
 							      	<p class="col-12 text-right price">{{ rent.price }} €</p>
 						      	</div>
 						    </a>

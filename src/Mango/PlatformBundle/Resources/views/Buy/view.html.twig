@@ -34,6 +34,11 @@
 							<p><span>Description</span></p>
 							<p>{{ buy.content }}</p>
 							<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
+							{% if not is_granted('ROLE_USER') %}
+								<div class="text-right">
+									<a href="#" class="btn col-12 col-md-4 contact">Contacter   <span class="fas fa-address-book"></span></a>
+								</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -41,6 +46,6 @@
 		{% else %}
 			<p>Désolé cette annonce n'est pas encore disponible</p>
 		{% endif %}
-		<a href="{{ path('mango_platform_buy', {'page': 1}) }}" class="btn col-12 col-lg-4">Retour aux annonces</a>
+		<a href="{{ path('mango_platform_buy', {'page': 1}) }}" class="btn retour col-12 col-lg-2">Retourner aux annonces</a>
 	</section>
 {% endblock %}

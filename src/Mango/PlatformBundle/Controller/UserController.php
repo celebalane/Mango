@@ -209,7 +209,7 @@ class UserController extends Controller
                 $em->flush();
             }
 
-            $request->getSession()->getFlashBag()->add('info', "L'annonce a bien été supprimée.");
+            $request->getSession()->getFlashBag()->add('notice', "L'annonce a bien été supprimée.");
 
             return $this->redirectToRoute('mango_platform_user'); 
         }
@@ -249,7 +249,7 @@ class UserController extends Controller
             $em->remove($user);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('info', "Votre compte à bien été supprimé");
+            $request->getSession()->getFlashBag()->add('success-delete', "Votre compte à bien été supprimé");
 
             return $this->redirectToRoute('fos_user_security_logout'); 
         }
@@ -278,7 +278,7 @@ class UserController extends Controller
                  ->getManager()
                  ->flush(); 
 
-            $request->getSession()->getFlashBag()->add('success', "Vos coordonnées ont bien été modifiées");
+            $request->getSession()->getFlashBag()->add('success-info', "Vos coordonnées ont bien été modifiées");
 
             return $this->redirectToRoute('mango_platform_user_info');
         }

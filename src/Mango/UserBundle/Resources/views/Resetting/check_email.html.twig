@@ -1,7 +1,8 @@
 {% extends "UserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-	<h1>Mot de passe oublié</h1>
-	{{ tokenLifetime }}
-	<p>Un email vous a été envoyé. Merci de suivre les instructions contenues dans celui-ci pour réninitialiser votre mot de passe</p>
+	<section class="view">
+		<h1>Mot de passe oublié</h1>
+		<p>Un email vous a été envoyé. Merci de suivre les instructions contenues dans celui-ci pour réninitialiser votre mot de passe</p>
+	</section>
 {% endblock %}

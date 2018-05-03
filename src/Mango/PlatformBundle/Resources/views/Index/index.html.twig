@@ -6,14 +6,14 @@
 
 {% block body %}
 <section id="index">
-	{% for message in app.flashes('info') %}
+	{% for message in app.flashes('success-delete') %}
 		<div class="alert alert-success">
 			{{ message }}
 		</div>
 	{% endfor %}
 	<div class="row">
 		<div class="col-12 col-lg-4 col-xl-4" id="key"></div>
-		<div class="col" id="contenu-index">
+		<div class="col-12 col-lg-8" id="contenu-index">
 			<div class="row align-items-center">
 				<div id="text-index" class="col-12">
 					<blockquote class="blockquote text-right">

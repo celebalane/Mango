@@ -49,6 +49,14 @@ h1{
 	color: #ea4b02;
 }
 
+.retour{
+	background-color: #EF8A1B;
+}
+
+.retour:hover{
+	color: #EF8A1B;
+}
+
 label{
 	font-weight: 700;
 }
@@ -120,6 +128,12 @@ form .form-row{
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	.contenu{
 		padding-top: 5%;
+	}
+}
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+	section{
+		margin-bottom: 5%;
 	}
 }
 
@@ -248,6 +262,9 @@ header{
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	#footer .nav{
+		height: 70px;
+	}
+	#footer .nav{
 		font-size: 0.8em;
 	}
 }
@@ -271,7 +288,7 @@ header{
 }
 
 #contenu-index .row{
-	height: 600px;
+	height: 100%;
 	padding-left: 50px;
 	padding-right: 100px;
 }
@@ -356,6 +373,19 @@ header{
 
 	#contenu-index .row{
 		margin-top: -5%;
+		padding-right: 50px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	#contenu-index .row{
+		padding-right: 50px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) and (orientation:landscape){
+	#contenu-index .row{
+		color:red;
 	}
 }
 
@@ -533,9 +563,20 @@ header{
 	margin-left: 0;
 }
 
-#contact-user{
-	display: none;
+#show-contact{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 9999; 
 }
+
+#show-contact div{
+	background-color: white;
+}
+
 
 /*/////////////////////////////// Mobile //////////////////////////////////*/
 
@@ -559,6 +600,10 @@ header{
 
 	.view .btn{
 		padding: 2%;
+	}
+
+	.contact{
+		margin-bottom: 5%;
 	}
 
 }
@@ -613,6 +658,11 @@ header{
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////// CONTACT //////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#contact{
+	margin-bottom: 6%;
+}
+
 #contact h1{
 	margin-bottom: 2%;
 }
@@ -650,10 +700,6 @@ header{
 //////////////////////////////////////// MES ANNONCES /////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#btn-top{
-	margin-bottom: 5%;
-}
-
 #my-adverts{
 	padding: 2% 2% 0 2%;
 }
@@ -668,7 +714,7 @@ header{
 }
 
 .my-advert{
-	height: 320px;
+	height: 330px;
 	padding: 1% 1% 1% 1%;
 	margin-bottom: 4% !important;
 	margin-right: 1%;
@@ -699,13 +745,17 @@ header{
 	font-size: 1.5em;
 }
 
+.my-type{
+	margin-bottom: 15%;
+}
+
 .my-advert-null{
 	list-style: none;
 }
 
 .btn-my-advert{
 	position: absolute;
-	bottom: 20px;
+	bottom: 10px;
 	right: 1%;
 	margin-bottom: 0;
 }
@@ -719,7 +769,7 @@ header{
 }
 
 .btn-create{
-	margin-top: 5%;
+	margin-bottom: 5%;
 }
 
 /*/////////////////////////////// Mobile //////////////////////////////////*/
@@ -728,6 +778,19 @@ header{
 	#my-adverts{
 		padding-top: 20%;
 	}
+	.my-advert{
+		height: 450px;
+	}
+	.my-advert .cover-text{
+		font-size: 0.8em;
+		line-height: 1em;
+	}
+	.my-advert .cover-text p{		
+		margin-bottom: 5%;
+	}
+	.my-title{
+		font-size: 1.5em;
+	}
 }
 
 /*/////////////////////////////// Tablette //////////////////////////////////*/
@@ -735,21 +798,51 @@ header{
 @media (min-width: 768px) and (max-width: 991.98px) {
 	#my-adverts{
 		padding-top: 10%;
+		margin-bottom: 5%;
 	}
-
-	#my-adverts #add{
-		margin-bottom: 10%;
+	.my-advert{
+		height: 200px;
+	}
+	.my-advert .cover{
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.my-advert .cover-text{
+		font-size: 0.6em;
+		padding-right: 0;
+		padding-left: 0;
+		line-height: 1em;
+	}
+	.my-advert .cover-text p{
+		padding-left: 0;
+		margin-bottom: 5%;
+	}
+	.my-title{
+		font-size: 1.2em;
+		padding-left: 0;
+	}
+	.my-advert .price{
+		position: unset;
+	}
+	.btn-my-advert{
+		padding-right: 2%;
 	}
 }
 
 /*/////////////////////////////// Grande Tablette //////////////////////////////////*/
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
+	.my-advert{
+		height: 400px;
+	}
 	.my-city{
 		font-size: 0.8em;
 	}
 	.my-title{
 		font-size: 1.4em;
+	}
+	.my-type{
+		margin-bottom: 25%;
 	}
 }
 
@@ -858,7 +951,7 @@ header{
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	#infos-danger{
-		font-size: 0.9em;
+		font-size: 0.7em;
 	}
 
 	#infos-user h2{
