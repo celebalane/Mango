@@ -596,6 +596,17 @@ header{
 	margin-bottom: 4%;
 }
 
+.description form{
+	margin-bottom: 2%;
+}
+
+.description button:disabled{
+	opacity: 1;
+	background-color: #FFFFFF;
+	color: #ea4b02;
+	border-color: #ea4b02;
+}
+
 
 /*/////////////////////////////// Mobile //////////////////////////////////*/
 
@@ -627,6 +638,10 @@ header{
 
 	#show-message div:first-child{
 		padding: 5%;
+	}
+
+	.description form{
+		margin-bottom: 5%;
 	}
 
 }

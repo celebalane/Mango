@@ -35,6 +35,27 @@
 							<p>{{ rent.content }}</p>
 							<p class="col-12 text-right"><span>Proposé par : </span>{{user.username}}</p>
 						</div>
+
+						{% if not is_granted('ROLE_USER') %}
+							<div class="text-right">
+								<a href="#" class="btn col-12 col-md-4 contact">Contacter   <span class="fas fa-address-book"></span></a>
+							</div>
+						{% else %}
+							<form class="text-right" action="">
+								{# Bouton pour afficher le mail #}
+								<button class="btn col-12 col-md-4" type="button" id='btn-mail-rent'>Voir le mail   <span class="fas fa-envelope"></span></button>
+								
+								{# si l'annonceur a renseigné son numéro de tél #}
+								{% if user.phone is not null %}
+									{# Bouton pour l'affichage du numéro #}
+									<button class="btn col-12 col-md-4" type="button" id='btn-tel-rent'>Voir le n° de téléphone   <span class="fas fa-phone"></span></button>
+								{% endif %}
+
+									<input type="hidden" name="userId" id="user-id" value='{{ user.id }}'/>
+									<input type="hidden" name="nbAdvert" id="nbAdvert" value='{{ buy.id }}'/>
+							</form>
+						{% endif %} 
+
 					</div>
 				</div>
 			</article>

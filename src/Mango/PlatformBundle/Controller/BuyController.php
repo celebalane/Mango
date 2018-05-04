@@ -40,20 +40,4 @@ class BuyController extends Controller
         return $this->render('MangoPlatformBundle:Buy:view.html.twig', array('buy' => $buy, 'user' => $user, 'active' => $active));
     }
 
-    public function viewMailAction($id, Request $request){
-        $em = $this->getDoctrine()->getManager(); //Enclenche les processus de Doctrine pour les entités 
-        $id = $request->request->get('id');
-        $buy = $em->getRepository('MangoPlatformBundle:Buy')->find($id);
-        $userId = $buy->getUserId();
-        $user = $em->getRepository('UserBundle:User')->find($userId); 
-        if($request->isXmlHttpRequest())
-        {
-
-            $mailUser = $user->getEmail();
-            $response->setData($mailUser);
-
-            return $response;
-        }
-    }
-
 }

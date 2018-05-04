@@ -72,15 +72,74 @@ $('.contact').click(function(){  //Affichage de la demande de connexion
   });
 });
 
-$('#btn-mail').click(function(){
-  let id = $("#user-mail").val();
-  $.ajax({
+////////// Buy  ////////
+
+$('#btn-mail').click(function(){  //Affichage du mail
+  $(".fa-envelope").remove(); //Affichage de l icone de chargement
+  $('#btn-mail').text('');
+  $('#btn-mail').append($('<span class="load fas fa-spinner"></span>'));
+
+  let id = $("#nbAdvert").val();
+  $.ajax({ //Appel pour les données
     url:"http://localhost/mango/web/app_dev.php/mango/achat/annonce/" + id + "/mail",
-    data: { id : $("#user-mail").val() },
+    data: { id : $("#user-id").val() },
     type:'POST',
-    success: function(response){
-      $('#mail-user').remove();
-      $('#btn-mail').text(response);
+    success: function(mail){
+      $('#btn-mail').text(mail);
+      $('#btn-mail').attr('disabled', 'disabled');
+    }
+  });
+});
+
+$('#btn-tel').click(function(){  //Affichage du téléphone
+  $(".fa-phone").remove(); //Affichage de l icone de chargement
+  $('#btn-tel').text('');
+  $('#btn-tel').append($('<span class="load fas fa-spinner"></span>'));
+
+  let id = $("#nbAdvert").val();
+  $.ajax({
+    url:"http://localhost/mango/web/app_dev.php/mango/achat/annonce/" + id + "/phone",
+    data: { id : $("#user-id").val() },
+    type:'POST',
+    success: function(phone){
+      $('#btn-tel').text(phone);
+      $('#btn-tel').attr('disabled', 'disabled');
+    }
+  });
+});
+
+///////// Rent /////////
+
+$('#btn-mail-rent').click(function(){  //Affichage du mail
+  $(".fa-envelope").remove(); //Affichage de l icone de chargement
+  $('#btn-mail-rent').text('');
+  $('#btn-mail-rent').append($('<span class="load fas fa-spinner"></span>'));
+
+  let id = $("#nbAdvert").val();
+  $.ajax({ //Appel pour les données
+    url:"http://localhost/mango/web/app_dev.php/mango/" + id + "/mail",
+    data: { id : $("#user-id").val() },
+    type:'POST',
+    success: function(mail){
+      $('#btn-mail-rent').text(mail);
+      $('#btn-mail-rent').attr('disabled', 'disabled');
+    }
+  });
+});
+
+$('#btn-tel-rent').click(function(){  //Affichage du téléphone
+  $(".fa-phone").remove(); //Affichage de l icone de chargement
+  $('#btn-tel-rent').text('');
+  $('#btn-tel-rent').append($('<span class="load fas fa-spinner"></span>'));
+
+  let id = $("#nbAdvert").val();
+  $.ajax({
+    url:"http://localhost/mango/web/app_dev.php/mango/" + id + "/phone",
+    data: { id : $("#user-id").val() },
+    type:'POST',
+    success: function(phone){
+      $('#btn-tel-rent').text(phone);
+      $('#btn-tel-rent').attr('disabled', 'disabled');
     }
   });
 });

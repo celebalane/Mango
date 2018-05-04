@@ -31,15 +31,33 @@ mango_platform_rent_view:
   requirements:
     id: \d+
 
+mango_platform_view_rent_mail:
+  path: /achat/annonce/{id}/mail
+  defaults: { _controller: MangoPlatformBundle:UserContact:viewMail}
+  requirements:
+    id: \d+
+
+mango_platform_view_rent_phone:
+  path: /achat/annonce/{id}/phone
+  defaults: { _controller: MangoPlatformBundle:UserContact:viewPhone}
+  requirements:
+    id: \d+
+
 mango_platform_view_buy:
   path:    /achat/annonce/{id}
   defaults: { _controller: MangoPlatformBundle:Buy:view }
   requirements:
     id: \d+
 
-mango_platform_view_buy_mail:
-  path: /achat/annonce/{id}/mail
-  defaults: { _controller: MangoPlatformBundle:Buy:viewMail}
+mango_platform_view_user_mail:
+  path: /{id}/mail
+  defaults: { _controller: MangoPlatformBundle:UserContact:viewMail}
+  requirements:
+    id: \d+
+
+mango_platform_view_user_phone:
+  path: /{id}/phone
+  defaults: { _controller: MangoPlatformBundle:UserContact:viewPhone}
   requirements:
     id: \d+
 
@@ -59,27 +77,27 @@ mango_platform_user_edit_info:
 
 mango_platform_addrent:
   path:    /add/rent
-  defaults: { _controller: MangoPlatformBundle:User:addRent }
+  defaults: { _controller: MangoPlatformBundle:AdvertManagement:addRent }
 
 mango_platform_addbuy:
   path:    /add/buy
-  defaults: { _controller: MangoPlatformBundle:User:addBuy }
+  defaults: { _controller: MangoPlatformBundle:AdvertManagement:addBuy }
 
 mango_platform_edit_rent:
   path:    /edit/location/{id}
-  defaults: { _controller: MangoPlatformBundle:User:editRent }
+  defaults: { _controller: MangoPlatformBundle:AdvertManagement:editRent }
   requirements:
     id: \d+
 
 mango_platform_edit_buy:
   path:    /edit/achat/{id}
-  defaults: { _controller: MangoPlatformBundle:User:editBuy }
+  defaults: { _controller: MangoPlatformBundle:AdvertManagement:editBuy }
   requirements:
     id: \d+
 
 mango_platform_delete:
   path:    /delete/{id}
-  defaults: { _controller: MangoPlatformBundle:User:delete }
+  defaults: { _controller: MangoPlatformBundle:AdvertManagement:delete }
   requirements:
     id: \d+
 

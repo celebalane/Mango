@@ -41,13 +41,19 @@
 								</div>
 							{% else %}
 								<form class="text-right" action="">
-									<button class="btn col-12 col-md-4" type="button" id='btn-mail'>Envoyer un mail   <span class="fas fa-envelope"></span></button>
-									<input type="hidden" name="mailUser" id="user-mail" value='{{ user.id }}'/>
+									{# Bouton pour afficher le mail #}
+									<button class="btn col-12 col-md-4" type="button" id='btn-mail'>Voir le mail   <span class="fas fa-envelope"></span></button>
+								
+								{# si l'annonceur a renseigné son numéro de tél #}
+								{% if user.phone is not null %}
+									{# Bouton pour l'affichage du numéro #}
+									<button class="btn col-12 col-md-4" type="button" id='btn-tel'>Voir le n° de téléphone   <span class="fas fa-phone"></span>     <span class="load fas fa-spinner"></span></button>
+								{% endif %}
+
+									<input type="hidden" name="userId" id="user-id" value='{{ user.id }}'/>
+									<input type="hidden" name="nbAdvert" id="nbAdvert" value='{{ buy.id }}'/>
 								</form>
-								<div class="text-right">
-									<a href="#" class="btn col-12 col-md-4">Téléphoner   <span class="fas fa-phone"></span></a>
-								</div>
-							{% endif %}
+							{% endif %} 
 
 						</div>
 					</div>
