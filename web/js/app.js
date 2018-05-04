@@ -74,10 +74,11 @@ $('.contact').click(function(){  //Affichage de la demande de connexion
 
 ////////// Buy  ////////
 
-$('#btn-mail').click(function(){  //Affichage du mail
+$('#btn-mail, #btn-mail-rent').click(function(){  //Affichage du mail
   $(".fa-envelope").remove(); //Affichage de l icone de chargement
-  $('#btn-mail').text('');
-  $('#btn-mail').append($('<span class="load fas fa-spinner"></span>'));
+  $('#btn-mail, #btn-mail-rent').attr('disabled', 'disabled');
+  $('#btn-mail, #btn-mail-rent').text('');
+  $('#btn-mail, #btn-mail-rent').append($('<span class="load fas fa-spinner"></span>'));
 
   let id = $("#nbAdvert").val();
   $.ajax({ //Appel pour les données
@@ -85,16 +86,16 @@ $('#btn-mail').click(function(){  //Affichage du mail
     data: { id : $("#user-id").val() },
     type:'POST',
     success: function(mail){
-      $('#btn-mail').text(mail);
-      $('#btn-mail').attr('disabled', 'disabled');
+      $('#btn-mail, #btn-mail-rent').text(mail);    
     }
   });
 });
 
-$('#btn-tel').click(function(){  //Affichage du téléphone
+$('#btn-tel, #btn-tel-rent').click(function(){  //Affichage du téléphone
   $(".fa-phone").remove(); //Affichage de l icone de chargement
-  $('#btn-tel').text('');
-  $('#btn-tel').append($('<span class="load fas fa-spinner"></span>'));
+  $('#btn-tel, #btn-tel-rent').attr('disabled', 'disabled');
+  $('#btn-tel, #btn-tel-rent').text('');
+  $('#btn-tel, #btn-tel-rent').append($('<span class="load fas fa-spinner"></span>'));
 
   let id = $("#nbAdvert").val();
   $.ajax({
@@ -102,44 +103,7 @@ $('#btn-tel').click(function(){  //Affichage du téléphone
     data: { id : $("#user-id").val() },
     type:'POST',
     success: function(phone){
-      $('#btn-tel').text(phone);
-      $('#btn-tel').attr('disabled', 'disabled');
-    }
-  });
-});
-
-///////// Rent /////////
-
-$('#btn-mail-rent').click(function(){  //Affichage du mail
-  $(".fa-envelope").remove(); //Affichage de l icone de chargement
-  $('#btn-mail-rent').text('');
-  $('#btn-mail-rent').append($('<span class="load fas fa-spinner"></span>'));
-
-  let id = $("#nbAdvert").val();
-  $.ajax({ //Appel pour les données
-    url:"http://localhost/mango/web/app_dev.php/mango/" + id + "/mail",
-    data: { id : $("#user-id").val() },
-    type:'POST',
-    success: function(mail){
-      $('#btn-mail-rent').text(mail);
-      $('#btn-mail-rent').attr('disabled', 'disabled');
-    }
-  });
-});
-
-$('#btn-tel-rent').click(function(){  //Affichage du téléphone
-  $(".fa-phone").remove(); //Affichage de l icone de chargement
-  $('#btn-tel-rent').text('');
-  $('#btn-tel-rent').append($('<span class="load fas fa-spinner"></span>'));
-
-  let id = $("#nbAdvert").val();
-  $.ajax({
-    url:"http://localhost/mango/web/app_dev.php/mango/" + id + "/phone",
-    data: { id : $("#user-id").val() },
-    type:'POST',
-    success: function(phone){
-      $('#btn-tel-rent').text(phone);
-      $('#btn-tel-rent').attr('disabled', 'disabled');
+      $('#btn-tel, #btn-tel-rent').text(phone);    
     }
   });
 });
